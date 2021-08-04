@@ -1,0 +1,11 @@
+C:\Users\asus\source\repos\Ok.Ecoupon\Cgm.Ecoupon.Domain\bin\Debug\Cgm.Ecoupon.Domain.dll
+C:\Users\asus\source\repos\Ok.Ecoupon\Cgm.Ecoupon.Domain\bin\Debug\Cgm.Ecoupon.Domain.pdb
+C:\Users\asus\source\repos\Ok.Ecoupon\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.csproj.CoreCompileInputs.cache
+C:\Users\asus\source\repos\Ok.Ecoupon\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.dll
+C:\Users\asus\source\repos\Ok.Ecoupon\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.pdb
+C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\bin\Debug\Cgm.Ecoupon.Domain.dll
+C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\bin\Debug\Cgm.Ecoupon.Domain.pdb
+C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.csprojAssemblyReference.cache
+C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.csproj.CoreCompileInputs.cache
+C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.dll
+C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.pdb

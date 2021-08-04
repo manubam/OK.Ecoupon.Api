@@ -1,0 +1,2588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Cgm.EcouponModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApprovalRequestDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TransactionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTransactionTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="RequestedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="RejectedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="RejectedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BranchDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DivisionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TownShipId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CityId" Type="uniqueidentifier" />
+    <Property Name="DistrictId" Type="uniqueidentifier" />
+    <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
+    <Property Name="BranchBName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="BDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BranchMobileNumberDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchReceiverName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="BranchReceiverMobileNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ChildTransInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferId" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="SourceNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="DestinationNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="TransactionId" Type="nvarchar" MaxLength="200" />
+    <Property Name="TransactionDateTime" Type="nvarchar" MaxLength="200" />
+    <Property Name="Amount" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TownShipId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="BurmeseName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CompanyAndProductMappingDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyProductMappingId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductGroupId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductCategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductBrandId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CompanyAndProductMappingSummarry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CompanyDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="CompanyBName" Type="nvarchar" MaxLength="150" />
+    <Property Name="CompanyDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="CompanyImageUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OkAccountNumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TownShipId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="BurmeseName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Division">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Is_Division" Type="bit" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Is_Active" Type="bit" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime" />
+    <Property Name="Updated_Date" Type="datetime" />
+    <Property Name="NrcCode" Type="nvarchar(max)" />
+    <Property Name="NrcCodeMyan" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MasterTransInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferId" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="SourceNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="DestinationNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="Amount" Type="nvarchar" MaxLength="200" />
+    <Property Name="TransactionId" Type="nvarchar" MaxLength="200" />
+    <Property Name="TransactionDateTime" Type="nvarchar" MaxLength="200" />
+    <Property Name="OsType" Type="nvarchar" MaxLength="200" />
+    <Property Name="AgentType" Type="nvarchar" MaxLength="200" />
+    <Property Name="PreBalance" Type="nvarchar" MaxLength="200" />
+    <Property Name="PostBalance" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="ControllerName" Type="nvarchar" MaxLength="300" />
+    <Property Name="ActionName" Type="nvarchar" MaxLength="300" />
+    <Property Name="MenuToolTipName" Type="nvarchar" MaxLength="300" />
+    <Property Name="MenuDescription" Type="nvarchar" MaxLength="300" />
+    <Property Name="MenuPath" Type="nvarchar" MaxLength="300" />
+    <Property Name="MenuIconPath" Type="nvarchar" MaxLength="300" />
+    <Property Name="MenuImagePath" Type="nvarchar" MaxLength="300" />
+    <Property Name="MenuDisplayOrderSeq" Type="int" Nullable="false" />
+    <Property Name="MenuParentItemId" Type="uniqueidentifier" />
+    <Property Name="HreafLinkClass" Type="nvarchar" MaxLength="300" />
+    <Property Name="FaIconClass" Type="nvarchar" MaxLength="300" />
+    <Property Name="FaIconImage" Type="nvarchar" MaxLength="300" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferApprovalSetup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTransactionTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferAutoPayDiscountDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" />
+    <Property Name="BranchId" Type="uniqueidentifier" />
+    <Property Name="DivisionId" Type="uniqueidentifier" />
+    <Property Name="TownshipId" Type="uniqueidentifier" />
+    <Property Name="CityId" Type="uniqueidentifier" />
+    <Property Name="DistrictId" Type="uniqueidentifier" />
+    <Property Name="ProductGroupId" Type="uniqueidentifier" />
+    <Property Name="SafetyCashierNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="AdanceMerchantNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="OkMobileWalletNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="CashBackSetting" Type="int" />
+    <Property Name="OfferAutoLoad" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="AutoPayDiscountPercentage" Type="float" />
+    <Property Name="AutoPayDiscountFixed" Type="float" />
+    <Property Name="AutoPayDiscountRatio" Type="float" />
+    <Property Name="MinimumAmount" Type="float" />
+    <Property Name="MaximumAmount" Type="float" />
+    <Property Name="CashbackAmount" Type="float" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferBackendNumbers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AliesName" Type="nvarchar" MaxLength="150" />
+    <Property Name="BackendMobileNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BackendMobileNumberPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferBlockBranchDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferBlockDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchMobileNumberId" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferBlockCustomerDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferBlockDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferBlockCustomerNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="AccountType" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Operator" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferBlockDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BlockStartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="BlockEndDateTime" Type="datetime" Nullable="false" />
+    <Property Name="MediaTypeId" Type="int" Nullable="false" />
+    <Property Name="MediaTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfferBlockType" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ApprovalFlag" Type="bit" Nullable="false" />
+    <Property Name="ApprovalReqFlag" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferConditiionalMappingBranchDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferConditionalMappingId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchMobileNumberDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferConditionalMappingCustomerDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferConditionalMappingId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferConfigurationMobileNumberDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferConditionalMappingDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MediaTypeId" Type="int" Nullable="false" />
+    <Property Name="MappingTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CommanValue" Type="money" Nullable="false" />
+    <Property Name="OfferType" Type="nvarchar" MaxLength="500" />
+    <Property Name="SchemeValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="ApprovalReqFlag" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferConditionalMappingLocationDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferConditionalMappingId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DivisionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TownShipId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CityId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DistrictId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferConfiguration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferListingTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DivisionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TownShipId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CityId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DistrictId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferBackendNumberId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ApprovalReqFlag" Type="int" Nullable="false" />
+    <Property Name="ApprovalReqDateTime" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferConfigurationMobileNumberDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferConfigurationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchMobileNumberId" Type="uniqueidentifier" />
+    <Property Name="SenderName" Type="nvarchar" MaxLength="150" />
+    <Property Name="SenderMobileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="SafetyCashierName" Type="nvarchar" MaxLength="150" />
+    <Property Name="SafetyCashierMobileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferListingTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductGroupId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductCategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductBrandId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfferName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="OfferBName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="OfferDescription" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="OfferBDescription" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="OfferImageUrl" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="PayToAutoLoadFlag" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="OfferApprovedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferApproverUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferApprovedDateTime" Type="datetime" />
+    <Property Name="OfferRejectedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferRejectedUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferRejectedDescription" Type="nvarchar(max)" />
+    <Property Name="OfferRejectedDateTime" Type="datetime" />
+    <Property Name="ApprovalReqFlag" Type="int" />
+    <Property Name="OfferTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDetailsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferListingTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductGroupId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductCategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductBrandId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfferName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="OfferBName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="OfferDescription" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="OfferBDescription" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="OfferImageUrl" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="PayToAutoLoadFlag" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="OfferApprovedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferApproverUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferApprovedDateTime" Type="datetime" />
+    <Property Name="OfferRejectedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferRejectedUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferRejectedDescription" Type="nvarchar(max)" />
+    <Property Name="OfferRejectedDateTime" Type="datetime" />
+    <Property Name="OfferTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayAppVersionDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferOsDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="TrackSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayAppVersionDetailsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayAppVersionDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferOsDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="TrackSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MediaTypeId" Type="int" Nullable="false" />
+    <Property Name="MediaTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="OfferDisplayApprovedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferDisplayApproverUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferDisplayApprovedDateTime" Type="datetime" />
+    <Property Name="OfferDisplayRejectedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferDisplayRejectedUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferDisplayRejectedDescription" Type="nvarchar(max)" />
+    <Property Name="OfferDisplayRejectedDateTime" Type="datetime" />
+    <Property Name="OfferDisplayTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="ApprovalReqFlag" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayDetailsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MediaTypeId" Type="int" Nullable="false" />
+    <Property Name="MediaTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="OfferDisplayApprovedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferDisplayApproverUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferDisplayApprovedDateTime" Type="datetime" />
+    <Property Name="OfferDisplayRejectedFlag" Type="bit" Nullable="false" />
+    <Property Name="OfferDisplayRejectedUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferDisplayRejectedDescription" Type="nvarchar(max)" />
+    <Property Name="OfferDisplayRejectedDateTime" Type="datetime" />
+    <Property Name="OfferDisplayTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayLocationDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DivisionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TownShipId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CityId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DistrictId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="TrackSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayLocationDetailsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayLocationDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DivisionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TownShipId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CityId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DistrictId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="TrackSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayMappingDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" />
+    <Property Name="OfferConfigurationMobileNumberDetailsId" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="TrackSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayMappingDetailsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayMappingDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" />
+    <Property Name="OfferConfigurationMobileNumberDetailsId" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="TrackSeqNo" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferDisplayTelcoDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDisplayDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TelcoId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferListingType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferListingName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OfferOsDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OsTypeId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="OsTypeName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="AppVersionId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="AppVersionName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DisplayOrderSeqNo" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nchar" MaxLength="10" />
+    <Property Name="ModifiedDate" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="OfferShemeConfiguration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferShemeTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MinimumAmount" Type="money" />
+    <Property Name="MaximumAmount" Type="money" />
+    <Property Name="PurchaseFixedAmount" Type="money" />
+    <Property Name="BuyingProductName" Type="nvarchar" MaxLength="150" />
+    <Property Name="BuyingUOM" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuyingQuantity" Type="int" Nullable="false" />
+    <Property Name="FreeProductName" Type="nvarchar" MaxLength="150" />
+    <Property Name="FreeUOM" Type="nvarchar" MaxLength="50" />
+    <Property Name="FreeQuantity" Type="int" Nullable="false" />
+    <Property Name="FixedDiscountAmount" Type="money" />
+    <Property Name="FixedDiscountPercentage" Type="money" />
+    <Property Name="OfferShemeTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferShemeConfigurationHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferShemeConfigurationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferShemeTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MinimumAmount" Type="money" />
+    <Property Name="MaximumAmount" Type="money" />
+    <Property Name="PurchaseFixedAmount" Type="money" />
+    <Property Name="BuyingProductName" Type="nvarchar" MaxLength="150" />
+    <Property Name="BuyingUOM" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuyingQuantity" Type="int" />
+    <Property Name="FreeProductName" Type="nvarchar" MaxLength="150" />
+    <Property Name="FreeUOM" Type="nvarchar" MaxLength="50" />
+    <Property Name="FreeQuantity" Type="int" />
+    <Property Name="FixedDiscountAmount" Type="money" />
+    <Property Name="FixedDiscountPercentage" Type="money" />
+    <Property Name="OfferShemeTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferShemeType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferShemeName" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="DisplayOrderSeqNo" Type="int" Nullable="false" />
+    <Property Name="ShemeId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OfferTermsAndCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ConditionalFlag" Type="bit" Nullable="false" />
+    <Property Name="NonConditionalFlag" Type="bit" Nullable="false" />
+    <Property Name="PerDayCount" Type="int" Nullable="false" />
+    <Property Name="DayNameList" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+    <Property Name="OfferRedemType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfferRedemCount" Type="int" Nullable="false" />
+    <Property Name="OfferRedemAmount" Type="money" />
+    <Property Name="OfferRedemMinimumAmount" Type="money" />
+    <Property Name="OfferRedemMaximumAmount" Type="money" />
+    <Property Name="OfferTermsAndConditionTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferTermsAndConditionHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTermsAndConditionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferDetailsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ConditionalFlag" Type="bit" Nullable="false" />
+    <Property Name="NonConditionalFlag" Type="bit" Nullable="false" />
+    <Property Name="PerDayCount" Type="int" Nullable="false" />
+    <Property Name="DayNameList" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+    <Property Name="OfferRedemType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfferRedemCount" Type="int" />
+    <Property Name="OfferRedemAmount" Type="money" />
+    <Property Name="OfferRedemMinimumAmount" Type="money" />
+    <Property Name="OfferRedemMaximumAmount" Type="money" />
+    <Property Name="OfferTermsAndConditionTrackingSeqNo" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferTransactionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTransactionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfferTransactionDescription" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DisplayOrderSeqNo" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OfferType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DisplayOrderSeqence" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductBrandDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductBrandCode" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="ProductBrandName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="ProductBrandDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProductBrandAlieas" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductCategoryDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductCategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductCategoryDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductCategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductBrandId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductGroupId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProductImageUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductGroupDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductGroupName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductGroupDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TelcoInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TelcoName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TownShip">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BurmeseName" Type="nvarchar(max)" />
+    <Property Name="DivisionID" Type="uniqueidentifier" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Is_Active" Type="bit" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime" />
+    <Property Name="Updated_Date" Type="datetime" />
+    <Property Name="NrcCode" Type="nvarchar(max)" />
+    <Property Name="NrcCodeMyan" Type="nvarchar(max)" />
+    <Property Name="BurmeseUniqueCode" Type="varchar" MaxLength="255" />
+    <Property Name="NrcCodeTemp" Type="nvarchar" MaxLength="100" />
+    <Property Name="NrcCodeMyanTemp" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UOMMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UomCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UomName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DisplayOrderSeqNumber" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserLoginId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserFirstTimeFlag" Type="bit" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserPhoto" Type="nvarchar" MaxLength="500" />
+    <Property Name="Otp" Type="nvarchar" MaxLength="50" />
+    <Property Name="OtpExpireDateTime" Type="datetime" />
+    <Property Name="ApprovalUserFlag" Type="bit" Nullable="false" />
+    <Property Name="RememberMe" Type="bit" Nullable="false" />
+    <Property Name="LastLoginDateTime" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserAccessRights">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AddFlag" Type="bit" Nullable="false" />
+    <Property Name="UpdateFlag" Type="bit" Nullable="false" />
+    <Property Name="DeleteFlag" Type="bit" Nullable="false" />
+    <Property Name="UnDeleteFlag" Type="bit" Nullable="false" />
+    <Property Name="ViewFlag" Type="bit" Nullable="false" />
+    <Property Name="PrintFlag" Type="bit" Nullable="false" />
+    <Property Name="ExportFlag" Type="bit" Nullable="false" />
+    <Property Name="ImportFlag" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserOfferTypeDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OfferTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserProductGroupDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserProductGroupId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserTypeDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_ApprovalRequestDetail_OfferTransactionType">
+    <End Role="OfferTransactionType" Type="Self.OfferTransactionType" Multiplicity="1" />
+    <End Role="ApprovalRequestDetail" Type="Self.ApprovalRequestDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferTransactionType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApprovalRequestDetail">
+        <PropertyRef Name="OfferTransactionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchDetails_City_Id">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BranchDetails">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchDetails_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BranchDetails">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchDetails_DistrictId">
+    <End Role="District" Type="Self.District" Multiplicity="0..1" />
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BranchDetails">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchDetails_Division_Id">
+    <End Role="Division" Type="Self.Division" Multiplicity="1" />
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BranchDetails">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchDetails_TownShip_Id">
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="1" />
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BranchDetails">
+        <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchMobileNumberDetails_BranchDetails_Id">
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="1" />
+    <End Role="BranchMobileNumberDetails" Type="Self.BranchMobileNumberDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BranchMobileNumberDetails">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_TownShip_Id">
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyAndProductMappingDetails_ProductBrandDetails_Id">
+    <End Role="ProductBrandDetails" Type="Self.ProductBrandDetails" Multiplicity="1" />
+    <End Role="CompanyAndProductMappingDetails" Type="Self.CompanyAndProductMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductBrandDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyAndProductMappingDetails">
+        <PropertyRef Name="ProductBrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyAndProductMappingDetails_ProductCategoryDetails_Id">
+    <End Role="ProductCategoryDetails" Type="Self.ProductCategoryDetails" Multiplicity="1" />
+    <End Role="CompanyAndProductMappingDetails" Type="Self.CompanyAndProductMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategoryDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyAndProductMappingDetails">
+        <PropertyRef Name="ProductCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyAndProductMappingDetails_ProductDetails_Id">
+    <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="1" />
+    <End Role="CompanyAndProductMappingDetails" Type="Self.CompanyAndProductMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyAndProductMappingDetails">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyAndProductMappingDetails_ProductGroupDetails_Id">
+    <End Role="ProductGroupDetails" Type="Self.ProductGroupDetails" Multiplicity="1" />
+    <End Role="CompanyAndProductMappingDetails" Type="Self.CompanyAndProductMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroupDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyAndProductMappingDetails">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyAndProductMappingSummarry_BranchDetails_Id">
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="1" />
+    <End Role="CompanyAndProductMappingSummarry" Type="Self.CompanyAndProductMappingSummarry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyAndProductMappingSummarry">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyAndProductMappingSummarry_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="CompanyAndProductMappingSummarry" Type="Self.CompanyAndProductMappingSummarry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyAndProductMappingSummarry">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_District_TownShip_Id">
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="1" />
+    <End Role="District" Type="Self.District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferApprovalSetup_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="OfferApprovalSetup" Type="Self.OfferApprovalSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferApprovalSetup">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferApprovalSetup_OfferTransactionType_Id">
+    <End Role="OfferTransactionType" Type="Self.OfferTransactionType" Multiplicity="1" />
+    <End Role="OfferApprovalSetup" Type="Self.OfferApprovalSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferTransactionType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferApprovalSetup">
+        <PropertyRef Name="OfferTransactionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferApprovalSetup_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="OfferApprovalSetup" Type="Self.OfferApprovalSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferApprovalSetup">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAutoPayDiscountDetails_BranchDetails_Id">
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="0..1" />
+    <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferAutoPayDiscountDetails">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAutoPayDiscountDetails_City_Id">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferAutoPayDiscountDetails">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAutoPayDiscountDetails_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="0..1" />
+    <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferAutoPayDiscountDetails">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAutoPayDiscountDetails_District_Id">
+    <End Role="District" Type="Self.District" Multiplicity="0..1" />
+    <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferAutoPayDiscountDetails">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAutoPayDiscountDetails_Division_Id">
+    <End Role="Division" Type="Self.Division" Multiplicity="0..1" />
+    <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferAutoPayDiscountDetails">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAutoPayDiscountDetails_ProductGroupDetails_Id">
+    <End Role="ProductGroupDetails" Type="Self.ProductGroupDetails" Multiplicity="0..1" />
+    <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroupDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferAutoPayDiscountDetails">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAutoPayDiscountDetails_TownShip_Id">
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="0..1" />
+    <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferAutoPayDiscountDetails">
+        <PropertyRef Name="TownshipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferBackendNumbers_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="OfferBackendNumbers" Type="Self.OfferBackendNumbers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferBackendNumbers">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferBlockBranchDetails_BranchDetails_Id">
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="1" />
+    <End Role="OfferBlockBranchDetails" Type="Self.OfferBlockBranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferBlockBranchDetails">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferBlockBranchDetails_OfferBlockBranchMobile">
+    <End Role="BranchMobileNumberDetails" Type="Self.BranchMobileNumberDetails" Multiplicity="0..1" />
+    <End Role="OfferBlockBranchDetails" Type="Self.OfferBlockBranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchMobileNumberDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferBlockBranchDetails">
+        <PropertyRef Name="BranchMobileNumberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferBlockBranchDetails_OfferBlockDetails_Id">
+    <End Role="OfferBlockDetails" Type="Self.OfferBlockDetails" Multiplicity="1" />
+    <End Role="OfferBlockBranchDetails" Type="Self.OfferBlockBranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferBlockDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferBlockBranchDetails">
+        <PropertyRef Name="OfferBlockDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferBlockCustomerDetails_OfferBlockDetails_Id">
+    <End Role="OfferBlockDetails" Type="Self.OfferBlockDetails" Multiplicity="1" />
+    <End Role="OfferBlockCustomerDetails" Type="Self.OfferBlockCustomerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferBlockDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferBlockCustomerDetails">
+        <PropertyRef Name="OfferBlockDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferBlockDetails_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="OfferBlockDetails" Type="Self.OfferBlockDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferBlockDetails">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferBlockDetails_OfferDetails_Id">
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="1" />
+    <End Role="OfferBlockDetails" Type="Self.OfferBlockDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferBlockDetails">
+        <PropertyRef Name="OfferDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditiionalMappingBranchDetails_BranchMobileNumberDetails_Id">
+    <End Role="BranchMobileNumberDetails" Type="Self.BranchMobileNumberDetails" Multiplicity="1" />
+    <End Role="OfferConditiionalMappingBranchDetails" Type="Self.OfferConditiionalMappingBranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchMobileNumberDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditiionalMappingBranchDetails">
+        <PropertyRef Name="BranchMobileNumberDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditiionalMappingBranchDetails_OfferConditionalMappingDetails_Id">
+    <End Role="OfferConditionalMappingDetails" Type="Self.OfferConditionalMappingDetails" Multiplicity="1" />
+    <End Role="OfferConditiionalMappingBranchDetails" Type="Self.OfferConditiionalMappingBranchDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferConditionalMappingDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditiionalMappingBranchDetails">
+        <PropertyRef Name="OfferConditionalMappingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingCustomerDetails_OfferConditionalMappingDetails_Id">
+    <End Role="OfferConditionalMappingDetails" Type="Self.OfferConditionalMappingDetails" Multiplicity="1" />
+    <End Role="OfferConditionalMappingCustomerDetails" Type="Self.OfferConditionalMappingCustomerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferConditionalMappingDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingCustomerDetails">
+        <PropertyRef Name="OfferConditionalMappingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingCustomerDetails_OfferConfigurationMobileNumberDetails_Id">
+    <End Role="OfferConfigurationMobileNumberDetails" Type="Self.OfferConfigurationMobileNumberDetails" Multiplicity="1" />
+    <End Role="OfferConditionalMappingCustomerDetails" Type="Self.OfferConditionalMappingCustomerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferConfigurationMobileNumberDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingCustomerDetails">
+        <PropertyRef Name="OfferConfigurationMobileNumberDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingDetails_OfferDetails_Id">
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="1" />
+    <End Role="OfferConditionalMappingDetails" Type="Self.OfferConditionalMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingDetails">
+        <PropertyRef Name="OfferDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingLocationDetails_City_Id">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="OfferConditionalMappingLocationDetails" Type="Self.OfferConditionalMappingLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingLocationDetails">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingLocationDetails_District_Id">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="OfferConditionalMappingLocationDetails" Type="Self.OfferConditionalMappingLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingLocationDetails">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingLocationDetails_Division_Id">
+    <End Role="Division" Type="Self.Division" Multiplicity="1" />
+    <End Role="OfferConditionalMappingLocationDetails" Type="Self.OfferConditionalMappingLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingLocationDetails">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingLocationDetails_OfferConditionalMappingDetails_Id">
+    <End Role="OfferConditionalMappingDetails" Type="Self.OfferConditionalMappingDetails" Multiplicity="1" />
+    <End Role="OfferConditionalMappingLocationDetails" Type="Self.OfferConditionalMappingLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferConditionalMappingDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingLocationDetails">
+        <PropertyRef Name="OfferConditionalMappingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConditionalMappingLocationDetails_TownShipId">
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="1" />
+    <End Role="OfferConditionalMappingLocationDetails" Type="Self.OfferConditionalMappingLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferConditionalMappingLocationDetails">
+        <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_BranchDetails_Id">
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_City_Id">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_District_Id">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_Division_Id">
+    <End Role="Division" Type="Self.Division" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_OfferBackendNumbers_Id">
+    <End Role="OfferBackendNumbers" Type="Self.OfferBackendNumbers" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferBackendNumbers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="OfferBackendNumberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_OfferListingType_Id">
+    <End Role="OfferListingType" Type="Self.OfferListingType" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferListingType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="OfferListingTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfiguration_TownShip_Id">
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="1" />
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferConfiguration">
+        <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfigurationMobileNumberDetails_BranchMobileNumberDetails_Id">
+    <End Role="BranchMobileNumberDetails" Type="Self.BranchMobileNumberDetails" Multiplicity="0..1" />
+    <End Role="OfferConfigurationMobileNumberDetails" Type="Self.OfferConfigurationMobileNumberDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchMobileNumberDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfigurationMobileNumberDetails">
+        <PropertyRef Name="BranchMobileNumberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferConfigurationMobileNumberDetails_OfferConfiguration_Id">
+    <End Role="OfferConfiguration" Type="Self.OfferConfiguration" Multiplicity="1" />
+    <End Role="OfferConfigurationMobileNumberDetails" Type="Self.OfferConfigurationMobileNumberDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferConfigurationMobileNumberDetails">
+        <PropertyRef Name="OfferConfigurationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetails_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetails">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetails_OfferListingType_Id">
+    <End Role="OfferListingType" Type="Self.OfferListingType" Multiplicity="1" />
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferListingType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetails">
+        <PropertyRef Name="OfferListingTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetails_OfferType_Id">
+    <End Role="OfferType" Type="Self.OfferType" Multiplicity="1" />
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetails">
+        <PropertyRef Name="OfferTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetails_ProductBrandDetails_Id">
+    <End Role="ProductBrandDetails" Type="Self.ProductBrandDetails" Multiplicity="1" />
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductBrandDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetails">
+        <PropertyRef Name="ProductBrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetails_ProductCategoryDetails_Id">
+    <End Role="ProductCategoryDetails" Type="Self.ProductCategoryDetails" Multiplicity="1" />
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategoryDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetails">
+        <PropertyRef Name="ProductCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetails_ProductDetails_Id">
+    <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="1" />
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetails">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetails_ProductGroupDetails_Id">
+    <End Role="ProductGroupDetails" Type="Self.ProductGroupDetails" Multiplicity="1" />
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroupDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetails">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDetailsHistory_OfferDetails_Id">
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="1" />
+    <End Role="OfferDetailsHistory" Type="Self.OfferDetailsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDetailsHistory">
+        <PropertyRef Name="OfferDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayAppVersionDetails_OfferDisplayDetails_Id">
+    <End Role="OfferDisplayDetails" Type="Self.OfferDisplayDetails" Multiplicity="1" />
+    <End Role="OfferDisplayAppVersionDetails" Type="Self.OfferDisplayAppVersionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayAppVersionDetails">
+        <PropertyRef Name="OfferDisplayDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayAppVersionDetailsHistory_OfferDisplayAppVersionDetails_Id">
+    <End Role="OfferDisplayAppVersionDetails" Type="Self.OfferDisplayAppVersionDetails" Multiplicity="1" />
+    <End Role="OfferDisplayAppVersionDetailsHistory" Type="Self.OfferDisplayAppVersionDetailsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayAppVersionDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayAppVersionDetailsHistory">
+        <PropertyRef Name="OfferDisplayAppVersionDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayDetails_OfferDetails_Id">
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="1" />
+    <End Role="OfferDisplayDetails" Type="Self.OfferDisplayDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayDetails">
+        <PropertyRef Name="OfferDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayDetailsHistory_OfferDisplayDetails_Id">
+    <End Role="OfferDisplayDetails" Type="Self.OfferDisplayDetails" Multiplicity="1" />
+    <End Role="OfferDisplayDetailsHistory" Type="Self.OfferDisplayDetailsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayDetailsHistory">
+        <PropertyRef Name="OfferDisplayDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayLocationDetails_City_Id">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="OfferDisplayLocationDetails" Type="Self.OfferDisplayLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayLocationDetails">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayLocationDetails_District_Id">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="OfferDisplayLocationDetails" Type="Self.OfferDisplayLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayLocationDetails">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayLocationDetails_Division_Id">
+    <End Role="Division" Type="Self.Division" Multiplicity="1" />
+    <End Role="OfferDisplayLocationDetails" Type="Self.OfferDisplayLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferDisplayLocationDetails">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayLocationDetails_OfferDisplayDetails_Id">
+    <End Role="OfferDisplayDetails" Type="Self.OfferDisplayDetails" Multiplicity="1" />
+    <End Role="OfferDisplayLocationDetails" Type="Self.OfferDisplayLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayLocationDetails">
+        <PropertyRef Name="OfferDisplayDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayLocationDetails_TownShip_Id">
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="1" />
+    <End Role="OfferDisplayLocationDetails" Type="Self.OfferDisplayLocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OfferDisplayLocationDetails">
+        <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayLocationDetailsHistory_OfferDisplayLocationDetails_Id">
+    <End Role="OfferDisplayLocationDetails" Type="Self.OfferDisplayLocationDetails" Multiplicity="1" />
+    <End Role="OfferDisplayLocationDetailsHistory" Type="Self.OfferDisplayLocationDetailsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayLocationDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayLocationDetailsHistory">
+        <PropertyRef Name="OfferDisplayLocationDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayMappingDetails_BranchDetails_Id">
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="0..1" />
+    <End Role="OfferDisplayMappingDetails" Type="Self.OfferDisplayMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayMappingDetails">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayMappingDetails_OfferConfigurationMobileNumberDetails_Id">
+    <End Role="OfferConfigurationMobileNumberDetails" Type="Self.OfferConfigurationMobileNumberDetails" Multiplicity="0..1" />
+    <End Role="OfferDisplayMappingDetails" Type="Self.OfferDisplayMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferConfigurationMobileNumberDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayMappingDetails">
+        <PropertyRef Name="OfferConfigurationMobileNumberDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayMappingDetails_OfferDisplayDetails_Id">
+    <End Role="OfferDisplayDetails" Type="Self.OfferDisplayDetails" Multiplicity="1" />
+    <End Role="OfferDisplayMappingDetails" Type="Self.OfferDisplayMappingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayMappingDetails">
+        <PropertyRef Name="OfferDisplayDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayMappingDetailsHistory_OfferDisplayMappingDetails_Id">
+    <End Role="OfferDisplayMappingDetails" Type="Self.OfferDisplayMappingDetails" Multiplicity="1" />
+    <End Role="OfferDisplayMappingDetailsHistory" Type="Self.OfferDisplayMappingDetailsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayMappingDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayMappingDetailsHistory">
+        <PropertyRef Name="OfferDisplayMappingDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayTelcoDetails_OfferDisplayDetails_Id">
+    <End Role="OfferDisplayDetails" Type="Self.OfferDisplayDetails" Multiplicity="1" />
+    <End Role="OfferDisplayTelcoDetails" Type="Self.OfferDisplayTelcoDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDisplayDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayTelcoDetails">
+        <PropertyRef Name="OfferDisplayDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferDisplayTelcoDetails_TelcoInfo">
+    <End Role="TelcoInfo" Type="Self.TelcoInfo" Multiplicity="1" />
+    <End Role="OfferDisplayTelcoDetails" Type="Self.OfferDisplayTelcoDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TelcoInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferDisplayTelcoDetails">
+        <PropertyRef Name="TelcoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferShemeConfiguration_OfferDetails_Id">
+    <End Role="OfferDetails" Type="Self.OfferDetails" Multiplicity="1" />
+    <End Role="OfferShemeConfiguration" Type="Self.OfferShemeConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferShemeConfiguration">
+        <PropertyRef Name="OfferDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferShemeConfiguration_OfferShemeType_Id">
+    <End Role="OfferShemeType" Type="Self.OfferShemeType" Multiplicity="1" />
+    <End Role="OfferShemeConfiguration" Type="Self.OfferShemeConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferShemeType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OfferShemeConfiguration">
+        <PropertyRef Name="OfferShemeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDetails_ProductBrandDetails_Id">
+    <End Role="ProductBrandDetails" Type="Self.ProductBrandDetails" Multiplicity="1" />
+    <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductBrandDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductDetails">
+        <PropertyRef Name="ProductBrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDetails_ProductCategoryDetails_Id">
+    <End Role="ProductCategoryDetails" Type="Self.ProductCategoryDetails" Multiplicity="1" />
+    <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategoryDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductDetails">
+        <PropertyRef Name="ProductCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDetails_ProductGroupDetails_Id">
+    <End Role="ProductGroupDetails" Type="Self.ProductGroupDetails" Multiplicity="1" />
+    <End Role="ProductDetails" Type="Self.ProductDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroupDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductDetails">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TownShip_Division_Id">
+    <End Role="Division" Type="Self.Division" Multiplicity="0..1" />
+    <End Role="TownShip" Type="Self.TownShip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TownShip">
+        <PropertyRef Name="DivisionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_CompanyDetails_Id">
+    <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType_Id">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccessRights_Menu_Id">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="UserAccessRights" Type="Self.UserAccessRights" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAccessRights">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccessRights_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserAccessRights" Type="Self.UserAccessRights" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAccessRights">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOfferTypeDetails_OfferType_Id">
+    <End Role="OfferType" Type="Self.OfferType" Multiplicity="1" />
+    <End Role="UserOfferTypeDetails" Type="Self.UserOfferTypeDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserOfferTypeDetails">
+        <PropertyRef Name="OfferTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOfferTypeDetails_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserOfferTypeDetails" Type="Self.UserOfferTypeDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserOfferTypeDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProductGroupDetails_ProductGroupDetails_Id">
+    <End Role="ProductGroupDetails" Type="Self.ProductGroupDetails" Multiplicity="1" />
+    <End Role="UserProductGroupDetails" Type="Self.UserProductGroupDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroupDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserProductGroupDetails">
+        <PropertyRef Name="UserProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProductGroupDetails_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserProductGroupDetails" Type="Self.UserProductGroupDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserProductGroupDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetAllApprovalRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="GetAssignOfferDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetAutoPayDiscountFliterData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="TYPEVALUE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetAutoPayReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetDashboardOfferTypeWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="DATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOfferAssignCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOfferCountAmountWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOfferCountDayWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+    <Parameter Name="MONTH" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetOfferCountMonthWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOfferCountOfferTypeWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="DATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOfferCountTownshipWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOfferRedeemLocationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
+    <Parameter Name="TODATE" Type="datetime" Mode="In" />
+    <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetOfferReportDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
+    <Parameter Name="TODATE" Type="datetime" Mode="In" />
+    <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetOkDebitCreditCashback" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOkDebitWalletNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOkDebitWalletNumberDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetOkDebitWalletNumberSubDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetOKDollarAccountNumberDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
+    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetOverAmountNoDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+    <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
+    <Parameter Name="TODATE" Type="datetime" Mode="In" />
+    <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetTodayTotalAutoPayDiscountCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetTodayTotalOkDollarOfferRedeemCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="CgmEcouponModelStoreContainer">
+    <EntitySet Name="ApprovalRequestDetail" EntityType="Self.ApprovalRequestDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BranchDetails" EntityType="Self.BranchDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BranchMobileNumberDetails" EntityType="Self.BranchMobileNumberDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChildTransInfo" EntityType="Self.ChildTransInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyAndProductMappingDetails" EntityType="Self.CompanyAndProductMappingDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyAndProductMappingSummarry" EntityType="Self.CompanyAndProductMappingSummarry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterTransInfo" EntityType="Self.MasterTransInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferApprovalSetup" EntityType="Self.OfferApprovalSetup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferAutoPayDiscountDetails" EntityType="Self.OfferAutoPayDiscountDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferBackendNumbers" EntityType="Self.OfferBackendNumbers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferBlockBranchDetails" EntityType="Self.OfferBlockBranchDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferBlockCustomerDetails" EntityType="Self.OfferBlockCustomerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferBlockDetails" EntityType="Self.OfferBlockDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferConditiionalMappingBranchDetails" EntityType="Self.OfferConditiionalMappingBranchDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferConditionalMappingCustomerDetails" EntityType="Self.OfferConditionalMappingCustomerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferConditionalMappingDetails" EntityType="Self.OfferConditionalMappingDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferConditionalMappingLocationDetails" EntityType="Self.OfferConditionalMappingLocationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferConfiguration" EntityType="Self.OfferConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferConfigurationMobileNumberDetails" EntityType="Self.OfferConfigurationMobileNumberDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDetails" EntityType="Self.OfferDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDetailsHistory" EntityType="Self.OfferDetailsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayAppVersionDetails" EntityType="Self.OfferDisplayAppVersionDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayAppVersionDetailsHistory" EntityType="Self.OfferDisplayAppVersionDetailsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayDetails" EntityType="Self.OfferDisplayDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayDetailsHistory" EntityType="Self.OfferDisplayDetailsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayLocationDetails" EntityType="Self.OfferDisplayLocationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayLocationDetailsHistory" EntityType="Self.OfferDisplayLocationDetailsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayMappingDetails" EntityType="Self.OfferDisplayMappingDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayMappingDetailsHistory" EntityType="Self.OfferDisplayMappingDetailsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferDisplayTelcoDetails" EntityType="Self.OfferDisplayTelcoDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferListingType" EntityType="Self.OfferListingType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferOsDetails" EntityType="Self.OfferOsDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferShemeConfiguration" EntityType="Self.OfferShemeConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferShemeConfigurationHistory" EntityType="Self.OfferShemeConfigurationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferShemeType" EntityType="Self.OfferShemeType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferTermsAndCondition" EntityType="Self.OfferTermsAndCondition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferTermsAndConditionHistory" EntityType="Self.OfferTermsAndConditionHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferTransactionType" EntityType="Self.OfferTransactionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferType" EntityType="Self.OfferType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductBrandDetails" EntityType="Self.ProductBrandDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCategoryDetails" EntityType="Self.ProductCategoryDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductDetails" EntityType="Self.ProductDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductGroupDetails" EntityType="Self.ProductGroupDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TelcoInfo" EntityType="Self.TelcoInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TownShip" EntityType="Self.TownShip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UOMMaster" EntityType="Self.UOMMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccessRights" EntityType="Self.UserAccessRights" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserOfferTypeDetails" EntityType="Self.UserOfferTypeDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProductGroupDetails" EntityType="Self.UserProductGroupDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ApprovalRequestDetail_OfferTransactionType" Association="Self.FK_ApprovalRequestDetail_OfferTransactionType">
+      <End Role="OfferTransactionType" EntitySet="OfferTransactionType" />
+      <End Role="ApprovalRequestDetail" EntitySet="ApprovalRequestDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchDetails_City_Id" Association="Self.FK_BranchDetails_City_Id">
+      <End Role="City" EntitySet="City" />
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchDetails_CompanyDetails_Id" Association="Self.FK_BranchDetails_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchDetails_DistrictId" Association="Self.FK_BranchDetails_DistrictId">
+      <End Role="District" EntitySet="District" />
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchDetails_Division_Id" Association="Self.FK_BranchDetails_Division_Id">
+      <End Role="Division" EntitySet="Division" />
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchDetails_TownShip_Id" Association="Self.FK_BranchDetails_TownShip_Id">
+      <End Role="TownShip" EntitySet="TownShip" />
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchMobileNumberDetails_BranchDetails_Id" Association="Self.FK_BranchMobileNumberDetails_BranchDetails_Id">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="BranchMobileNumberDetails" EntitySet="BranchMobileNumberDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_TownShip_Id" Association="Self.FK_City_TownShip_Id">
+      <End Role="TownShip" EntitySet="TownShip" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyAndProductMappingDetails_ProductBrandDetails_Id" Association="Self.FK_CompanyAndProductMappingDetails_ProductBrandDetails_Id">
+      <End Role="ProductBrandDetails" EntitySet="ProductBrandDetails" />
+      <End Role="CompanyAndProductMappingDetails" EntitySet="CompanyAndProductMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyAndProductMappingDetails_ProductCategoryDetails_Id" Association="Self.FK_CompanyAndProductMappingDetails_ProductCategoryDetails_Id">
+      <End Role="ProductCategoryDetails" EntitySet="ProductCategoryDetails" />
+      <End Role="CompanyAndProductMappingDetails" EntitySet="CompanyAndProductMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyAndProductMappingDetails_ProductDetails_Id" Association="Self.FK_CompanyAndProductMappingDetails_ProductDetails_Id">
+      <End Role="ProductDetails" EntitySet="ProductDetails" />
+      <End Role="CompanyAndProductMappingDetails" EntitySet="CompanyAndProductMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyAndProductMappingDetails_ProductGroupDetails_Id" Association="Self.FK_CompanyAndProductMappingDetails_ProductGroupDetails_Id">
+      <End Role="ProductGroupDetails" EntitySet="ProductGroupDetails" />
+      <End Role="CompanyAndProductMappingDetails" EntitySet="CompanyAndProductMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyAndProductMappingSummarry_BranchDetails_Id" Association="Self.FK_CompanyAndProductMappingSummarry_BranchDetails_Id">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="CompanyAndProductMappingSummarry" EntitySet="CompanyAndProductMappingSummarry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyAndProductMappingSummarry_CompanyDetails_Id" Association="Self.FK_CompanyAndProductMappingSummarry_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="CompanyAndProductMappingSummarry" EntitySet="CompanyAndProductMappingSummarry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_District_TownShip_Id" Association="Self.FK_District_TownShip_Id">
+      <End Role="TownShip" EntitySet="TownShip" />
+      <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferApprovalSetup_CompanyDetails_Id" Association="Self.FK_OfferApprovalSetup_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="OfferApprovalSetup" EntitySet="OfferApprovalSetup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferApprovalSetup_OfferTransactionType_Id" Association="Self.FK_OfferApprovalSetup_OfferTransactionType_Id">
+      <End Role="OfferTransactionType" EntitySet="OfferTransactionType" />
+      <End Role="OfferApprovalSetup" EntitySet="OfferApprovalSetup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferApprovalSetup_User_Id" Association="Self.FK_OfferApprovalSetup_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="OfferApprovalSetup" EntitySet="OfferApprovalSetup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAutoPayDiscountDetails_BranchDetails_Id" Association="Self.FK_OfferAutoPayDiscountDetails_BranchDetails_Id">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="OfferAutoPayDiscountDetails" EntitySet="OfferAutoPayDiscountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAutoPayDiscountDetails_City_Id" Association="Self.FK_OfferAutoPayDiscountDetails_City_Id">
+      <End Role="City" EntitySet="City" />
+      <End Role="OfferAutoPayDiscountDetails" EntitySet="OfferAutoPayDiscountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAutoPayDiscountDetails_CompanyDetails_Id" Association="Self.FK_OfferAutoPayDiscountDetails_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="OfferAutoPayDiscountDetails" EntitySet="OfferAutoPayDiscountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAutoPayDiscountDetails_District_Id" Association="Self.FK_OfferAutoPayDiscountDetails_District_Id">
+      <End Role="District" EntitySet="District" />
+      <End Role="OfferAutoPayDiscountDetails" EntitySet="OfferAutoPayDiscountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAutoPayDiscountDetails_Division_Id" Association="Self.FK_OfferAutoPayDiscountDetails_Division_Id">
+      <End Role="Division" EntitySet="Division" />
+      <End Role="OfferAutoPayDiscountDetails" EntitySet="OfferAutoPayDiscountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAutoPayDiscountDetails_ProductGroupDetails_Id" Association="Self.FK_OfferAutoPayDiscountDetails_ProductGroupDetails_Id">
+      <End Role="ProductGroupDetails" EntitySet="ProductGroupDetails" />
+      <End Role="OfferAutoPayDiscountDetails" EntitySet="OfferAutoPayDiscountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAutoPayDiscountDetails_TownShip_Id" Association="Self.FK_OfferAutoPayDiscountDetails_TownShip_Id">
+      <End Role="TownShip" EntitySet="TownShip" />
+      <End Role="OfferAutoPayDiscountDetails" EntitySet="OfferAutoPayDiscountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferBackendNumbers_CompanyDetails_Id" Association="Self.FK_OfferBackendNumbers_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="OfferBackendNumbers" EntitySet="OfferBackendNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferBlockBranchDetails_BranchDetails_Id" Association="Self.FK_OfferBlockBranchDetails_BranchDetails_Id">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="OfferBlockBranchDetails" EntitySet="OfferBlockBranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferBlockBranchDetails_OfferBlockBranchMobile" Association="Self.FK_OfferBlockBranchDetails_OfferBlockBranchMobile">
+      <End Role="BranchMobileNumberDetails" EntitySet="BranchMobileNumberDetails" />
+      <End Role="OfferBlockBranchDetails" EntitySet="OfferBlockBranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferBlockBranchDetails_OfferBlockDetails_Id" Association="Self.FK_OfferBlockBranchDetails_OfferBlockDetails_Id">
+      <End Role="OfferBlockDetails" EntitySet="OfferBlockDetails" />
+      <End Role="OfferBlockBranchDetails" EntitySet="OfferBlockBranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferBlockCustomerDetails_OfferBlockDetails_Id" Association="Self.FK_OfferBlockCustomerDetails_OfferBlockDetails_Id">
+      <End Role="OfferBlockDetails" EntitySet="OfferBlockDetails" />
+      <End Role="OfferBlockCustomerDetails" EntitySet="OfferBlockCustomerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferBlockDetails_CompanyDetails_Id" Association="Self.FK_OfferBlockDetails_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="OfferBlockDetails" EntitySet="OfferBlockDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferBlockDetails_OfferDetails_Id" Association="Self.FK_OfferBlockDetails_OfferDetails_Id">
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+      <End Role="OfferBlockDetails" EntitySet="OfferBlockDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditiionalMappingBranchDetails_BranchMobileNumberDetails_Id" Association="Self.FK_OfferConditiionalMappingBranchDetails_BranchMobileNumberDetails_Id">
+      <End Role="BranchMobileNumberDetails" EntitySet="BranchMobileNumberDetails" />
+      <End Role="OfferConditiionalMappingBranchDetails" EntitySet="OfferConditiionalMappingBranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditiionalMappingBranchDetails_OfferConditionalMappingDetails_Id" Association="Self.FK_OfferConditiionalMappingBranchDetails_OfferConditionalMappingDetails_Id">
+      <End Role="OfferConditionalMappingDetails" EntitySet="OfferConditionalMappingDetails" />
+      <End Role="OfferConditiionalMappingBranchDetails" EntitySet="OfferConditiionalMappingBranchDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingCustomerDetails_OfferConditionalMappingDetails_Id" Association="Self.FK_OfferConditionalMappingCustomerDetails_OfferConditionalMappingDetails_Id">
+      <End Role="OfferConditionalMappingDetails" EntitySet="OfferConditionalMappingDetails" />
+      <End Role="OfferConditionalMappingCustomerDetails" EntitySet="OfferConditionalMappingCustomerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingCustomerDetails_OfferConfigurationMobileNumberDetails_Id" Association="Self.FK_OfferConditionalMappingCustomerDetails_OfferConfigurationMobileNumberDetails_Id">
+      <End Role="OfferConfigurationMobileNumberDetails" EntitySet="OfferConfigurationMobileNumberDetails" />
+      <End Role="OfferConditionalMappingCustomerDetails" EntitySet="OfferConditionalMappingCustomerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingDetails_OfferDetails_Id" Association="Self.FK_OfferConditionalMappingDetails_OfferDetails_Id">
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+      <End Role="OfferConditionalMappingDetails" EntitySet="OfferConditionalMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingLocationDetails_City_Id" Association="Self.FK_OfferConditionalMappingLocationDetails_City_Id">
+      <End Role="City" EntitySet="City" />
+      <End Role="OfferConditionalMappingLocationDetails" EntitySet="OfferConditionalMappingLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingLocationDetails_District_Id" Association="Self.FK_OfferConditionalMappingLocationDetails_District_Id">
+      <End Role="District" EntitySet="District" />
+      <End Role="OfferConditionalMappingLocationDetails" EntitySet="OfferConditionalMappingLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingLocationDetails_Division_Id" Association="Self.FK_OfferConditionalMappingLocationDetails_Division_Id">
+      <End Role="Division" EntitySet="Division" />
+      <End Role="OfferConditionalMappingLocationDetails" EntitySet="OfferConditionalMappingLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingLocationDetails_OfferConditionalMappingDetails_Id" Association="Self.FK_OfferConditionalMappingLocationDetails_OfferConditionalMappingDetails_Id">
+      <End Role="OfferConditionalMappingDetails" EntitySet="OfferConditionalMappingDetails" />
+      <End Role="OfferConditionalMappingLocationDetails" EntitySet="OfferConditionalMappingLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConditionalMappingLocationDetails_TownShipId" Association="Self.FK_OfferConditionalMappingLocationDetails_TownShipId">
+      <End Role="TownShip" EntitySet="TownShip" />
+      <End Role="OfferConditionalMappingLocationDetails" EntitySet="OfferConditionalMappingLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_BranchDetails_Id" Association="Self.FK_OfferConfiguration_BranchDetails_Id">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_City_Id" Association="Self.FK_OfferConfiguration_City_Id">
+      <End Role="City" EntitySet="City" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_CompanyDetails_Id" Association="Self.FK_OfferConfiguration_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_District_Id" Association="Self.FK_OfferConfiguration_District_Id">
+      <End Role="District" EntitySet="District" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_Division_Id" Association="Self.FK_OfferConfiguration_Division_Id">
+      <End Role="Division" EntitySet="Division" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_OfferBackendNumbers_Id" Association="Self.FK_OfferConfiguration_OfferBackendNumbers_Id">
+      <End Role="OfferBackendNumbers" EntitySet="OfferBackendNumbers" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_OfferListingType_Id" Association="Self.FK_OfferConfiguration_OfferListingType_Id">
+      <End Role="OfferListingType" EntitySet="OfferListingType" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfiguration_TownShip_Id" Association="Self.FK_OfferConfiguration_TownShip_Id">
+      <End Role="TownShip" EntitySet="TownShip" />
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfigurationMobileNumberDetails_BranchMobileNumberDetails_Id" Association="Self.FK_OfferConfigurationMobileNumberDetails_BranchMobileNumberDetails_Id">
+      <End Role="BranchMobileNumberDetails" EntitySet="BranchMobileNumberDetails" />
+      <End Role="OfferConfigurationMobileNumberDetails" EntitySet="OfferConfigurationMobileNumberDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferConfigurationMobileNumberDetails_OfferConfiguration_Id" Association="Self.FK_OfferConfigurationMobileNumberDetails_OfferConfiguration_Id">
+      <End Role="OfferConfiguration" EntitySet="OfferConfiguration" />
+      <End Role="OfferConfigurationMobileNumberDetails" EntitySet="OfferConfigurationMobileNumberDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetails_CompanyDetails_Id" Association="Self.FK_OfferDetails_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetails_OfferListingType_Id" Association="Self.FK_OfferDetails_OfferListingType_Id">
+      <End Role="OfferListingType" EntitySet="OfferListingType" />
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetails_OfferType_Id" Association="Self.FK_OfferDetails_OfferType_Id">
+      <End Role="OfferType" EntitySet="OfferType" />
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetails_ProductBrandDetails_Id" Association="Self.FK_OfferDetails_ProductBrandDetails_Id">
+      <End Role="ProductBrandDetails" EntitySet="ProductBrandDetails" />
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetails_ProductCategoryDetails_Id" Association="Self.FK_OfferDetails_ProductCategoryDetails_Id">
+      <End Role="ProductCategoryDetails" EntitySet="ProductCategoryDetails" />
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetails_ProductDetails_Id" Association="Self.FK_OfferDetails_ProductDetails_Id">
+      <End Role="ProductDetails" EntitySet="ProductDetails" />
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetails_ProductGroupDetails_Id" Association="Self.FK_OfferDetails_ProductGroupDetails_Id">
+      <End Role="ProductGroupDetails" EntitySet="ProductGroupDetails" />
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDetailsHistory_OfferDetails_Id" Association="Self.FK_OfferDetailsHistory_OfferDetails_Id">
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+      <End Role="OfferDetailsHistory" EntitySet="OfferDetailsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayAppVersionDetails_OfferDisplayDetails_Id" Association="Self.FK_OfferDisplayAppVersionDetails_OfferDisplayDetails_Id">
+      <End Role="OfferDisplayDetails" EntitySet="OfferDisplayDetails" />
+      <End Role="OfferDisplayAppVersionDetails" EntitySet="OfferDisplayAppVersionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayAppVersionDetailsHistory_OfferDisplayAppVersionDetails_Id" Association="Self.FK_OfferDisplayAppVersionDetailsHistory_OfferDisplayAppVersionDetails_Id">
+      <End Role="OfferDisplayAppVersionDetails" EntitySet="OfferDisplayAppVersionDetails" />
+      <End Role="OfferDisplayAppVersionDetailsHistory" EntitySet="OfferDisplayAppVersionDetailsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayDetails_OfferDetails_Id" Association="Self.FK_OfferDisplayDetails_OfferDetails_Id">
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+      <End Role="OfferDisplayDetails" EntitySet="OfferDisplayDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayDetailsHistory_OfferDisplayDetails_Id" Association="Self.FK_OfferDisplayDetailsHistory_OfferDisplayDetails_Id">
+      <End Role="OfferDisplayDetails" EntitySet="OfferDisplayDetails" />
+      <End Role="OfferDisplayDetailsHistory" EntitySet="OfferDisplayDetailsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayLocationDetails_City_Id" Association="Self.FK_OfferDisplayLocationDetails_City_Id">
+      <End Role="City" EntitySet="City" />
+      <End Role="OfferDisplayLocationDetails" EntitySet="OfferDisplayLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayLocationDetails_District_Id" Association="Self.FK_OfferDisplayLocationDetails_District_Id">
+      <End Role="District" EntitySet="District" />
+      <End Role="OfferDisplayLocationDetails" EntitySet="OfferDisplayLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayLocationDetails_Division_Id" Association="Self.FK_OfferDisplayLocationDetails_Division_Id">
+      <End Role="Division" EntitySet="Division" />
+      <End Role="OfferDisplayLocationDetails" EntitySet="OfferDisplayLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayLocationDetails_OfferDisplayDetails_Id" Association="Self.FK_OfferDisplayLocationDetails_OfferDisplayDetails_Id">
+      <End Role="OfferDisplayDetails" EntitySet="OfferDisplayDetails" />
+      <End Role="OfferDisplayLocationDetails" EntitySet="OfferDisplayLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayLocationDetails_TownShip_Id" Association="Self.FK_OfferDisplayLocationDetails_TownShip_Id">
+      <End Role="TownShip" EntitySet="TownShip" />
+      <End Role="OfferDisplayLocationDetails" EntitySet="OfferDisplayLocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayLocationDetailsHistory_OfferDisplayLocationDetails_Id" Association="Self.FK_OfferDisplayLocationDetailsHistory_OfferDisplayLocationDetails_Id">
+      <End Role="OfferDisplayLocationDetails" EntitySet="OfferDisplayLocationDetails" />
+      <End Role="OfferDisplayLocationDetailsHistory" EntitySet="OfferDisplayLocationDetailsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayMappingDetails_BranchDetails_Id" Association="Self.FK_OfferDisplayMappingDetails_BranchDetails_Id">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="OfferDisplayMappingDetails" EntitySet="OfferDisplayMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayMappingDetails_OfferConfigurationMobileNumberDetails_Id" Association="Self.FK_OfferDisplayMappingDetails_OfferConfigurationMobileNumberDetails_Id">
+      <End Role="OfferConfigurationMobileNumberDetails" EntitySet="OfferConfigurationMobileNumberDetails" />
+      <End Role="OfferDisplayMappingDetails" EntitySet="OfferDisplayMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayMappingDetails_OfferDisplayDetails_Id" Association="Self.FK_OfferDisplayMappingDetails_OfferDisplayDetails_Id">
+      <End Role="OfferDisplayDetails" EntitySet="OfferDisplayDetails" />
+      <End Role="OfferDisplayMappingDetails" EntitySet="OfferDisplayMappingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayMappingDetailsHistory_OfferDisplayMappingDetails_Id" Association="Self.FK_OfferDisplayMappingDetailsHistory_OfferDisplayMappingDetails_Id">
+      <End Role="OfferDisplayMappingDetails" EntitySet="OfferDisplayMappingDetails" />
+      <End Role="OfferDisplayMappingDetailsHistory" EntitySet="OfferDisplayMappingDetailsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayTelcoDetails_OfferDisplayDetails_Id" Association="Self.FK_OfferDisplayTelcoDetails_OfferDisplayDetails_Id">
+      <End Role="OfferDisplayDetails" EntitySet="OfferDisplayDetails" />
+      <End Role="OfferDisplayTelcoDetails" EntitySet="OfferDisplayTelcoDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferDisplayTelcoDetails_TelcoInfo" Association="Self.FK_OfferDisplayTelcoDetails_TelcoInfo">
+      <End Role="TelcoInfo" EntitySet="TelcoInfo" />
+      <End Role="OfferDisplayTelcoDetails" EntitySet="OfferDisplayTelcoDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferShemeConfiguration_OfferDetails_Id" Association="Self.FK_OfferShemeConfiguration_OfferDetails_Id">
+      <End Role="OfferDetails" EntitySet="OfferDetails" />
+      <End Role="OfferShemeConfiguration" EntitySet="OfferShemeConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferShemeConfiguration_OfferShemeType_Id" Association="Self.FK_OfferShemeConfiguration_OfferShemeType_Id">
+      <End Role="OfferShemeType" EntitySet="OfferShemeType" />
+      <End Role="OfferShemeConfiguration" EntitySet="OfferShemeConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDetails_ProductBrandDetails_Id" Association="Self.FK_ProductDetails_ProductBrandDetails_Id">
+      <End Role="ProductBrandDetails" EntitySet="ProductBrandDetails" />
+      <End Role="ProductDetails" EntitySet="ProductDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDetails_ProductCategoryDetails_Id" Association="Self.FK_ProductDetails_ProductCategoryDetails_Id">
+      <End Role="ProductCategoryDetails" EntitySet="ProductCategoryDetails" />
+      <End Role="ProductDetails" EntitySet="ProductDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDetails_ProductGroupDetails_Id" Association="Self.FK_ProductDetails_ProductGroupDetails_Id">
+      <End Role="ProductGroupDetails" EntitySet="ProductGroupDetails" />
+      <End Role="ProductDetails" EntitySet="ProductDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TownShip_Division_Id" Association="Self.FK_TownShip_Division_Id">
+      <End Role="Division" EntitySet="Division" />
+      <End Role="TownShip" EntitySet="TownShip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_CompanyDetails_Id" Association="Self.FK_User_CompanyDetails_Id">
+      <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType_Id" Association="Self.FK_User_UserType_Id">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccessRights_Menu_Id" Association="Self.FK_UserAccessRights_Menu_Id">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="UserAccessRights" EntitySet="UserAccessRights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccessRights_User_Id" Association="Self.FK_UserAccessRights_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAccessRights" EntitySet="UserAccessRights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOfferTypeDetails_OfferType_Id" Association="Self.FK_UserOfferTypeDetails_OfferType_Id">
+      <End Role="OfferType" EntitySet="OfferType" />
+      <End Role="UserOfferTypeDetails" EntitySet="UserOfferTypeDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOfferTypeDetails_User_Id" Association="Self.FK_UserOfferTypeDetails_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserOfferTypeDetails" EntitySet="UserOfferTypeDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProductGroupDetails_ProductGroupDetails_Id" Association="Self.FK_UserProductGroupDetails_ProductGroupDetails_Id">
+      <End Role="ProductGroupDetails" EntitySet="ProductGroupDetails" />
+      <End Role="UserProductGroupDetails" EntitySet="UserProductGroupDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProductGroupDetails_User_Id" Association="Self.FK_UserProductGroupDetails_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserProductGroupDetails" EntitySet="UserProductGroupDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

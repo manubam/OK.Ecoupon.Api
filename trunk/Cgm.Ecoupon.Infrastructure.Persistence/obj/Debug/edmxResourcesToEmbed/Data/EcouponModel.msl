@@ -1,0 +1,1385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CgmEcouponModelStoreContainer" CdmEntityContainer="OfferManagementEntities">
+    <EntitySetMapping Name="ApprovalRequestDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.ApprovalRequestDetail">
+        <MappingFragment StoreEntitySet="ApprovalRequestDetail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="OfferTransactionTypeId" ColumnName="OfferTransactionTypeId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="RejectedBy" ColumnName="RejectedBy" />
+          <ScalarProperty Name="RejectedDate" ColumnName="RejectedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.BranchDetail">
+        <MappingFragment StoreEntitySet="BranchDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="BranchBName" ColumnName="BranchBName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="BDescription" ColumnName="BDescription" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchMobileNumberDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.BranchMobileNumberDetail">
+        <MappingFragment StoreEntitySet="BranchMobileNumberDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="BranchReceiverName" ColumnName="BranchReceiverName" />
+          <ScalarProperty Name="BranchReceiverMobileNumber" ColumnName="BranchReceiverMobileNumber" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChildTransInfoes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.ChildTransInfo">
+        <MappingFragment StoreEntitySet="ChildTransInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+          <ScalarProperty Name="SourceNumber" ColumnName="SourceNumber" />
+          <ScalarProperty Name="DestinationNumber" ColumnName="DestinationNumber" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="TransactionDateTime" ColumnName="TransactionDateTime" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BurmeseName" ColumnName="BurmeseName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyAndProductMappingDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.CompanyAndProductMappingDetail">
+        <MappingFragment StoreEntitySet="CompanyAndProductMappingDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyProductMappingId" ColumnName="CompanyProductMappingId" />
+          <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+          <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+          <ScalarProperty Name="ProductBrandId" ColumnName="ProductBrandId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyAndProductMappingSummarries">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.CompanyAndProductMappingSummarry">
+        <MappingFragment StoreEntitySet="CompanyAndProductMappingSummarry">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.CompanyDetail">
+        <MappingFragment StoreEntitySet="CompanyDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyBName" ColumnName="CompanyBName" />
+          <ScalarProperty Name="CompanyDescription" ColumnName="CompanyDescription" />
+          <ScalarProperty Name="CompanyImageUrl" ColumnName="CompanyImageUrl" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BurmeseName" ColumnName="BurmeseName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Divisions">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.Division">
+        <MappingFragment StoreEntitySet="Division">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="Is_Division" ColumnName="Is_Division" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Updated_Date" ColumnName="Updated_Date" />
+          <ScalarProperty Name="NrcCode" ColumnName="NrcCode" />
+          <ScalarProperty Name="NrcCodeMyan" ColumnName="NrcCodeMyan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterTransInfoes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.MasterTransInfo">
+        <MappingFragment StoreEntitySet="MasterTransInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+          <ScalarProperty Name="SourceNumber" ColumnName="SourceNumber" />
+          <ScalarProperty Name="DestinationNumber" ColumnName="DestinationNumber" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="TransactionDateTime" ColumnName="TransactionDateTime" />
+          <ScalarProperty Name="OsType" ColumnName="OsType" />
+          <ScalarProperty Name="AgentType" ColumnName="AgentType" />
+          <ScalarProperty Name="PreBalance" ColumnName="PreBalance" />
+          <ScalarProperty Name="PostBalance" ColumnName="PostBalance" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="MenuToolTipName" ColumnName="MenuToolTipName" />
+          <ScalarProperty Name="MenuDescription" ColumnName="MenuDescription" />
+          <ScalarProperty Name="MenuPath" ColumnName="MenuPath" />
+          <ScalarProperty Name="MenuIconPath" ColumnName="MenuIconPath" />
+          <ScalarProperty Name="MenuImagePath" ColumnName="MenuImagePath" />
+          <ScalarProperty Name="MenuDisplayOrderSeq" ColumnName="MenuDisplayOrderSeq" />
+          <ScalarProperty Name="MenuParentItemId" ColumnName="MenuParentItemId" />
+          <ScalarProperty Name="HreafLinkClass" ColumnName="HreafLinkClass" />
+          <ScalarProperty Name="FaIconClass" ColumnName="FaIconClass" />
+          <ScalarProperty Name="FaIconImage" ColumnName="FaIconImage" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferApprovalSetups">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferApprovalSetup">
+        <MappingFragment StoreEntitySet="OfferApprovalSetup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="OfferTransactionTypeId" ColumnName="OfferTransactionTypeId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferAutoPayDiscountDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferAutoPayDiscountDetail">
+        <MappingFragment StoreEntitySet="OfferAutoPayDiscountDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="TownshipId" ColumnName="TownshipId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+          <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
+          <ScalarProperty Name="AdanceMerchantNumber" ColumnName="AdanceMerchantNumber" />
+          <ScalarProperty Name="OkMobileWalletNumber" ColumnName="OkMobileWalletNumber" />
+          <ScalarProperty Name="CashBackSetting" ColumnName="CashBackSetting" />
+          <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AutoPayDiscountPercentage" ColumnName="AutoPayDiscountPercentage" />
+          <ScalarProperty Name="AutoPayDiscountFixed" ColumnName="AutoPayDiscountFixed" />
+          <ScalarProperty Name="AutoPayDiscountRatio" ColumnName="AutoPayDiscountRatio" />
+          <ScalarProperty Name="MinimumAmount" ColumnName="MinimumAmount" />
+          <ScalarProperty Name="MaximumAmount" ColumnName="MaximumAmount" />
+          <ScalarProperty Name="CashbackAmount" ColumnName="CashbackAmount" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferBackendNumbers">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBackendNumber">
+        <MappingFragment StoreEntitySet="OfferBackendNumbers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="AliesName" ColumnName="AliesName" />
+          <ScalarProperty Name="BackendMobileNumber" ColumnName="BackendMobileNumber" />
+          <ScalarProperty Name="BackendMobileNumberPassword" ColumnName="BackendMobileNumberPassword" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferBlockBranchDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBlockBranchDetail">
+        <MappingFragment StoreEntitySet="OfferBlockBranchDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferBlockDetailsId" ColumnName="OfferBlockDetailsId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="BranchMobileNumberId" ColumnName="BranchMobileNumberId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferBlockCustomerDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBlockCustomerDetail">
+        <MappingFragment StoreEntitySet="OfferBlockCustomerDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferBlockDetailsId" ColumnName="OfferBlockDetailsId" />
+          <ScalarProperty Name="OfferBlockCustomerNumber" ColumnName="OfferBlockCustomerNumber" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Operator" ColumnName="Operator" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferBlockDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBlockDetail">
+        <MappingFragment StoreEntitySet="OfferBlockDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="BlockStartDateTime" ColumnName="BlockStartDateTime" />
+          <ScalarProperty Name="BlockEndDateTime" ColumnName="BlockEndDateTime" />
+          <ScalarProperty Name="MediaTypeId" ColumnName="MediaTypeId" />
+          <ScalarProperty Name="MediaTypeName" ColumnName="MediaTypeName" />
+          <ScalarProperty Name="OfferBlockType" ColumnName="OfferBlockType" />
+          <ScalarProperty Name="ApprovalFlag" ColumnName="ApprovalFlag" />
+          <ScalarProperty Name="ApprovalReqFlag" ColumnName="ApprovalReqFlag" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferConditiionalMappingBranchDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditiionalMappingBranchDetail">
+        <MappingFragment StoreEntitySet="OfferConditiionalMappingBranchDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferConditionalMappingId" ColumnName="OfferConditionalMappingId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="BranchMobileNumberDetailsId" ColumnName="BranchMobileNumberDetailsId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferConditionalMappingCustomerDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditionalMappingCustomerDetail">
+        <MappingFragment StoreEntitySet="OfferConditionalMappingCustomerDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferConditionalMappingId" ColumnName="OfferConditionalMappingId" />
+          <ScalarProperty Name="OfferConfigurationMobileNumberDetailsId" ColumnName="OfferConfigurationMobileNumberDetailsId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferConditionalMappingDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditionalMappingDetail">
+        <MappingFragment StoreEntitySet="OfferConditionalMappingDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="MediaTypeId" ColumnName="MediaTypeId" />
+          <ScalarProperty Name="MappingTypeName" ColumnName="MappingTypeName" />
+          <ScalarProperty Name="CommanValue" ColumnName="CommanValue" />
+          <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+          <ScalarProperty Name="SchemeValue" ColumnName="SchemeValue" />
+          <ScalarProperty Name="ApprovalReqFlag" ColumnName="ApprovalReqFlag" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferConditionalMappingLocationDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditionalMappingLocationDetail">
+        <MappingFragment StoreEntitySet="OfferConditionalMappingLocationDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferConditionalMappingId" ColumnName="OfferConditionalMappingId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferConfigurations">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConfiguration">
+        <MappingFragment StoreEntitySet="OfferConfiguration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferListingTypeId" ColumnName="OfferListingTypeId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="OfferBackendNumberId" ColumnName="OfferBackendNumberId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ApprovalReqFlag" ColumnName="ApprovalReqFlag" />
+          <ScalarProperty Name="ApprovalReqDateTime" ColumnName="ApprovalReqDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferConfigurationMobileNumberDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConfigurationMobileNumberDetail">
+        <MappingFragment StoreEntitySet="OfferConfigurationMobileNumberDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferConfigurationId" ColumnName="OfferConfigurationId" />
+          <ScalarProperty Name="BranchMobileNumberId" ColumnName="BranchMobileNumberId" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="SenderMobileNumber" ColumnName="SenderMobileNumber" />
+          <ScalarProperty Name="SafetyCashierName" ColumnName="SafetyCashierName" />
+          <ScalarProperty Name="SafetyCashierMobileNumber" ColumnName="SafetyCashierMobileNumber" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDetail">
+        <MappingFragment StoreEntitySet="OfferDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferListingTypeId" ColumnName="OfferListingTypeId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+          <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+          <ScalarProperty Name="ProductBrandId" ColumnName="ProductBrandId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OfferTypeId" ColumnName="OfferTypeId" />
+          <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="OfferBName" ColumnName="OfferBName" />
+          <ScalarProperty Name="OfferDescription" ColumnName="OfferDescription" />
+          <ScalarProperty Name="OfferBDescription" ColumnName="OfferBDescription" />
+          <ScalarProperty Name="OfferImageUrl" ColumnName="OfferImageUrl" />
+          <ScalarProperty Name="PayToAutoLoadFlag" ColumnName="PayToAutoLoadFlag" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OfferApprovedFlag" ColumnName="OfferApprovedFlag" />
+          <ScalarProperty Name="OfferApproverUserId" ColumnName="OfferApproverUserId" />
+          <ScalarProperty Name="OfferApprovedDateTime" ColumnName="OfferApprovedDateTime" />
+          <ScalarProperty Name="OfferRejectedFlag" ColumnName="OfferRejectedFlag" />
+          <ScalarProperty Name="OfferRejectedUserId" ColumnName="OfferRejectedUserId" />
+          <ScalarProperty Name="OfferRejectedDescription" ColumnName="OfferRejectedDescription" />
+          <ScalarProperty Name="OfferRejectedDateTime" ColumnName="OfferRejectedDateTime" />
+          <ScalarProperty Name="ApprovalReqFlag" ColumnName="ApprovalReqFlag" />
+          <ScalarProperty Name="OfferTrackingSeqNo" ColumnName="OfferTrackingSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifedDate" ColumnName="ModifedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDetailsHistories">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDetailsHistory">
+        <MappingFragment StoreEntitySet="OfferDetailsHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="OfferListingTypeId" ColumnName="OfferListingTypeId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+          <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+          <ScalarProperty Name="ProductBrandId" ColumnName="ProductBrandId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OfferTypeId" ColumnName="OfferTypeId" />
+          <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="OfferBName" ColumnName="OfferBName" />
+          <ScalarProperty Name="OfferDescription" ColumnName="OfferDescription" />
+          <ScalarProperty Name="OfferBDescription" ColumnName="OfferBDescription" />
+          <ScalarProperty Name="OfferImageUrl" ColumnName="OfferImageUrl" />
+          <ScalarProperty Name="PayToAutoLoadFlag" ColumnName="PayToAutoLoadFlag" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OfferApprovedFlag" ColumnName="OfferApprovedFlag" />
+          <ScalarProperty Name="OfferApproverUserId" ColumnName="OfferApproverUserId" />
+          <ScalarProperty Name="OfferApprovedDateTime" ColumnName="OfferApprovedDateTime" />
+          <ScalarProperty Name="OfferRejectedFlag" ColumnName="OfferRejectedFlag" />
+          <ScalarProperty Name="OfferRejectedUserId" ColumnName="OfferRejectedUserId" />
+          <ScalarProperty Name="OfferRejectedDescription" ColumnName="OfferRejectedDescription" />
+          <ScalarProperty Name="OfferRejectedDateTime" ColumnName="OfferRejectedDateTime" />
+          <ScalarProperty Name="OfferTrackingSeqNo" ColumnName="OfferTrackingSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifedDate" ColumnName="ModifedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayAppVersionDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayAppVersionDetail">
+        <MappingFragment StoreEntitySet="OfferDisplayAppVersionDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="OfferOsDetailsId" ColumnName="OfferOsDetailsId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TrackSeqNo" ColumnName="TrackSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayAppVersionDetailsHistories">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayAppVersionDetailsHistory">
+        <MappingFragment StoreEntitySet="OfferDisplayAppVersionDetailsHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayAppVersionDetailsId" ColumnName="OfferDisplayAppVersionDetailsId" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="OfferOsDetailsId" ColumnName="OfferOsDetailsId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TrackSeqNo" ColumnName="TrackSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayDetail">
+        <MappingFragment StoreEntitySet="OfferDisplayDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="MediaTypeId" ColumnName="MediaTypeId" />
+          <ScalarProperty Name="MediaTypeName" ColumnName="MediaTypeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OfferDisplayApprovedFlag" ColumnName="OfferDisplayApprovedFlag" />
+          <ScalarProperty Name="OfferDisplayApproverUserId" ColumnName="OfferDisplayApproverUserId" />
+          <ScalarProperty Name="OfferDisplayApprovedDateTime" ColumnName="OfferDisplayApprovedDateTime" />
+          <ScalarProperty Name="OfferDisplayRejectedFlag" ColumnName="OfferDisplayRejectedFlag" />
+          <ScalarProperty Name="OfferDisplayRejectedUserId" ColumnName="OfferDisplayRejectedUserId" />
+          <ScalarProperty Name="OfferDisplayRejectedDescription" ColumnName="OfferDisplayRejectedDescription" />
+          <ScalarProperty Name="OfferDisplayRejectedDateTime" ColumnName="OfferDisplayRejectedDateTime" />
+          <ScalarProperty Name="OfferDisplayTrackingSeqNo" ColumnName="OfferDisplayTrackingSeqNo" />
+          <ScalarProperty Name="ApprovalReqFlag" ColumnName="ApprovalReqFlag" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayDetailsHistories">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayDetailsHistory">
+        <MappingFragment StoreEntitySet="OfferDisplayDetailsHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="MediaTypeId" ColumnName="MediaTypeId" />
+          <ScalarProperty Name="MediaTypeName" ColumnName="MediaTypeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OfferDisplayApprovedFlag" ColumnName="OfferDisplayApprovedFlag" />
+          <ScalarProperty Name="OfferDisplayApproverUserId" ColumnName="OfferDisplayApproverUserId" />
+          <ScalarProperty Name="OfferDisplayApprovedDateTime" ColumnName="OfferDisplayApprovedDateTime" />
+          <ScalarProperty Name="OfferDisplayRejectedFlag" ColumnName="OfferDisplayRejectedFlag" />
+          <ScalarProperty Name="OfferDisplayRejectedUserId" ColumnName="OfferDisplayRejectedUserId" />
+          <ScalarProperty Name="OfferDisplayRejectedDescription" ColumnName="OfferDisplayRejectedDescription" />
+          <ScalarProperty Name="OfferDisplayRejectedDateTime" ColumnName="OfferDisplayRejectedDateTime" />
+          <ScalarProperty Name="OfferDisplayTrackingSeqNo" ColumnName="OfferDisplayTrackingSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayLocationDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayLocationDetail">
+        <MappingFragment StoreEntitySet="OfferDisplayLocationDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TrackSeqNo" ColumnName="TrackSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayLocationDetailsHistories">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayLocationDetailsHistory">
+        <MappingFragment StoreEntitySet="OfferDisplayLocationDetailsHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayLocationDetailsId" ColumnName="OfferDisplayLocationDetailsId" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TrackSeqNo" ColumnName="TrackSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayMappingDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayMappingDetail">
+        <MappingFragment StoreEntitySet="OfferDisplayMappingDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="OfferConfigurationMobileNumberDetailsId" ColumnName="OfferConfigurationMobileNumberDetailsId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TrackSeqNo" ColumnName="TrackSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayMappingDetailsHistories">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayMappingDetailsHistory">
+        <MappingFragment StoreEntitySet="OfferDisplayMappingDetailsHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayMappingDetailsId" ColumnName="OfferDisplayMappingDetailsId" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="OfferConfigurationMobileNumberDetailsId" ColumnName="OfferConfigurationMobileNumberDetailsId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TrackSeqNo" ColumnName="TrackSeqNo" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferDisplayTelcoDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayTelcoDetail">
+        <MappingFragment StoreEntitySet="OfferDisplayTelcoDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
+          <ScalarProperty Name="TelcoId" ColumnName="TelcoId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferListingTypes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferListingType">
+        <MappingFragment StoreEntitySet="OfferListingType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferListingName" ColumnName="OfferListingName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferOsDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferOsDetail">
+        <MappingFragment StoreEntitySet="OfferOsDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OsTypeId" ColumnName="OsTypeId" />
+          <ScalarProperty Name="OsTypeName" ColumnName="OsTypeName" />
+          <ScalarProperty Name="AppVersionId" ColumnName="AppVersionId" />
+          <ScalarProperty Name="AppVersionName" ColumnName="AppVersionName" />
+          <ScalarProperty Name="DisplayOrderSeqNo" ColumnName="DisplayOrderSeqNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferShemeConfigurations">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferShemeConfiguration">
+        <MappingFragment StoreEntitySet="OfferShemeConfiguration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="OfferShemeTypeId" ColumnName="OfferShemeTypeId" />
+          <ScalarProperty Name="MinimumAmount" ColumnName="MinimumAmount" />
+          <ScalarProperty Name="MaximumAmount" ColumnName="MaximumAmount" />
+          <ScalarProperty Name="PurchaseFixedAmount" ColumnName="PurchaseFixedAmount" />
+          <ScalarProperty Name="BuyingProductName" ColumnName="BuyingProductName" />
+          <ScalarProperty Name="BuyingUOM" ColumnName="BuyingUOM" />
+          <ScalarProperty Name="BuyingQuantity" ColumnName="BuyingQuantity" />
+          <ScalarProperty Name="FreeProductName" ColumnName="FreeProductName" />
+          <ScalarProperty Name="FreeUOM" ColumnName="FreeUOM" />
+          <ScalarProperty Name="FreeQuantity" ColumnName="FreeQuantity" />
+          <ScalarProperty Name="FixedDiscountAmount" ColumnName="FixedDiscountAmount" />
+          <ScalarProperty Name="FixedDiscountPercentage" ColumnName="FixedDiscountPercentage" />
+          <ScalarProperty Name="OfferShemeTrackingSeqNo" ColumnName="OfferShemeTrackingSeqNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferShemeConfigurationHistories">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferShemeConfigurationHistory">
+        <MappingFragment StoreEntitySet="OfferShemeConfigurationHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferShemeConfigurationId" ColumnName="OfferShemeConfigurationId" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="OfferShemeTypeId" ColumnName="OfferShemeTypeId" />
+          <ScalarProperty Name="MinimumAmount" ColumnName="MinimumAmount" />
+          <ScalarProperty Name="MaximumAmount" ColumnName="MaximumAmount" />
+          <ScalarProperty Name="PurchaseFixedAmount" ColumnName="PurchaseFixedAmount" />
+          <ScalarProperty Name="BuyingProductName" ColumnName="BuyingProductName" />
+          <ScalarProperty Name="BuyingUOM" ColumnName="BuyingUOM" />
+          <ScalarProperty Name="BuyingQuantity" ColumnName="BuyingQuantity" />
+          <ScalarProperty Name="FreeProductName" ColumnName="FreeProductName" />
+          <ScalarProperty Name="FreeUOM" ColumnName="FreeUOM" />
+          <ScalarProperty Name="FreeQuantity" ColumnName="FreeQuantity" />
+          <ScalarProperty Name="FixedDiscountAmount" ColumnName="FixedDiscountAmount" />
+          <ScalarProperty Name="FixedDiscountPercentage" ColumnName="FixedDiscountPercentage" />
+          <ScalarProperty Name="OfferShemeTrackingSeqNo" ColumnName="OfferShemeTrackingSeqNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferShemeTypes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferShemeType">
+        <MappingFragment StoreEntitySet="OfferShemeType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferShemeName" ColumnName="OfferShemeName" />
+          <ScalarProperty Name="DisplayOrderSeqNo" ColumnName="DisplayOrderSeqNo" />
+          <ScalarProperty Name="ShemeId" ColumnName="ShemeId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferTermsAndConditions">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferTermsAndCondition">
+        <MappingFragment StoreEntitySet="OfferTermsAndCondition">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="ConditionalFlag" ColumnName="ConditionalFlag" />
+          <ScalarProperty Name="NonConditionalFlag" ColumnName="NonConditionalFlag" />
+          <ScalarProperty Name="PerDayCount" ColumnName="PerDayCount" />
+          <ScalarProperty Name="DayNameList" ColumnName="DayNameList" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="OfferRedemType" ColumnName="OfferRedemType" />
+          <ScalarProperty Name="OfferRedemCount" ColumnName="OfferRedemCount" />
+          <ScalarProperty Name="OfferRedemAmount" ColumnName="OfferRedemAmount" />
+          <ScalarProperty Name="OfferRedemMinimumAmount" ColumnName="OfferRedemMinimumAmount" />
+          <ScalarProperty Name="OfferRedemMaximumAmount" ColumnName="OfferRedemMaximumAmount" />
+          <ScalarProperty Name="OfferTermsAndConditionTrackingSeqNo" ColumnName="OfferTermsAndConditionTrackingSeqNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferTermsAndConditionHistories">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferTermsAndConditionHistory">
+        <MappingFragment StoreEntitySet="OfferTermsAndConditionHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferTermsAndConditionId" ColumnName="OfferTermsAndConditionId" />
+          <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
+          <ScalarProperty Name="ConditionalFlag" ColumnName="ConditionalFlag" />
+          <ScalarProperty Name="NonConditionalFlag" ColumnName="NonConditionalFlag" />
+          <ScalarProperty Name="PerDayCount" ColumnName="PerDayCount" />
+          <ScalarProperty Name="DayNameList" ColumnName="DayNameList" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="OfferRedemType" ColumnName="OfferRedemType" />
+          <ScalarProperty Name="OfferRedemCount" ColumnName="OfferRedemCount" />
+          <ScalarProperty Name="OfferRedemAmount" ColumnName="OfferRedemAmount" />
+          <ScalarProperty Name="OfferRedemMinimumAmount" ColumnName="OfferRedemMinimumAmount" />
+          <ScalarProperty Name="OfferRedemMaximumAmount" ColumnName="OfferRedemMaximumAmount" />
+          <ScalarProperty Name="OfferTermsAndConditionTrackingSeqNo" ColumnName="OfferTermsAndConditionTrackingSeqNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferTransactionTypes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferTransactionType">
+        <MappingFragment StoreEntitySet="OfferTransactionType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferTransactionName" ColumnName="OfferTransactionName" />
+          <ScalarProperty Name="OfferTransactionDescription" ColumnName="OfferTransactionDescription" />
+          <ScalarProperty Name="DisplayOrderSeqNo" ColumnName="DisplayOrderSeqNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferTypes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferType">
+        <MappingFragment StoreEntitySet="OfferType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfferTypeName" ColumnName="OfferTypeName" />
+          <ScalarProperty Name="DisplayOrderSeqence" ColumnName="DisplayOrderSeqence" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductBrandDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductBrandDetail">
+        <MappingFragment StoreEntitySet="ProductBrandDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductBrandCode" ColumnName="ProductBrandCode" />
+          <ScalarProperty Name="ProductBrandName" ColumnName="ProductBrandName" />
+          <ScalarProperty Name="ProductBrandDescription" ColumnName="ProductBrandDescription" />
+          <ScalarProperty Name="ProductBrandAlieas" ColumnName="ProductBrandAlieas" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategoryDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductCategoryDetail">
+        <MappingFragment StoreEntitySet="ProductCategoryDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+          <ScalarProperty Name="ProductCategoryDescription" ColumnName="ProductCategoryDescription" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductDetail">
+        <MappingFragment StoreEntitySet="ProductDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+          <ScalarProperty Name="ProductBrandId" ColumnName="ProductBrandId" />
+          <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductImageUrl" ColumnName="ProductImageUrl" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductGroupDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductGroupDetail">
+        <MappingFragment StoreEntitySet="ProductGroupDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductGroupName" ColumnName="ProductGroupName" />
+          <ScalarProperty Name="ProductGroupDescription" ColumnName="ProductGroupDescription" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TelcoInfoes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.TelcoInfo">
+        <MappingFragment StoreEntitySet="TelcoInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TelcoName" ColumnName="TelcoName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TownShips">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.TownShip">
+        <MappingFragment StoreEntitySet="TownShip">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BurmeseName" ColumnName="BurmeseName" />
+          <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Updated_Date" ColumnName="Updated_Date" />
+          <ScalarProperty Name="NrcCode" ColumnName="NrcCode" />
+          <ScalarProperty Name="NrcCodeMyan" ColumnName="NrcCodeMyan" />
+          <ScalarProperty Name="BurmeseUniqueCode" ColumnName="BurmeseUniqueCode" />
+          <ScalarProperty Name="NrcCodeTemp" ColumnName="NrcCodeTemp" />
+          <ScalarProperty Name="NrcCodeMyanTemp" ColumnName="NrcCodeMyanTemp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UOMMasters">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.UOMMaster">
+        <MappingFragment StoreEntitySet="UOMMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UomCode" ColumnName="UomCode" />
+          <ScalarProperty Name="UomName" ColumnName="UomName" />
+          <ScalarProperty Name="DisplayOrderSeqNumber" ColumnName="DisplayOrderSeqNumber" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserFirstTimeFlag" ColumnName="UserFirstTimeFlag" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
+          <ScalarProperty Name="Otp" ColumnName="Otp" />
+          <ScalarProperty Name="OtpExpireDateTime" ColumnName="OtpExpireDateTime" />
+          <ScalarProperty Name="ApprovalUserFlag" ColumnName="ApprovalUserFlag" />
+          <ScalarProperty Name="RememberMe" ColumnName="RememberMe" />
+          <ScalarProperty Name="LastLoginDateTime" ColumnName="LastLoginDateTime" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccessRights">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.UserAccessRight">
+        <MappingFragment StoreEntitySet="UserAccessRights">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="AddFlag" ColumnName="AddFlag" />
+          <ScalarProperty Name="UpdateFlag" ColumnName="UpdateFlag" />
+          <ScalarProperty Name="DeleteFlag" ColumnName="DeleteFlag" />
+          <ScalarProperty Name="UnDeleteFlag" ColumnName="UnDeleteFlag" />
+          <ScalarProperty Name="ViewFlag" ColumnName="ViewFlag" />
+          <ScalarProperty Name="PrintFlag" ColumnName="PrintFlag" />
+          <ScalarProperty Name="ExportFlag" ColumnName="ExportFlag" />
+          <ScalarProperty Name="ImportFlag" ColumnName="ImportFlag" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserOfferTypeDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.UserOfferTypeDetail">
+        <MappingFragment StoreEntitySet="UserOfferTypeDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OfferTypeId" ColumnName="OfferTypeId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProductGroupDetails">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.UserProductGroupDetail">
+        <MappingFragment StoreEntitySet="UserProductGroupDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserProductGroupId" ColumnName="UserProductGroupId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="Cgm.EcouponModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+          <ScalarProperty Name="UserTypeDescription" ColumnName="UserTypeDescription" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllApprovalRequestDetail" FunctionName="Cgm.EcouponModel.Store.GetAllApprovalRequestDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAllApprovalRequestDetail_Result">
+          <ScalarProperty Name="transactionid" ColumnName="transactionid" />
+          <ScalarProperty Name="OfferTransactionTypeId" ColumnName="OfferTransactionTypeId" />
+          <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
+          <ScalarProperty Name="usertypename" ColumnName="usertypename" />
+          <ScalarProperty Name="mobilenumber" ColumnName="mobilenumber" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="OfferTransactionName" ColumnName="OfferTransactionName" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAssignOfferDetails" FunctionName="Cgm.EcouponModel.Store.GetAssignOfferDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAssignOfferDetails_Result">
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ProductGroupName" ColumnName="ProductGroupName" />
+          <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
+          <ScalarProperty Name="OkAccountType" ColumnName="OkAccountType" />
+          <ScalarProperty Name="OfferTypeName" ColumnName="OfferTypeName" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="OfferAmount" ColumnName="OfferAmount" />
+          <ScalarProperty Name="OfferDiscountAmount" ColumnName="OfferDiscountAmount" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+          <ScalarProperty Name="OfferBase" ColumnName="OfferBase" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAutoPayDiscountFliterData" FunctionName="Cgm.EcouponModel.Store.GetAutoPayDiscountFliterData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAutoPayDiscountFliterData_Result">
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+          <ScalarProperty Name="SafetyCashierCount" ColumnName="SafetyCashierCount" />
+          <ScalarProperty Name="AdanceMerchantNumber" ColumnName="AdanceMerchantNumber" />
+          <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
+          <ScalarProperty Name="CashBackSetting" ColumnName="CashBackSetting" />
+          <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AutoPayDiscountPercentage" ColumnName="AutoPayDiscountPercentage" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
+          <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAutoPayReport" FunctionName="Cgm.EcouponModel.Store.GetAutoPayReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAutoPayReport_Result">
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
+          <ScalarProperty Name="SenderMobileNumber" ColumnName="SenderMobileNumber" />
+          <ScalarProperty Name="SenderDivision" ColumnName="SenderDivision" />
+          <ScalarProperty Name="SenderDistrict" ColumnName="SenderDistrict" />
+          <ScalarProperty Name="SenderTownship" ColumnName="SenderTownship" />
+          <ScalarProperty Name="SenderCity" ColumnName="SenderCity" />
+          <ScalarProperty Name="BeforeDiscountAmount" ColumnName="BeforeDiscountAmount" />
+          <ScalarProperty Name="AfterDiscountAmount" ColumnName="AfterDiscountAmount" />
+          <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
+          <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
+          <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
+          <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
+          <ScalarProperty Name="OSType" ColumnName="OSType" />
+          <ScalarProperty Name="OSVersion" ColumnName="OSVersion" />
+          <ScalarProperty Name="OkDollarVersion" ColumnName="OkDollarVersion" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="LocationAdress" ColumnName="LocationAdress" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetDashboardOfferTypeWise" FunctionName="Cgm.EcouponModel.Store.GetDashboardOfferTypeWise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetDashboardOfferTypeWise_Result">
+          <ScalarProperty Name="OfferListingName" ColumnName="OfferListingName" />
+          <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferAssignCount" FunctionName="Cgm.EcouponModel.Store.GetOfferAssignCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferAssignCount_Result">
+          <ScalarProperty Name="OfferAssignType" ColumnName="OfferAssignType" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferCountAmountWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountAmountWise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountAmountWise_Result">
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferCountDayWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountDayWise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountDayWise_Result">
+          <ScalarProperty Name="TextDay" ColumnName="TextDay" />
+          <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferCountMonthWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountMonthWise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountMonthWise_Result">
+          <ScalarProperty Name="TextMonth" ColumnName="TextMonth" />
+          <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="NumberMonth" ColumnName="NumberMonth" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferCountOfferTypeWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountOfferTypeWise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountOfferTypeWise_Result">
+          <ScalarProperty Name="OfferListingName" ColumnName="OfferListingName" />
+          <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferCountTownshipWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountTownshipWise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountTownshipWise_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferRedeemLocationDetail" FunctionName="Cgm.EcouponModel.Store.GetOfferRedeemLocationDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferRedeemLocationDetail_Result">
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="OfferAssignmentBranch" ColumnName="OfferAssignmentBranch" />
+          <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+          <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+          <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
+          <ScalarProperty Name="BuyingProduct" ColumnName="BuyingProduct" />
+          <ScalarProperty Name="BuyingQuantity" ColumnName="BuyingQuantity" />
+          <ScalarProperty Name="FixedAmount" ColumnName="FixedAmount" />
+          <ScalarProperty Name="FixedDiscountPercentage" ColumnName="FixedDiscountPercentage" />
+          <ScalarProperty Name="PromotionProduct" ColumnName="PromotionProduct" />
+          <ScalarProperty Name="PromotionQuantiy" ColumnName="PromotionQuantiy" />
+          <ScalarProperty Name="PromotionAmount" ColumnName="PromotionAmount" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="ProductQtyUOM" ColumnName="ProductQtyUOM" />
+          <ScalarProperty Name="FreeQtyUOM" ColumnName="FreeQtyUOM" />
+          <ScalarProperty Name="OkAccountType" ColumnName="OkAccountType" />
+          <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="LocationAddressMap" ColumnName="LocationAddressMap" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOfferReportDetail" FunctionName="Cgm.EcouponModel.Store.GetOfferReportDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferReportDetail_Result">
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="OfferAssignmentBranch" ColumnName="OfferAssignmentBranch" />
+          <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+          <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+          <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
+          <ScalarProperty Name="BuyingProduct" ColumnName="BuyingProduct" />
+          <ScalarProperty Name="BuyingQuantity" ColumnName="BuyingQuantity" />
+          <ScalarProperty Name="MinimumAmount" ColumnName="MinimumAmount" />
+          <ScalarProperty Name="MaximumAmount" ColumnName="MaximumAmount" />
+          <ScalarProperty Name="FixedAmount" ColumnName="FixedAmount" />
+          <ScalarProperty Name="FixedDiscountPercentage" ColumnName="FixedDiscountPercentage" />
+          <ScalarProperty Name="PromotionProduct" ColumnName="PromotionProduct" />
+          <ScalarProperty Name="PromotionQuantiy" ColumnName="PromotionQuantiy" />
+          <ScalarProperty Name="PromotionAmount" ColumnName="PromotionAmount" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="ProductQtyUOM" ColumnName="ProductQtyUOM" />
+          <ScalarProperty Name="FreeQtyUOM" ColumnName="FreeQtyUOM" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOkDebitCreditCashback" FunctionName="Cgm.EcouponModel.Store.GetOkDebitCreditCashback">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitCreditCashback_Result">
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
+          <ScalarProperty Name="AdvanceMerchantNumber" ColumnName="AdvanceMerchantNumber" />
+          <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
+          <ScalarProperty Name="CashbackSetting" ColumnName="CashbackSetting" />
+          <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
+          <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
+          <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
+          <ScalarProperty Name="CashbackOpeningAmount" ColumnName="CashbackOpeningAmount" />
+          <ScalarProperty Name="TransferMainToCashbankAmount" ColumnName="TransferMainToCashbankAmount" />
+          <ScalarProperty Name="CashbackAmount" ColumnName="CashbackAmount" />
+          <ScalarProperty Name="CashbackClosingAmount" ColumnName="CashbackClosingAmount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOkDebitWalletNumber" FunctionName="Cgm.EcouponModel.Store.GetOkDebitWalletNumber">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitWalletNumber_Result">
+          <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
+          <ScalarProperty Name="AdvanceMerchantNumber" ColumnName="AdvanceMerchantNumber" />
+          <ScalarProperty Name="CashbackSetting" ColumnName="CashbackSetting" />
+          <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
+          <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
+          <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOkDebitWalletNumberDetail" FunctionName="Cgm.EcouponModel.Store.GetOkDebitWalletNumberDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitWalletNumberDetail_Result">
+          <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="SafetyCashierCount" ColumnName="SafetyCashierCount" />
+          <ScalarProperty Name="AdvanceMerchantNumber" ColumnName="AdvanceMerchantNumber" />
+          <ScalarProperty Name="CashbackSetting" ColumnName="CashbackSetting" />
+          <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
+          <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
+          <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
+          <ScalarProperty Name="CashbackOpeningAmount" ColumnName="CashbackOpeningAmount" />
+          <ScalarProperty Name="TransferMainToCashbankAmount" ColumnName="TransferMainToCashbankAmount" />
+          <ScalarProperty Name="CashbackAmount" ColumnName="CashbackAmount" />
+          <ScalarProperty Name="CashbackClosingAmount" ColumnName="CashbackClosingAmount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOkDebitWalletNumberSubDetail" FunctionName="Cgm.EcouponModel.Store.GetOkDebitWalletNumberSubDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitWalletNumberSubDetail_Result">
+          <ScalarProperty Name="SrNo" ColumnName="SrNo" />
+          <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
+          <ScalarProperty Name="SenderMobileNumber" ColumnName="SenderMobileNumber" />
+          <ScalarProperty Name="SenderDivision" ColumnName="SenderDivision" />
+          <ScalarProperty Name="SenderDistrict" ColumnName="SenderDistrict" />
+          <ScalarProperty Name="SenderTownship" ColumnName="SenderTownship" />
+          <ScalarProperty Name="SenderCity" ColumnName="SenderCity" />
+          <ScalarProperty Name="BeforeDiscountAmount" ColumnName="BeforeDiscountAmount" />
+          <ScalarProperty Name="AfterDiscountAmount" ColumnName="AfterDiscountAmount" />
+          <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
+          <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
+          <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
+          <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
+          <ScalarProperty Name="OsType" ColumnName="OsType" />
+          <ScalarProperty Name="OsVersion" ColumnName="OsVersion" />
+          <ScalarProperty Name="OkVersion" ColumnName="OkVersion" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="LocationAddress" ColumnName="LocationAddress" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetOKDollarAccountNumberDetails" FunctionName="Cgm.EcouponModel.Store.GetOKDollarAccountNumberDetails" />
+    <FunctionImportMapping FunctionImportName="GetOverAmountNoDiscount" FunctionName="Cgm.EcouponModel.Store.GetOverAmountNoDiscount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOverAmountNoDiscount_Result">
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="OfferAssignmentBranch" ColumnName="OfferAssignmentBranch" />
+          <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
+          <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+          <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="PromotionAmount" ColumnName="PromotionAmount" />
+          <ScalarProperty Name="NoDiscountAmount" ColumnName="NoDiscountAmount" />
+          <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+          <ScalarProperty Name="OkAccountType" ColumnName="OkAccountType" />
+          <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="LocationAddressMap" ColumnName="LocationAddressMap" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTodayTotalAutoPayDiscountCount" FunctionName="Cgm.EcouponModel.Store.GetTodayTotalAutoPayDiscountCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetTodayTotalAutoPayDiscountCount_Result">
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="TownshipName" ColumnName="TownshipName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="TotalBranch" ColumnName="TotalBranch" />
+          <ScalarProperty Name="TotalTransactionCount" ColumnName="TotalTransactionCount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTodayTotalOkDollarOfferRedeemCount" FunctionName="Cgm.EcouponModel.Store.GetTodayTotalOkDollarOfferRedeemCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetTodayTotalOkDollarOfferRedeemCount_Result">
+          <ScalarProperty Name="TotalOfferRedeemCount" ColumnName="TotalOfferRedeemCount" />
+          <ScalarProperty Name="TotalAndroidVersionOfferRedeemCount" ColumnName="TotalAndroidVersionOfferRedeemCount" />
+          <ScalarProperty Name="TotalIOSVersionOfferRedeemCount" ColumnName="TotalIOSVersionOfferRedeemCount" />
+          <ScalarProperty Name="TotalOfferBranch" ColumnName="TotalOfferBranch" />
+          <ScalarProperty Name="TotalOfferAmountDiscount" ColumnName="TotalOfferAmountDiscount" />
+          <ScalarProperty Name="TotalOfferTypeCount" ColumnName="TotalOfferTypeCount" />
+          <ScalarProperty Name="TotalOfferTransactionCount" ColumnName="TotalOfferTransactionCount" />
+          <ScalarProperty Name="TotalPercentageBaseOfferCount" ColumnName="TotalPercentageBaseOfferCount" />
+          <ScalarProperty Name="TotalAmountBaseOfferCount" ColumnName="TotalAmountBaseOfferCount" />
+          <ScalarProperty Name="TotalOkPersonalAccountOfferRedeemCount" ColumnName="TotalOkPersonalAccountOfferRedeemCount" />
+          <ScalarProperty Name="TotalOkMerchantAccountOfferRedeemCount" ColumnName="TotalOkMerchantAccountOfferRedeemCount" />
+          <ScalarProperty Name="TotalOkAdvanceMerchantAccountOfferRedeemCount" ColumnName="TotalOkAdvanceMerchantAccountOfferRedeemCount" />
+          <ScalarProperty Name="TotaOkAgentAccountOfferRedeemCount" ColumnName="TotaOkAgentAccountOfferRedeemCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

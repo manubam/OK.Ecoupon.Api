@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D823A35-FFB8-443D-95D9-F716E487DC43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cgm.Ecoupon.Application</RootNamespace>
+    <AssemblyName>Cgm.Ecoupon.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IBranchService.cs" />
+    <Compile Include="ICompanyDetailsService.cs" />
+    <Compile Include="ICompanyProductMappingService.cs" />
+    <Compile Include="Impl\BranchService.cs" />
+    <Compile Include="Impl\CompanyDetailsService.cs" />
+    <Compile Include="Impl\CompanyProductMappingService.cs" />
+    <Compile Include="Impl\ProductBrandDetailsService.cs" />
+    <Compile Include="Impl\ProductCategoryDetailsService.cs" />
+    <Compile Include="Impl\ProductDetailsService.cs" />
+    <Compile Include="Impl\ProductGroupDetailsService.cs" />
+    <Compile Include="IProductBrandDetailsService.cs" />
+    <Compile Include="IProductCategoryDetailsService.cs" />
+    <Compile Include="IProductDetailsService.cs" />
+    <Compile Include="IProductGroupDetailsService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cgm.Ecoupon.Domain\Cgm.Ecoupon.Domain.csproj">
+      <Project>{94264B12-7DAF-46F6-9DE8-BF6B48491F5B}</Project>
+      <Name>Cgm.Ecoupon.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cgm.Ecoupon.Infrastructure.Persistence\Cgm.Ecoupon.Infrastructure.Persistence.csproj">
+      <Project>{89B44BF9-D4C1-49FD-994F-519CF56DFE46}</Project>
+      <Name>Cgm.Ecoupon.Infrastructure.Persistence</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
