@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Cgm.EcouponModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Ok.EcouponModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ApprovalRequestDetail">
     <Key>
       <PropertyRef Name="Id" />
@@ -89,6 +89,9 @@
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ProductGroupIds" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProductCategoryIds" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProductBrandIds" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="CompanyAndProductMappingSummarry">
     <Key>
@@ -155,6 +158,52 @@
     <Property Name="Updated_Date" Type="datetime" />
     <Property Name="NrcCode" Type="nvarchar(max)" />
     <Property Name="NrcCodeMyan" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="EcouponAllocationDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EcouponMetadataId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BranchId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AllocationType" Type="bit" Nullable="false" />
+    <Property Name="AllocationQuantity" Type="bigint" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="float" />
+    <Property Name="ActivatedDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="DeactivatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActivatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeactivatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EcouponMetadata">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BatchNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="bigint" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EcouponNumbers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EcouponMetadataId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EcouponAllocationId" Type="uniqueidentifier" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="EcouponNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="MasterTransInfo">
     <Key>
@@ -350,6 +399,8 @@
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="MinimumPayableAmount" Type="float" />
+    <Property Name="MaximumPayableAmount" Type="float" />
   </EntityType>
   <EntityType Name="OfferConditionalMappingLocationDetails">
     <Key>
@@ -1154,6 +1205,42 @@
       </Principal>
       <Dependent Role="District">
         <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EcouponAllocationDetails_BranchDetails">
+    <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="1" />
+    <End Role="EcouponAllocationDetails" Type="Self.EcouponAllocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponAllocationDetails">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EcouponAllocationDetails_EcouponMetadata">
+    <End Role="EcouponMetadata" Type="Self.EcouponMetadata" Multiplicity="1" />
+    <End Role="EcouponAllocationDetails" Type="Self.EcouponAllocationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EcouponMetadata">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponAllocationDetails">
+        <PropertyRef Name="EcouponMetadataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EcouponNumbers_EcouponMetadata">
+    <End Role="EcouponMetadata" Type="Self.EcouponMetadata" Multiplicity="1" />
+    <End Role="EcouponNumbers" Type="Self.EcouponNumbers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EcouponMetadata">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponNumbers">
+        <PropertyRef Name="EcouponMetadataId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2057,116 +2144,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="GetAllApprovalRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
-  </Function>
-  <Function Name="GetAssignOfferDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetAutoPayDiscountFliterData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="TYPEVALUE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetAutoPayReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetDashboardOfferTypeWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="DATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOfferAssignCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOfferCountAmountWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOfferCountDayWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="YEAR" Type="int" Mode="In" />
-    <Parameter Name="MONTH" Type="int" Mode="In" />
-  </Function>
-  <Function Name="GetOfferCountMonthWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOfferCountOfferTypeWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="DATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOfferCountTownshipWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOfferRedeemLocationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
-    <Parameter Name="TODATE" Type="datetime" Mode="In" />
-    <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="GetOfferReportDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
-    <Parameter Name="TODATE" Type="datetime" Mode="In" />
-    <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="GetOkDebitCreditCashback" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOkDebitWalletNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOkDebitWalletNumberDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="GetOkDebitWalletNumberSubDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="GetOKDollarAccountNumberDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-    <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="GetOverAmountNoDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-    <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
-    <Parameter Name="TODATE" Type="datetime" Mode="In" />
-    <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
-    <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="GetTodayTotalAutoPayDiscountCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="GetTodayTotalOkDollarOfferRedeemCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-  </Function>
-  <EntityContainer Name="CgmEcouponModelStoreContainer">
+  <EntityContainer Name="OkEcouponModelStoreContainer">
     <EntitySet Name="ApprovalRequestDetail" EntityType="Self.ApprovalRequestDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BranchDetails" EntityType="Self.BranchDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BranchMobileNumberDetails" EntityType="Self.BranchMobileNumberDetails" Schema="dbo" store:Type="Tables" />
@@ -2178,6 +2156,9 @@
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EcouponAllocationDetails" EntityType="Self.EcouponAllocationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EcouponMetadata" EntityType="Self.EcouponMetadata" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EcouponNumbers" EntityType="Self.EcouponNumbers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MasterTransInfo" EntityType="Self.MasterTransInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OfferApprovalSetup" EntityType="Self.OfferApprovalSetup" Schema="dbo" store:Type="Tables" />
@@ -2283,6 +2264,18 @@
     <AssociationSet Name="FK_District_TownShip_Id" Association="Self.FK_District_TownShip_Id">
       <End Role="TownShip" EntitySet="TownShip" />
       <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EcouponAllocationDetails_BranchDetails" Association="Self.FK_EcouponAllocationDetails_BranchDetails">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="EcouponAllocationDetails" EntitySet="EcouponAllocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EcouponAllocationDetails_EcouponMetadata" Association="Self.FK_EcouponAllocationDetails_EcouponMetadata">
+      <End Role="EcouponMetadata" EntitySet="EcouponMetadata" />
+      <End Role="EcouponAllocationDetails" EntitySet="EcouponAllocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EcouponNumbers_EcouponMetadata" Association="Self.FK_EcouponNumbers_EcouponMetadata">
+      <End Role="EcouponMetadata" EntitySet="EcouponMetadata" />
+      <End Role="EcouponNumbers" EntitySet="EcouponNumbers" />
     </AssociationSet>
     <AssociationSet Name="FK_OfferApprovalSetup_CompanyDetails_Id" Association="Self.FK_OfferApprovalSetup_CompanyDetails_Id">
       <End Role="CompanyDetails" EntitySet="CompanyDetails" />

@@ -88,6 +88,12 @@
     <Compile Include="Data\Division.cs">
       <DependentUpon>EcouponModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\EcouponAllocationDetail.cs">
+      <DependentUpon>EcouponModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EcouponMetadata.cs">
+      <DependentUpon>EcouponModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\EcouponModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,64 +109,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EcouponModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\GetAllApprovalRequestDetail_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetAssignOfferDetails_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetAutoPayDiscountFliterData_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetAutoPayReport_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetDashboardOfferTypeWise_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferAssignCount_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferCountAmountWise_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferCountDayWise_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferCountMonthWise_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferCountOfferTypeWise_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferCountTownshipWise_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferRedeemLocationDetail_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOfferReportDetail_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOkDebitCreditCashback_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOkDebitWalletNumberDetail_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOkDebitWalletNumberSubDetail_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOkDebitWalletNumber_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetOverAmountNoDiscount_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetTodayTotalAutoPayDiscountCount_Result.cs">
-      <DependentUpon>EcouponModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\GetTodayTotalOkDollarOfferRedeemCount_Result.cs">
+    <Compile Include="Data\EcouponNumber.cs">
       <DependentUpon>EcouponModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\MasterTransInfo.cs">
@@ -304,6 +253,7 @@
     <Compile Include="IBranchRepository.cs" />
     <Compile Include="ICompanyDetailsRepository.cs" />
     <Compile Include="ICompanyProductMappingRepository.cs" />
+    <Compile Include="IEcouponRepository.cs" />
     <Compile Include="IProductBrandDetailsRepository.cs" />
     <Compile Include="IProductCategoryDetailsRepository.cs" />
     <Compile Include="IProductDetailsRepository.cs" />
@@ -313,6 +263,7 @@
     <Compile Include="Repositories\CommonFunction.cs" />
     <Compile Include="Repositories\CompanyDetailsRepository.cs" />
     <Compile Include="Repositories\CompanyProductMappingRepository.cs" />
+    <Compile Include="Repositories\EcouponRepository.cs" />
     <Compile Include="Repositories\ProductBrandDetailsRepository.cs" />
     <Compile Include="Repositories\ProductCategoryDetailsRepository.cs" />
     <Compile Include="Repositories\ProductDetailsRepository.cs" />
@@ -325,6 +276,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Data\EcouponModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EcouponModel.Designer.cs</LastGenOutput>
@@ -334,12 +286,11 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Data\EcouponModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EcouponModel.Context.cs</LastGenOutput>
       <DependentUpon>EcouponModel.edmx</DependentUpon>
+      <LastGenOutput>EcouponModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Data\EcouponModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

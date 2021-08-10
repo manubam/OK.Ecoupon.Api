@@ -163,6 +163,14 @@
                 public const string GetProductDetailsByCompanyId = "CompanyProductMapping/GetProductDetailsByCompanyId/{companyid}";
 
                 #endregion
+                #region Ecoupons
+                public const string AddEcoupon = "Ecoupon/Add";
+                public const string AllocateEcoupons = "Ecoupon/AllocateEcoupons";
+                public const string ActivateEcoupons = "Ecoupon/ActivateEcoupons";
+                
+
+                #endregion
+
             }
         }
     }

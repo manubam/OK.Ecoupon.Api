@@ -20,7 +20,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     ProductBrandDetail lmodel = new ProductBrandDetail
                     {
@@ -50,7 +50,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductBrandDetails.FirstOrDefaultAsync(x => x.Id == id);
                     if (res == null)
@@ -81,7 +81,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductBrandDetails.FirstOrDefaultAsync(x => x.Id == id);
                     if (res == null)
@@ -115,7 +115,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     List<ProductBrandDetailModel> lstModels = new List<ProductBrandDetailModel>();
                     if (isActive == null)
@@ -171,7 +171,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductBrandDetails
                       .Select(z => new ProductBrandDetailModel
@@ -206,7 +206,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductBrandDetails.Where(x => x.ProductBrandCode == brandCode && x.IsActive == true).CountAsync();
                     if (res > 0) return true;
@@ -225,7 +225,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductBrandDetails.Where(x => x.ProductBrandName == brandName && x.IsActive == true).CountAsync();
                     if (res > 0) return true;
@@ -244,7 +244,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var productBrandList = new List<ProductBrandDetail>(); string ErrorMessage = "";
 

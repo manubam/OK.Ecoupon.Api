@@ -4,154 +4,160 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2ef99df2a7a0410aab5ca3e914b385f4" Name="Diagram1">
-        <EntityTypeShape EntityType="Cgm.EcouponModel.ApprovalRequestDetail" Width="1.5" PointX="6" PointY="64.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.BranchDetail" Width="1.5" PointX="3" PointY="51" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.BranchMobileNumberDetail" Width="1.5" PointX="5.25" PointY="42.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.ChildTransInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.City" Width="1.5" PointX="0.75" PointY="46" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.CompanyAndProductMappingDetail" Width="1.5" PointX="9" PointY="76.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.CompanyAndProductMappingSummarry" Width="1.5" PointX="8.25" PointY="59.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="51.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.Customer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.District" Width="1.5" PointX="0.75" PointY="58.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.Division" Width="1.5" PointX="1.5" PointY="33.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.MasterTransInfo" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.Menu" Width="1.5" PointX="9" PointY="70.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferApprovalSetup" Width="1.5" PointX="6" PointY="52.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferAutoPayDiscountDetail" Width="1.5" PointX="16.25" PointY="60.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferBackendNumber" Width="1.5" PointX="3" PointY="63.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferBlockBranchDetail" Width="1.5" PointX="14.25" PointY="48" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferBlockCustomerDetail" Width="1.5" PointX="8.25" PointY="45.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferBlockDetail" Width="1.5" PointX="6" PointY="46.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferConditiionalMappingBranchDetail" Width="1.5" PointX="13.5" PointY="43.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferConditionalMappingCustomerDetail" Width="1.5" PointX="13.5" PointY="39.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferConditionalMappingDetail" Width="1.5" PointX="11.25" PointY="43.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferConditionalMappingLocationDetail" Width="1.5" PointX="16.5" PointY="43.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferConfiguration" Width="1.5" PointX="8.25" PointY="63.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferConfigurationMobileNumberDetail" Width="1.5" PointX="7.5" PointY="40" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDetail" Width="1.5" PointX="9" PointY="49.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDetailsHistory" Width="1.5" PointX="11.25" PointY="48.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayAppVersionDetail" Width="1.5" PointX="13.5" PointY="56" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayAppVersionDetailsHistory" Width="1.5" PointX="15.75" PointY="56" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayDetail" Width="1.5" PointX="11.25" PointY="57.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayDetailsHistory" Width="1.5" PointX="13.5" PointY="59.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayLocationDetail" Width="1.5" PointX="18.5" PointY="58.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayLocationDetailsHistory" Width="1.5" PointX="20.75" PointY="58.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayMappingDetail" Width="1.5" PointX="16.5" PointY="48.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayMappingDetailsHistory" Width="1.5" PointX="18.75" PointY="43" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferDisplayTelcoDetail" Width="1.5" PointX="18.5" PointY="53.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferListingType" Width="1.5" PointX="6.75" PointY="36.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferOsDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferShemeConfiguration" Width="1.5" PointX="19.25" PointY="47.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferShemeConfigurationHistory" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferShemeType" Width="1.5" PointX="17" PointY="38.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferTermsAndCondition" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferTermsAndConditionHistory" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferTransactionType" Width="1.5" PointX="3.75" PointY="46.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.OfferType" Width="1.5" PointX="6.75" PointY="32.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.ProductBrandDetail" Width="1.5" PointX="6.75" PointY="71" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.ProductCategoryDetail" Width="1.5" PointX="6.75" PointY="75.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.ProductDetail" Width="1.5" PointX="6.75" PointY="79.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.ProductGroupDetail" Width="1.5" PointX="4.5" PointY="79.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.TelcoInfo" Width="1.5" PointX="16.25" PointY="72.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.TownShip" Width="1.5" PointX="1.5" PointY="39.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.UOMMaster" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.User" Width="1.5" PointX="6" PointY="56.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.UserAccessRight" Width="1.5" PointX="11.25" PointY="64.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.UserOfferTypeDetail" Width="1.5" PointX="14.25" PointY="68.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.UserProductGroupDetail" Width="1.5" PointX="17.25" PointY="68.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cgm.EcouponModel.UserType" Width="1.5" PointX="3.75" PointY="58.625" IsExpanded="true" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_ApprovalRequestDetail_OfferTransactionType" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_BranchDetails_City_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_BranchDetails_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_BranchDetails_DistrictId" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_BranchDetails_Division_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_BranchDetails_TownShip_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_BranchMobileNumberDetails_BranchDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_CompanyAndProductMappingSummarry_BranchDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferAutoPayDiscountDetails_BranchDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferBlockBranchDetails_BranchDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_BranchDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayMappingDetails_BranchDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferBlockBranchDetails_OfferBlockBranchMobile" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditiionalMappingBranchDetails_BranchMobileNumberDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfigurationMobileNumberDetails_BranchMobileNumberDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_City_TownShip_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferAutoPayDiscountDetails_City_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingLocationDetails_City_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_City_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayLocationDetails_City_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_CompanyAndProductMappingDetails_ProductBrandDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_CompanyAndProductMappingDetails_ProductCategoryDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_CompanyAndProductMappingDetails_ProductDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_CompanyAndProductMappingDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_CompanyAndProductMappingSummarry_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferApprovalSetup_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferAutoPayDiscountDetails_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferBackendNumbers_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferBlockDetails_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetails_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_User_CompanyDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_District_TownShip_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferAutoPayDiscountDetails_District_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingLocationDetails_District_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_District_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayLocationDetails_District_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferAutoPayDiscountDetails_Division_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingLocationDetails_Division_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_Division_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayLocationDetails_Division_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_TownShip_Division_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_UserAccessRights_Menu_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferApprovalSetup_OfferTransactionType_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferApprovalSetup_User_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferAutoPayDiscountDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferAutoPayDiscountDetails_TownShip_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_OfferBackendNumbers_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferBlockBranchDetails_OfferBlockDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferBlockCustomerDetails_OfferBlockDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferBlockDetails_OfferDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditiionalMappingBranchDetails_OfferConditionalMappingDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingCustomerDetails_OfferConditionalMappingDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingCustomerDetails_OfferConfigurationMobileNumberDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingDetails_OfferDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingLocationDetails_OfferConditionalMappingDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConditionalMappingLocationDetails_TownShipId" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_OfferListingType_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfiguration_TownShip_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferConfigurationMobileNumberDetails_OfferConfiguration_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayMappingDetails_OfferConfigurationMobileNumberDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetails_OfferListingType_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetails_OfferType_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetails_ProductBrandDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetails_ProductCategoryDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetails_ProductDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDetailsHistory_OfferDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayDetails_OfferDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferShemeConfiguration_OfferDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayAppVersionDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayAppVersionDetailsHistory_OfferDisplayAppVersionDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayDetailsHistory_OfferDisplayDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayLocationDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayMappingDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayTelcoDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayLocationDetails_TownShip_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayLocationDetailsHistory_OfferDisplayLocationDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayMappingDetailsHistory_OfferDisplayMappingDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferDisplayTelcoDetails_TelcoInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_OfferShemeConfiguration_OfferShemeType_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_UserOfferTypeDetails_OfferType_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_ProductDetails_ProductBrandDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_ProductDetails_ProductCategoryDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_ProductDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_UserProductGroupDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_User_UserType_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_UserAccessRights_User_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_UserOfferTypeDetails_User_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Cgm.EcouponModel.FK_UserProductGroupDetails_User_Id" ManuallyRouted="false" />
+      <Diagram DiagramId="2a8f8387a1614e8b91ad12a434986f61" Name="Diagram1">
+        <EntityTypeShape EntityType="Ok.EcouponModel.ApprovalRequestDetail" Width="1.5" PointX="6" PointY="65" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.BranchDetail" Width="1.5" PointX="3" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.BranchMobileNumberDetail" Width="1.5" PointX="5.25" PointY="42.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ChildTransInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.City" Width="1.5" PointX="0.75" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyAndProductMappingDetail" Width="1.5" PointX="9" PointY="77.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyAndProductMappingSummarry" Width="1.5" PointX="8.25" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="51.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.Customer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.District" Width="1.5" PointX="0.75" PointY="58.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.Division" Width="1.5" PointX="1.5" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponMetadata" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.MasterTransInfo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.Menu" Width="1.5" PointX="9" PointY="70.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferApprovalSetup" Width="1.5" PointX="6" PointY="52.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferAutoPayDiscountDetail" Width="1.5" PointX="16.25" PointY="60.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBackendNumber" Width="1.5" PointX="3" PointY="63.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockBranchDetail" Width="1.5" PointX="14.25" PointY="48.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockCustomerDetail" Width="1.5" PointX="8.25" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockDetail" Width="1.5" PointX="6" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditiionalMappingBranchDetail" Width="1.5" PointX="13.5" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingCustomerDetail" Width="1.5" PointX="13.5" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingDetail" Width="1.5" PointX="11.25" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingLocationDetail" Width="1.5" PointX="16.5" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConfiguration" Width="1.5" PointX="8.25" PointY="64.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConfigurationMobileNumberDetail" Width="1.5" PointX="7.5" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDetail" Width="1.5" PointX="9" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDetailsHistory" Width="1.5" PointX="11.25" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayAppVersionDetail" Width="1.5" PointX="13.5" PointY="56.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayAppVersionDetailsHistory" Width="1.5" PointX="15.75" PointY="56.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayDetail" Width="1.5" PointX="11.25" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayDetailsHistory" Width="1.5" PointX="13.5" PointY="60.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayLocationDetail" Width="1.5" PointX="18.5" PointY="58.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayLocationDetailsHistory" Width="1.5" PointX="20.75" PointY="58.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayMappingDetail" Width="1.5" PointX="16.5" PointY="49" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayMappingDetailsHistory" Width="1.5" PointX="18.75" PointY="43.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayTelcoDetail" Width="1.5" PointX="18.5" PointY="54.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferListingType" Width="1.5" PointX="6.75" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferOsDetail" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeConfiguration" Width="1.5" PointX="19.25" PointY="47.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeConfigurationHistory" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeType" Width="1.5" PointX="17" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTermsAndCondition" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTermsAndConditionHistory" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTransactionType" Width="1.5" PointX="3.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferType" Width="1.5" PointX="6.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductBrandDetail" Width="1.5" PointX="6.75" PointY="71.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductCategoryDetail" Width="1.5" PointX="6.75" PointY="75.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductDetail" Width="1.5" PointX="6.75" PointY="79.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductGroupDetail" Width="1.5" PointX="4.5" PointY="79.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.TelcoInfo" Width="1.5" PointX="16.25" PointY="72.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.TownShip" Width="1.5" PointX="1.5" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UOMMaster" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.User" Width="1.5" PointX="6" PointY="57" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserAccessRight" Width="1.5" PointX="11.25" PointY="65" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserOfferTypeDetail" Width="1.5" PointX="14.25" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserProductGroupDetail" Width="1.5" PointX="17.25" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserType" Width="1.5" PointX="3.75" PointY="58.875" IsExpanded="true" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_ApprovalRequestDetail_OfferTransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_DistrictId" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_Division_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_TownShip_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_BranchMobileNumberDetails_BranchDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_CompanyAndProductMappingSummarry_BranchDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_BranchDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferBlockBranchDetails_BranchDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_BranchDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayMappingDetails_BranchDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferBlockBranchDetails_OfferBlockBranchMobile" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditiionalMappingBranchDetails_BranchMobileNumberDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfigurationMobileNumberDetails_BranchMobileNumberDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_City_TownShip_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingLocationDetails_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayLocationDetails_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_CompanyAndProductMappingDetails_ProductBrandDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_CompanyAndProductMappingDetails_ProductCategoryDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_CompanyAndProductMappingDetails_ProductDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_CompanyAndProductMappingDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_CompanyAndProductMappingSummarry_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferApprovalSetup_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferBackendNumbers_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferBlockDetails_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetails_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_User_CompanyDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_District_TownShip_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_District_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingLocationDetails_District_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_District_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayLocationDetails_District_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_Division_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingLocationDetails_Division_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_Division_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayLocationDetails_Division_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_TownShip_Division_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_UserAccessRights_Menu_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferApprovalSetup_OfferTransactionType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferApprovalSetup_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_TownShip_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_OfferBackendNumbers_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferBlockBranchDetails_OfferBlockDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferBlockCustomerDetails_OfferBlockDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferBlockDetails_OfferDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditiionalMappingBranchDetails_OfferConditionalMappingDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingCustomerDetails_OfferConditionalMappingDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingCustomerDetails_OfferConfigurationMobileNumberDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingDetails_OfferDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingLocationDetails_OfferConditionalMappingDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConditionalMappingLocationDetails_TownShipId" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_OfferListingType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_TownShip_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfigurationMobileNumberDetails_OfferConfiguration_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayMappingDetails_OfferConfigurationMobileNumberDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetails_OfferListingType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetails_OfferType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetails_ProductBrandDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetails_ProductCategoryDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetails_ProductDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDetailsHistory_OfferDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayDetails_OfferDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferShemeConfiguration_OfferDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayAppVersionDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayAppVersionDetailsHistory_OfferDisplayAppVersionDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayDetailsHistory_OfferDisplayDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayLocationDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayMappingDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayTelcoDetails_OfferDisplayDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayLocationDetails_TownShip_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayLocationDetailsHistory_OfferDisplayLocationDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayMappingDetailsHistory_OfferDisplayMappingDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayTelcoDetails_TelcoInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_OfferShemeConfiguration_OfferShemeType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_UserOfferTypeDetails_OfferType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_ProductDetails_ProductBrandDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_ProductDetails_ProductCategoryDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_ProductDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_UserProductGroupDetails_ProductGroupDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_User_UserType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_UserAccessRights_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_UserOfferTypeDetails_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_UserProductGroupDetails_User_Id" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponAllocationDetail" Width="1.5" PointX="5.25" PointY="27.625" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponNumber" Width="1.5" PointX="5" PointY="12.375" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

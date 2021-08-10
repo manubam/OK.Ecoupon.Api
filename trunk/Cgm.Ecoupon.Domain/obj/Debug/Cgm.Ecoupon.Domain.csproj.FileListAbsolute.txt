@@ -9,3 +9,9 @@ C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecou
 C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.csproj.CoreCompileInputs.cache
 C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.dll
 C:\CGM\Ok.Ecoupon.Api\Ok.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.pdb
+C:\Users\Manick\source\OK.Ecoupon.Api\OK.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\bin\Debug\Cgm.Ecoupon.Domain.dll
+C:\Users\Manick\source\OK.Ecoupon.Api\OK.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\bin\Debug\Cgm.Ecoupon.Domain.pdb
+C:\Users\Manick\source\OK.Ecoupon.Api\OK.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.csprojAssemblyReference.cache
+C:\Users\Manick\source\OK.Ecoupon.Api\OK.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Manick\source\OK.Ecoupon.Api\OK.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.dll
+C:\Users\Manick\source\OK.Ecoupon.Api\OK.Ecoupon.Api\trunk\Cgm.Ecoupon.Domain\obj\Debug\Cgm.Ecoupon.Domain.pdb

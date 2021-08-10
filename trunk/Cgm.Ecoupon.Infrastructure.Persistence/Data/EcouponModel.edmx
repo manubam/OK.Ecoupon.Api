@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Cgm.EcouponModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Ok.EcouponModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApprovalRequestDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -94,6 +94,9 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ProductGroupIds" Type="varchar(max)" Nullable="false" />
+          <Property Name="ProductCategoryIds" Type="varchar(max)" Nullable="false" />
+          <Property Name="ProductBrandIds" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="CompanyAndProductMappingSummarry">
           <Key>
@@ -160,6 +163,52 @@
           <Property Name="Updated_Date" Type="datetime" />
           <Property Name="NrcCode" Type="nvarchar(max)" />
           <Property Name="NrcCodeMyan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EcouponAllocationDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EcouponMetadataId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BranchId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AllocationType" Type="bit" Nullable="false" />
+          <Property Name="AllocationQuantity" Type="bigint" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="float" />
+          <Property Name="ActivatedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="DeactivatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActivatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeactivatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EcouponMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BatchNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="bigint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EcouponNumbers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EcouponMetadataId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EcouponAllocationId" Type="uniqueidentifier" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="EcouponNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="MasterTransInfo">
           <Key>
@@ -355,6 +404,8 @@
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="MinimumPayableAmount" Type="float" />
+          <Property Name="MaximumPayableAmount" Type="float" />
         </EntityType>
         <EntityType Name="OfferConditionalMappingLocationDetails">
           <Key>
@@ -1159,6 +1210,42 @@
             </Principal>
             <Dependent Role="District">
               <PropertyRef Name="TownShipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EcouponAllocationDetails_BranchDetails">
+          <End Role="BranchDetails" Type="Self.BranchDetails" Multiplicity="1" />
+          <End Role="EcouponAllocationDetails" Type="Self.EcouponAllocationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EcouponAllocationDetails">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EcouponAllocationDetails_EcouponMetadata">
+          <End Role="EcouponMetadata" Type="Self.EcouponMetadata" Multiplicity="1" />
+          <End Role="EcouponAllocationDetails" Type="Self.EcouponAllocationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EcouponMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EcouponAllocationDetails">
+              <PropertyRef Name="EcouponMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EcouponNumbers_EcouponMetadata">
+          <End Role="EcouponMetadata" Type="Self.EcouponMetadata" Multiplicity="1" />
+          <End Role="EcouponNumbers" Type="Self.EcouponNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EcouponMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EcouponNumbers">
+              <PropertyRef Name="EcouponMetadataId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2062,116 +2149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="GetAllApprovalRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="GetAssignOfferDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetAutoPayDiscountFliterData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="TYPEVALUE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetAutoPayReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetDashboardOfferTypeWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="DATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOfferAssignCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOfferCountAmountWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOfferCountDayWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="YEAR" Type="int" Mode="In" />
-          <Parameter Name="MONTH" Type="int" Mode="In" />
-        </Function>
-        <Function Name="GetOfferCountMonthWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOfferCountOfferTypeWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="DATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOfferCountTownshipWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOfferRedeemLocationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
-          <Parameter Name="TODATE" Type="datetime" Mode="In" />
-          <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetOfferReportDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
-          <Parameter Name="TODATE" Type="datetime" Mode="In" />
-          <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetOkDebitCreditCashback" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOkDebitWalletNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOkDebitWalletNumberDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetOkDebitWalletNumberSubDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetOKDollarAccountNumberDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="STARTDATE" Type="datetime" Mode="In" />
-          <Parameter Name="ENDDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetOverAmountNoDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-          <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
-          <Parameter Name="TODATE" Type="datetime" Mode="In" />
-          <Parameter Name="COMPANYID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="BRANCHID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="PRODUCTGROUPID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="OFFERTYPEID" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="OKACCOUNTTYPE" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetTodayTotalAutoPayDiscountCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetTodayTotalOkDollarOfferRedeemCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TYPE" Type="nvarchar" Mode="In" />
-        </Function>
-        <EntityContainer Name="CgmEcouponModelStoreContainer">
+        <EntityContainer Name="OkEcouponModelStoreContainer">
           <EntitySet Name="ApprovalRequestDetail" EntityType="Self.ApprovalRequestDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BranchDetails" EntityType="Self.BranchDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BranchMobileNumberDetails" EntityType="Self.BranchMobileNumberDetails" Schema="dbo" store:Type="Tables" />
@@ -2183,6 +2161,9 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EcouponAllocationDetails" EntityType="Self.EcouponAllocationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EcouponMetadata" EntityType="Self.EcouponMetadata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EcouponNumbers" EntityType="Self.EcouponNumbers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MasterTransInfo" EntityType="Self.MasterTransInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OfferApprovalSetup" EntityType="Self.OfferApprovalSetup" Schema="dbo" store:Type="Tables" />
@@ -2288,6 +2269,18 @@
           <AssociationSet Name="FK_District_TownShip_Id" Association="Self.FK_District_TownShip_Id">
             <End Role="TownShip" EntitySet="TownShip" />
             <End Role="District" EntitySet="District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EcouponAllocationDetails_BranchDetails" Association="Self.FK_EcouponAllocationDetails_BranchDetails">
+            <End Role="BranchDetails" EntitySet="BranchDetails" />
+            <End Role="EcouponAllocationDetails" EntitySet="EcouponAllocationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EcouponAllocationDetails_EcouponMetadata" Association="Self.FK_EcouponAllocationDetails_EcouponMetadata">
+            <End Role="EcouponMetadata" EntitySet="EcouponMetadata" />
+            <End Role="EcouponAllocationDetails" EntitySet="EcouponAllocationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EcouponNumbers_EcouponMetadata" Association="Self.FK_EcouponNumbers_EcouponMetadata">
+            <End Role="EcouponMetadata" EntitySet="EcouponMetadata" />
+            <End Role="EcouponNumbers" EntitySet="EcouponNumbers" />
           </AssociationSet>
           <AssociationSet Name="FK_OfferApprovalSetup_CompanyDetails_Id" Association="Self.FK_OfferApprovalSetup_CompanyDetails_Id">
             <End Role="CompanyDetails" EntitySet="CompanyDetails" />
@@ -2590,11 +2583,10 @@
             <End Role="UserProductGroupDetails" EntitySet="UserProductGroupDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Cgm.EcouponModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Ok.EcouponModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ApprovalRequestDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -2640,6 +2632,7 @@
           <NavigationProperty Name="OfferBlockBranchDetails" Relationship="Self.FK_OfferBlockBranchDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferBlockBranchDetails" />
           <NavigationProperty Name="OfferConfigurations" Relationship="Self.FK_OfferConfiguration_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferConfiguration" />
           <NavigationProperty Name="OfferDisplayMappingDetails" Relationship="Self.FK_OfferDisplayMappingDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferDisplayMappingDetails" />
+          <NavigationProperty Name="EcouponAllocationDetails" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" FromRole="BranchDetail" ToRole="EcouponAllocationDetail" />
         </EntityType>
         <EntityType Name="BranchMobileNumberDetail">
           <Key>
@@ -2706,6 +2699,9 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductGroupIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductCategoryIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductBrandIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ProductBrandDetail" Relationship="Self.FK_CompanyAndProductMappingDetails_ProductBrandDetails_Id" FromRole="CompanyAndProductMappingDetails" ToRole="ProductBrandDetails" />
           <NavigationProperty Name="ProductCategoryDetail" Relationship="Self.FK_CompanyAndProductMappingDetails_ProductCategoryDetails_Id" FromRole="CompanyAndProductMappingDetails" ToRole="ProductCategoryDetails" />
           <NavigationProperty Name="ProductDetail" Relationship="Self.FK_CompanyAndProductMappingDetails_ProductDetails_Id" FromRole="CompanyAndProductMappingDetails" ToRole="ProductDetails" />
@@ -2799,6 +2795,25 @@
           <NavigationProperty Name="OfferConfigurations" Relationship="Self.FK_OfferConfiguration_Division_Id" FromRole="Division" ToRole="OfferConfiguration" />
           <NavigationProperty Name="OfferDisplayLocationDetails" Relationship="Self.FK_OfferDisplayLocationDetails_Division_Id" FromRole="Division" ToRole="OfferDisplayLocationDetails" />
           <NavigationProperty Name="TownShips" Relationship="Self.FK_TownShip_Division_Id" FromRole="Division" ToRole="TownShip" />
+        </EntityType>
+        <EntityType Name="EcouponMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int64" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EcouponAllocationDetails" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" FromRole="EcouponMetadata" ToRole="EcouponAllocationDetail" />
+          <NavigationProperty Name="EcouponNumbers" Relationship="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" FromRole="EcouponMetadata" ToRole="EcouponNumber" />
         </EntityType>
         <EntityType Name="MasterTransInfo">
           <Key>
@@ -3019,6 +3034,8 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MinimumPayableAmount" Type="Double" />
+          <Property Name="MaximumPayableAmount" Type="Double" />
           <NavigationProperty Name="OfferConditiionalMappingBranchDetails" Relationship="Self.FK_OfferConditiionalMappingBranchDetails_OfferConditionalMappingDetails_Id" FromRole="OfferConditionalMappingDetails" ToRole="OfferConditiionalMappingBranchDetails" />
           <NavigationProperty Name="OfferConditionalMappingCustomerDetails" Relationship="Self.FK_OfferConditionalMappingCustomerDetails_OfferConditionalMappingDetails_Id" FromRole="OfferConditionalMappingDetails" ToRole="OfferConditionalMappingCustomerDetails" />
           <NavigationProperty Name="OfferDetail" Relationship="Self.FK_OfferConditionalMappingDetails_OfferDetails_Id" FromRole="OfferConditionalMappingDetails" ToRole="OfferDetails" />
@@ -4832,7 +4849,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OfferManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OfferManagementEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ApprovalRequestDetails" EntityType="Self.ApprovalRequestDetail" />
           <EntitySet Name="BranchDetails" EntityType="Self.BranchDetail" />
           <EntitySet Name="BranchMobileNumberDetails" EntityType="Self.BranchMobileNumberDetail" />
@@ -4844,6 +4861,7 @@
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="Divisions" EntityType="Self.Division" />
+          <EntitySet Name="EcouponMetadatas" EntityType="Self.EcouponMetadata" />
           <EntitySet Name="MasterTransInfoes" EntityType="Self.MasterTransInfo" />
           <EntitySet Name="Menus" EntityType="Self.Menu" />
           <EntitySet Name="OfferApprovalSetups" EntityType="Self.OfferApprovalSetup" />
@@ -5250,389 +5268,97 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserProductGroupDetails" EntitySet="UserProductGroupDetails" />
           </AssociationSet>
-          <FunctionImport Name="GetAllApprovalRequestDetail" ReturnType="Collection(Cgm.EcouponModel.GetAllApprovalRequestDetail_Result)">
-            <Parameter Name="UserId" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="GetAssignOfferDetails" ReturnType="Collection(Cgm.EcouponModel.GetAssignOfferDetails_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetAutoPayDiscountFliterData" ReturnType="Collection(Cgm.EcouponModel.GetAutoPayDiscountFliterData_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="TYPEVALUE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetAutoPayReport" ReturnType="Collection(Cgm.EcouponModel.GetAutoPayReport_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetDashboardOfferTypeWise" ReturnType="Collection(Cgm.EcouponModel.GetDashboardOfferTypeWise_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="DATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferAssignCount" ReturnType="Collection(Cgm.EcouponModel.GetOfferAssignCount_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferCountAmountWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountAmountWise_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferCountDayWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountDayWise_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="YEAR" Mode="In" Type="Int32" />
-            <Parameter Name="MONTH" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferCountMonthWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountMonthWise_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferCountOfferTypeWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountOfferTypeWise_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="DATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferCountTownshipWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountTownshipWise_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferRedeemLocationDetail" ReturnType="Collection(Cgm.EcouponModel.GetOfferRedeemLocationDetail_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="TODATE" Mode="In" Type="DateTime" />
-            <Parameter Name="COMPANYID" Mode="In" Type="Guid" />
-            <Parameter Name="BRANCHID" Mode="In" Type="Guid" />
-            <Parameter Name="PRODUCTGROUPID" Mode="In" Type="Guid" />
-            <Parameter Name="OFFERTYPEID" Mode="In" Type="Guid" />
-            <Parameter Name="OKACCOUNTTYPE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetOfferReportDetail" ReturnType="Collection(Cgm.EcouponModel.GetOfferReportDetail_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="TODATE" Mode="In" Type="DateTime" />
-            <Parameter Name="COMPANYID" Mode="In" Type="Guid" />
-            <Parameter Name="BRANCHID" Mode="In" Type="Guid" />
-            <Parameter Name="PRODUCTGROUPID" Mode="In" Type="Guid" />
-            <Parameter Name="OFFERTYPEID" Mode="In" Type="Guid" />
-            <Parameter Name="OKACCOUNTTYPE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetOkDebitCreditCashback" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitCreditCashback_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOkDebitWalletNumber" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitWalletNumber_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOkDebitWalletNumberDetail" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitWalletNumberDetail_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetOkDebitWalletNumberSubDetail" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitWalletNumberSubDetail_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetOKDollarAccountNumberDetails">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetOverAmountNoDiscount" ReturnType="Collection(Cgm.EcouponModel.GetOverAmountNoDiscount_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-            <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="TODATE" Mode="In" Type="DateTime" />
-            <Parameter Name="COMPANYID" Mode="In" Type="Guid" />
-            <Parameter Name="BRANCHID" Mode="In" Type="Guid" />
-            <Parameter Name="PRODUCTGROUPID" Mode="In" Type="Guid" />
-            <Parameter Name="OFFERTYPEID" Mode="In" Type="Guid" />
-            <Parameter Name="OKACCOUNTTYPE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetTodayTotalAutoPayDiscountCount" ReturnType="Collection(Cgm.EcouponModel.GetTodayTotalAutoPayDiscountCount_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetTodayTotalOkDollarOfferRedeemCount" ReturnType="Collection(Cgm.EcouponModel.GetTodayTotalOkDollarOfferRedeemCount_Result)">
-            <Parameter Name="TYPE" Mode="In" Type="String" />
-          </FunctionImport>
+          <EntitySet Name="EcouponAllocationDetails" EntityType="Ok.EcouponModel.EcouponAllocationDetail" />
+          <AssociationSet Name="FK_EcouponAllocationDetails_BranchDetails" Association="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails">
+            <End Role="BranchDetail" EntitySet="BranchDetails" />
+            <End Role="EcouponAllocationDetail" EntitySet="EcouponAllocationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EcouponAllocationDetails_EcouponMetadata" Association="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata">
+            <End Role="EcouponMetadata" EntitySet="EcouponMetadatas" />
+            <End Role="EcouponAllocationDetail" EntitySet="EcouponAllocationDetails" />
+          </AssociationSet>
+          <EntitySet Name="EcouponNumbers" EntityType="Ok.EcouponModel.EcouponNumber" />
+          <AssociationSet Name="FK_EcouponNumbers_EcouponMetadata" Association="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata">
+            <End Role="EcouponMetadata" EntitySet="EcouponMetadatas" />
+            <End Role="EcouponNumber" EntitySet="EcouponNumbers" />
+          </AssociationSet>
         </EntityContainer>
-        <ComplexType Name="GetAllApprovalRequestDetail_Result">
-          <Property Type="Guid" Name="transactionid" Nullable="false" />
-          <Property Type="Guid" Name="OfferTransactionTypeId" Nullable="false" />
-          <Property Type="String" Name="UserLoginId" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="usertypename" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="mobilenumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="companyname" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OfferTransactionName" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="RequestDate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetAssignOfferDetails_Result">
-          <Property Type="String" Name="Division" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="District" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="Township" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="City" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="ProductGroupName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OkAccountNumber" Nullable="false" MaxLength="11" />
-          <Property Type="String" Name="OkAccountType" Nullable="false" MaxLength="8" />
-          <Property Type="String" Name="OfferTypeName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="OfferAmount" Nullable="false" />
-          <Property Type="Int32" Name="OfferDiscountAmount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCount" Nullable="false" />
-          <Property Type="String" Name="OfferBase" Nullable="false" MaxLength="10" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetAutoPayDiscountFliterData_Result">
-          <Property Type="String" Name="Division" Nullable="false" />
-          <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Township" Nullable="false" />
-          <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="SafetyCashierCount" Nullable="false" />
-          <Property Type="String" Name="AdanceMerchantNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="OkDebitWalletNumber" Nullable="false" MaxLength="1" />
-          <Property Type="Int32" Name="CashBackSetting" Nullable="true" />
-          <Property Type="Int32" Name="OfferAutoLoad" Nullable="true" />
-          <Property Type="Boolean" Name="Status" Nullable="true" />
-          <Property Type="Double" Name="AutoPayDiscountPercentage" Nullable="true" />
-          <Property Type="Int32" Name="TotalAmount" Nullable="false" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="AutoPayFixed" Nullable="false" Precision="2" Scale="1" />
-          <Property Type="Decimal" Name="AutoPayRatio" Nullable="false" Precision="2" Scale="1" />
-        </ComplexType>
-        <ComplexType Name="GetAutoPayReport_Result">
-          <Property Type="Int64" Name="No" Nullable="true" />
-          <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SenderMobileNumber" Nullable="false" MaxLength="11" />
-          <Property Type="String" Name="SenderDivision" Nullable="false" />
-          <Property Type="String" Name="SenderDistrict" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="SenderTownship" Nullable="false" />
-          <Property Type="String" Name="SenderCity" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="BeforeDiscountAmount" Nullable="false" />
-          <Property Type="Int32" Name="AfterDiscountAmount" Nullable="false" />
-          <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-          <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-          <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-          <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-          <Property Type="String" Name="OSType" Nullable="false" MaxLength="7" />
-          <Property Type="Decimal" Name="OSVersion" Nullable="false" Precision="3" Scale="1" />
-          <Property Type="Decimal" Name="OkDollarVersion" Nullable="false" Precision="2" Scale="1" />
-          <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="6" Scale="5" />
-          <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="6" Scale="5" />
-          <Property Type="String" Name="LocationAdress" Nullable="false" MaxLength="6" />
-          <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetDashboardOfferTypeWise_Result">
-          <Property Type="String" Name="OfferListingName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="OfferCount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetOfferAssignCount_Result">
-          <Property Type="String" Name="OfferAssignType" Nullable="true" MaxLength="10" />
-          <Property Type="Int32" Name="Count" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetOfferCountAmountWise_Result">
-          <Property Type="String" Name="BranchName" Nullable="false" MaxLength="7" />
-          <Property Type="Int32" Name="Amount" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="GetOfferCountDayWise_Result">
-          <Property Type="String" Name="TextDay" Nullable="true" MaxLength="4000" />
-          <Property Type="Int32" Name="OfferCount" Nullable="false" />
-          <Property Type="DateTime" Name="Date" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetOfferCountMonthWise_Result">
-          <Property Type="String" Name="TextMonth" Nullable="false" MaxLength="4000" />
-          <Property Type="Int32" Name="OfferCount" Nullable="false" />
-          <Property Type="String" Name="Year" Nullable="true" MaxLength="4" />
-          <Property Type="String" Name="NumberMonth" Nullable="true" MaxLength="4000" />
-        </ComplexType>
-        <ComplexType Name="GetOfferCountOfferTypeWise_Result">
-          <Property Type="String" Name="OfferListingName" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="OfferCount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetOfferCountTownshipWise_Result">
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="Int32" Name="OfferCount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetOfferRedeemLocationDetail_Result">
-          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OfferAssignmentBranch" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OfferType" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="OfferCode" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="BuyingProduct" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="BuyingQuantity" Nullable="false" />
-          <Property Type="Decimal" Name="FixedAmount" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="FixedDiscountPercentage" Nullable="true" Precision="19" />
-          <Property Type="String" Name="PromotionProduct" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="PromotionQuantiy" Nullable="false" />
-          <Property Type="Int32" Name="PromotionAmount" Nullable="false" />
-          <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ProductQtyUOM" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FreeQtyUOM" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="OkAccountType" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="OkAccountNumber" Nullable="false" MaxLength="1" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Lattitude" Nullable="false" Precision="1" Scale="1" />
-          <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="1" Scale="1" />
-          <Property Type="String" Name="LocationAddressMap" Nullable="false" MaxLength="1" />
-        </ComplexType>
-        <ComplexType Name="GetOfferReportDetail_Result">
-          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OfferAssignmentBranch" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OfferType" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="OfferCode" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="BuyingProduct" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="BuyingQuantity" Nullable="false" />
-          <Property Type="Decimal" Name="MinimumAmount" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="MaximumAmount" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="FixedAmount" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="FixedDiscountPercentage" Nullable="true" Precision="19" />
-          <Property Type="String" Name="PromotionProduct" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="PromotionQuantiy" Nullable="false" />
-          <Property Type="Int32" Name="PromotionAmount" Nullable="false" />
-          <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ProductQtyUOM" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FreeQtyUOM" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetOkDebitCreditCashback_Result">
-          <Property Type="String" Name="Division" Nullable="false" />
-          <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Township" Nullable="false" />
-          <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Branch" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="AdvanceMerchantNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CashbackSetting" Nullable="false" MaxLength="3" />
-          <Property Type="String" Name="OfferAutoLoad" Nullable="false" MaxLength="3" />
-          <Property Type="String" Name="Status" Nullable="false" MaxLength="3" />
-          <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-          <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-          <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-          <Property Type="Int32" Name="CashbackOpeningAmount" Nullable="false" />
-          <Property Type="Int32" Name="TransferMainToCashbankAmount" Nullable="false" />
-          <Property Type="Double" Name="CashbackAmount" Nullable="true" />
-          <Property Type="Int32" Name="CashbackClosingAmount" Nullable="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetOkDebitWalletNumber_Result">
-          <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Division" Nullable="false" />
-          <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Township" Nullable="false" />
-          <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Branch" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="AdvanceMerchantNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CashbackSetting" Nullable="false" MaxLength="3" />
-          <Property Type="String" Name="OfferAutoLoad" Nullable="false" MaxLength="3" />
-          <Property Type="String" Name="Status" Nullable="false" MaxLength="3" />
-          <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-          <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-          <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-          <Property Type="Int32" Name="TotalAmount" Nullable="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetOkDebitWalletNumberDetail_Result">
-          <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Division" Nullable="false" />
-          <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Township" Nullable="false" />
-          <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Branch" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="SafetyCashierCount" Nullable="false" />
-          <Property Type="String" Name="AdvanceMerchantNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CashbackSetting" Nullable="false" MaxLength="3" />
-          <Property Type="String" Name="OfferAutoLoad" Nullable="false" MaxLength="3" />
-          <Property Type="String" Name="Status" Nullable="false" MaxLength="3" />
-          <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-          <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-          <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-          <Property Type="Int32" Name="CashbackOpeningAmount" Nullable="false" />
-          <Property Type="Int32" Name="TransferMainToCashbankAmount" Nullable="false" />
-          <Property Type="Double" Name="CashbackAmount" Nullable="true" />
-          <Property Type="Int32" Name="CashbackClosingAmount" Nullable="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetOkDebitWalletNumberSubDetail_Result">
-          <Property Type="Int64" Name="SrNo" Nullable="true" />
-          <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SenderMobileNumber" Nullable="false" MaxLength="11" />
-          <Property Type="String" Name="SenderDivision" Nullable="false" />
-          <Property Type="String" Name="SenderDistrict" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="SenderTownship" Nullable="false" />
-          <Property Type="String" Name="SenderCity" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="BeforeDiscountAmount" Nullable="false" />
-          <Property Type="Int32" Name="AfterDiscountAmount" Nullable="false" />
-          <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-          <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-          <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-          <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-          <Property Type="String" Name="OsType" Nullable="false" MaxLength="7" />
-          <Property Type="Decimal" Name="OsVersion" Nullable="false" Precision="3" Scale="1" />
-          <Property Type="Decimal" Name="OkVersion" Nullable="false" Precision="2" Scale="1" />
-          <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="6" Scale="5" />
-          <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="6" Scale="5" />
-          <Property Type="String" Name="LocationAddress" Nullable="false" MaxLength="6" />
-          <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetOverAmountNoDiscount_Result">
-          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OfferAssignmentBranch" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="OfferType" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="OfferCode" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="PromotionAmount" Nullable="false" />
-          <Property Type="Int32" Name="NoDiscountAmount" Nullable="false" />
-          <Property Type="Int32" Name="TransactionAmount" Nullable="false" />
-          <Property Type="String" Name="OkAccountType" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="OkAccountNumber" Nullable="false" MaxLength="1" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="1" Scale="1" />
-          <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="1" Scale="1" />
-          <Property Type="String" Name="LocationAddressMap" Nullable="false" MaxLength="1" />
-        </ComplexType>
-        <ComplexType Name="GetTodayTotalAutoPayDiscountCount_Result">
-          <Property Type="String" Name="DivisionName" Nullable="false" />
-          <Property Type="String" Name="TownshipName" Nullable="false" />
-          <Property Type="String" Name="CityName" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="TotalBranch" Nullable="true" />
-          <Property Type="Int32" Name="TotalTransactionCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalAmount" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="GetTodayTotalOkDollarOfferRedeemCount_Result">
-          <Property Type="Int32" Name="TotalOfferRedeemCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalAndroidVersionOfferRedeemCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalIOSVersionOfferRedeemCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalOfferBranch" Nullable="true" />
-          <Property Type="Int32" Name="TotalOfferAmountDiscount" Nullable="true" />
-          <Property Type="Int32" Name="TotalOfferTypeCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalOfferTransactionCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalPercentageBaseOfferCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalAmountBaseOfferCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalOkPersonalAccountOfferRedeemCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalOkMerchantAccountOfferRedeemCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalOkAdvanceMerchantAccountOfferRedeemCount" Nullable="false" />
-          <Property Type="Int32" Name="TotaOkAgentAccountOfferRedeemCount" Nullable="false" />
-        </ComplexType>
+        <EntityType Name="EcouponAllocationDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="BranchId" Type="Guid" Nullable="false" />
+          <Property Name="AllocationType" Type="Boolean" Nullable="false" />
+          <Property Name="AllocationQuantity" Type="Int64" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="Double" />
+          <Property Name="ActivatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeactivatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeactivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BranchDetail" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" FromRole="EcouponAllocationDetail" ToRole="BranchDetail" />
+          <NavigationProperty Name="EcouponMetadata" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" FromRole="EcouponAllocationDetail" ToRole="EcouponMetadata" />
+        </EntityType>
+        <Association Name="FK_EcouponAllocationDetails_BranchDetails">
+          <End Type="Ok.EcouponModel.BranchDetail" Role="BranchDetail" Multiplicity="1" />
+          <End Type="Ok.EcouponModel.EcouponAllocationDetail" Role="EcouponAllocationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EcouponAllocationDetail">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EcouponAllocationDetails_EcouponMetadata">
+          <End Type="Ok.EcouponModel.EcouponMetadata" Role="EcouponMetadata" Multiplicity="1" />
+          <End Type="Ok.EcouponModel.EcouponAllocationDetail" Role="EcouponAllocationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EcouponMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EcouponAllocationDetail">
+              <PropertyRef Name="EcouponMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EcouponNumber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="EcouponAllocationId" Type="Guid" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="EcouponNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EcouponMetadata" Relationship="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" FromRole="EcouponNumber" ToRole="EcouponMetadata" />
+        </EntityType>
+        <Association Name="FK_EcouponNumbers_EcouponMetadata">
+          <End Type="Ok.EcouponModel.EcouponMetadata" Role="EcouponMetadata" Multiplicity="1" />
+          <End Type="Ok.EcouponModel.EcouponNumber" Role="EcouponNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EcouponMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EcouponNumber">
+              <PropertyRef Name="EcouponMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CgmEcouponModelStoreContainer" CdmEntityContainer="OfferManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="OkEcouponModelStoreContainer" CdmEntityContainer="OfferManagementEntities1">
           <EntitySetMapping Name="ApprovalRequestDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.ApprovalRequestDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.ApprovalRequestDetail">
               <MappingFragment StoreEntitySet="ApprovalRequestDetail">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
@@ -5647,7 +5373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BranchDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.BranchDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.BranchDetail">
               <MappingFragment StoreEntitySet="BranchDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
@@ -5668,7 +5394,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BranchMobileNumberDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.BranchMobileNumberDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.BranchMobileNumberDetail">
               <MappingFragment StoreEntitySet="BranchMobileNumberDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="BranchId" ColumnName="BranchId" />
@@ -5683,7 +5409,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChildTransInfoes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.ChildTransInfo">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.ChildTransInfo">
               <MappingFragment StoreEntitySet="ChildTransInfo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferId" ColumnName="OfferId" />
@@ -5697,7 +5423,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cities">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.City">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
@@ -5711,7 +5437,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyAndProductMappingDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.CompanyAndProductMappingDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.CompanyAndProductMappingDetail">
               <MappingFragment StoreEntitySet="CompanyAndProductMappingDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyProductMappingId" ColumnName="CompanyProductMappingId" />
@@ -5724,11 +5450,14 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ProductGroupIds" ColumnName="ProductGroupIds" />
+                <ScalarProperty Name="ProductCategoryIds" ColumnName="ProductCategoryIds" />
+                <ScalarProperty Name="ProductBrandIds" ColumnName="ProductBrandIds" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyAndProductMappingSummarries">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.CompanyAndProductMappingSummarry">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.CompanyAndProductMappingSummarry">
               <MappingFragment StoreEntitySet="CompanyAndProductMappingSummarry">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
@@ -5742,7 +5471,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.CompanyDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.CompanyDetail">
               <MappingFragment StoreEntitySet="CompanyDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
@@ -5758,7 +5487,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.Customer">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
@@ -5769,7 +5498,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Districts">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.District">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.District">
               <MappingFragment StoreEntitySet="District">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
@@ -5783,7 +5512,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Divisions">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.Division">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.Division">
               <MappingFragment StoreEntitySet="Division">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -5798,8 +5527,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EcouponMetadatas">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponMetadata">
+              <MappingFragment StoreEntitySet="EcouponMetadata">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MasterTransInfoes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.MasterTransInfo">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.MasterTransInfo">
               <MappingFragment StoreEntitySet="MasterTransInfo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferId" ColumnName="OfferId" />
@@ -5817,7 +5564,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menus">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.Menu">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MenuName" ColumnName="MenuName" />
@@ -5842,7 +5589,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferApprovalSetups">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferApprovalSetup">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferApprovalSetup">
               <MappingFragment StoreEntitySet="OfferApprovalSetup">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -5857,7 +5604,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferAutoPayDiscountDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferAutoPayDiscountDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferAutoPayDiscountDetail">
               <MappingFragment StoreEntitySet="OfferAutoPayDiscountDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
@@ -5888,7 +5635,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferBackendNumbers">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBackendNumber">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferBackendNumber">
               <MappingFragment StoreEntitySet="OfferBackendNumbers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
@@ -5904,7 +5651,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferBlockBranchDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBlockBranchDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferBlockBranchDetail">
               <MappingFragment StoreEntitySet="OfferBlockBranchDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferBlockDetailsId" ColumnName="OfferBlockDetailsId" />
@@ -5919,7 +5666,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferBlockCustomerDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBlockCustomerDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferBlockCustomerDetail">
               <MappingFragment StoreEntitySet="OfferBlockCustomerDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferBlockDetailsId" ColumnName="OfferBlockDetailsId" />
@@ -5936,7 +5683,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferBlockDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferBlockDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferBlockDetail">
               <MappingFragment StoreEntitySet="OfferBlockDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
@@ -5957,7 +5704,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferConditiionalMappingBranchDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditiionalMappingBranchDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferConditiionalMappingBranchDetail">
               <MappingFragment StoreEntitySet="OfferConditiionalMappingBranchDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferConditionalMappingId" ColumnName="OfferConditionalMappingId" />
@@ -5972,7 +5719,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferConditionalMappingCustomerDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditionalMappingCustomerDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferConditionalMappingCustomerDetail">
               <MappingFragment StoreEntitySet="OfferConditionalMappingCustomerDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferConditionalMappingId" ColumnName="OfferConditionalMappingId" />
@@ -5986,7 +5733,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferConditionalMappingDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditionalMappingDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferConditionalMappingDetail">
               <MappingFragment StoreEntitySet="OfferConditionalMappingDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
@@ -6001,11 +5748,13 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MinimumPayableAmount" ColumnName="MinimumPayableAmount" />
+                <ScalarProperty Name="MaximumPayableAmount" ColumnName="MaximumPayableAmount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferConditionalMappingLocationDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConditionalMappingLocationDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferConditionalMappingLocationDetail">
               <MappingFragment StoreEntitySet="OfferConditionalMappingLocationDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferConditionalMappingId" ColumnName="OfferConditionalMappingId" />
@@ -6022,7 +5771,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferConfigurations">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConfiguration">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferConfiguration">
               <MappingFragment StoreEntitySet="OfferConfiguration">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferListingTypeId" ColumnName="OfferListingTypeId" />
@@ -6044,7 +5793,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferConfigurationMobileNumberDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferConfigurationMobileNumberDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferConfigurationMobileNumberDetail">
               <MappingFragment StoreEntitySet="OfferConfigurationMobileNumberDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferConfigurationId" ColumnName="OfferConfigurationId" />
@@ -6062,7 +5811,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDetail">
               <MappingFragment StoreEntitySet="OfferDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferListingTypeId" ColumnName="OfferListingTypeId" />
@@ -6097,7 +5846,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDetailsHistories">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDetailsHistory">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDetailsHistory">
               <MappingFragment StoreEntitySet="OfferDetailsHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
@@ -6132,7 +5881,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayAppVersionDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayAppVersionDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayAppVersionDetail">
               <MappingFragment StoreEntitySet="OfferDisplayAppVersionDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
@@ -6147,7 +5896,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayAppVersionDetailsHistories">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayAppVersionDetailsHistory">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayAppVersionDetailsHistory">
               <MappingFragment StoreEntitySet="OfferDisplayAppVersionDetailsHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayAppVersionDetailsId" ColumnName="OfferDisplayAppVersionDetailsId" />
@@ -6163,7 +5912,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayDetail">
               <MappingFragment StoreEntitySet="OfferDisplayDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
@@ -6188,7 +5937,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayDetailsHistories">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayDetailsHistory">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayDetailsHistory">
               <MappingFragment StoreEntitySet="OfferDisplayDetailsHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
@@ -6213,7 +5962,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayLocationDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayLocationDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayLocationDetail">
               <MappingFragment StoreEntitySet="OfferDisplayLocationDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
@@ -6231,7 +5980,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayLocationDetailsHistories">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayLocationDetailsHistory">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayLocationDetailsHistory">
               <MappingFragment StoreEntitySet="OfferDisplayLocationDetailsHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayLocationDetailsId" ColumnName="OfferDisplayLocationDetailsId" />
@@ -6250,7 +5999,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayMappingDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayMappingDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayMappingDetail">
               <MappingFragment StoreEntitySet="OfferDisplayMappingDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
@@ -6266,7 +6015,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayMappingDetailsHistories">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayMappingDetailsHistory">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayMappingDetailsHistory">
               <MappingFragment StoreEntitySet="OfferDisplayMappingDetailsHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayMappingDetailsId" ColumnName="OfferDisplayMappingDetailsId" />
@@ -6283,7 +6032,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferDisplayTelcoDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferDisplayTelcoDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferDisplayTelcoDetail">
               <MappingFragment StoreEntitySet="OfferDisplayTelcoDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDisplayDetailsId" ColumnName="OfferDisplayDetailsId" />
@@ -6297,7 +6046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferListingTypes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferListingType">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferListingType">
               <MappingFragment StoreEntitySet="OfferListingType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferListingName" ColumnName="OfferListingName" />
@@ -6307,7 +6056,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferOsDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferOsDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferOsDetail">
               <MappingFragment StoreEntitySet="OfferOsDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OsTypeId" ColumnName="OsTypeId" />
@@ -6324,7 +6073,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferShemeConfigurations">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferShemeConfiguration">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferShemeConfiguration">
               <MappingFragment StoreEntitySet="OfferShemeConfiguration">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
@@ -6350,7 +6099,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferShemeConfigurationHistories">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferShemeConfigurationHistory">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferShemeConfigurationHistory">
               <MappingFragment StoreEntitySet="OfferShemeConfigurationHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferShemeConfigurationId" ColumnName="OfferShemeConfigurationId" />
@@ -6377,7 +6126,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferShemeTypes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferShemeType">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferShemeType">
               <MappingFragment StoreEntitySet="OfferShemeType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferShemeName" ColumnName="OfferShemeName" />
@@ -6390,7 +6139,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferTermsAndConditions">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferTermsAndCondition">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferTermsAndCondition">
               <MappingFragment StoreEntitySet="OfferTermsAndCondition">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferDetailsId" ColumnName="OfferDetailsId" />
@@ -6415,7 +6164,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferTermsAndConditionHistories">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferTermsAndConditionHistory">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferTermsAndConditionHistory">
               <MappingFragment StoreEntitySet="OfferTermsAndConditionHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferTermsAndConditionId" ColumnName="OfferTermsAndConditionId" />
@@ -6441,7 +6190,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferTransactionTypes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferTransactionType">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferTransactionType">
               <MappingFragment StoreEntitySet="OfferTransactionType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferTransactionName" ColumnName="OfferTransactionName" />
@@ -6456,7 +6205,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfferTypes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.OfferType">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.OfferType">
               <MappingFragment StoreEntitySet="OfferType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OfferTypeName" ColumnName="OfferTypeName" />
@@ -6470,7 +6219,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductBrandDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductBrandDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.ProductBrandDetail">
               <MappingFragment StoreEntitySet="ProductBrandDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductBrandCode" ColumnName="ProductBrandCode" />
@@ -6486,7 +6235,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductCategoryDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductCategoryDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.ProductCategoryDetail">
               <MappingFragment StoreEntitySet="ProductCategoryDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
@@ -6500,7 +6249,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.ProductDetail">
               <MappingFragment StoreEntitySet="ProductDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
@@ -6519,7 +6268,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductGroupDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.ProductGroupDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.ProductGroupDetail">
               <MappingFragment StoreEntitySet="ProductGroupDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductGroupName" ColumnName="ProductGroupName" />
@@ -6533,7 +6282,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TelcoInfoes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.TelcoInfo">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.TelcoInfo">
               <MappingFragment StoreEntitySet="TelcoInfo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TelcoName" ColumnName="TelcoName" />
@@ -6543,7 +6292,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TownShips">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.TownShip">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.TownShip">
               <MappingFragment StoreEntitySet="TownShip">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -6562,7 +6311,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UOMMasters">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.UOMMaster">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.UOMMaster">
               <MappingFragment StoreEntitySet="UOMMaster">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UomCode" ColumnName="UomCode" />
@@ -6574,7 +6323,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.User">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
@@ -6602,7 +6351,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserAccessRights">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.UserAccessRight">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.UserAccessRight">
               <MappingFragment StoreEntitySet="UserAccessRights">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -6624,7 +6373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserOfferTypeDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.UserOfferTypeDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.UserOfferTypeDetail">
               <MappingFragment StoreEntitySet="UserOfferTypeDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -6638,7 +6387,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserProductGroupDetails">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.UserProductGroupDetail">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.UserProductGroupDetail">
               <MappingFragment StoreEntitySet="UserProductGroupDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -6652,7 +6401,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTypes">
-            <EntityTypeMapping TypeName="Cgm.EcouponModel.UserType">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.UserType">
               <MappingFragment StoreEntitySet="UserType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
@@ -6665,352 +6414,37 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetAllApprovalRequestDetail" FunctionName="Cgm.EcouponModel.Store.GetAllApprovalRequestDetail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAllApprovalRequestDetail_Result">
-                <ScalarProperty Name="transactionid" ColumnName="transactionid" />
-                <ScalarProperty Name="OfferTransactionTypeId" ColumnName="OfferTransactionTypeId" />
-                <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
-                <ScalarProperty Name="usertypename" ColumnName="usertypename" />
-                <ScalarProperty Name="mobilenumber" ColumnName="mobilenumber" />
-                <ScalarProperty Name="companyname" ColumnName="companyname" />
-                <ScalarProperty Name="OfferTransactionName" ColumnName="OfferTransactionName" />
-                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAssignOfferDetails" FunctionName="Cgm.EcouponModel.Store.GetAssignOfferDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAssignOfferDetails_Result">
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Township" ColumnName="Township" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="ProductGroupName" ColumnName="ProductGroupName" />
-                <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
-                <ScalarProperty Name="OkAccountType" ColumnName="OkAccountType" />
-                <ScalarProperty Name="OfferTypeName" ColumnName="OfferTypeName" />
-                <ScalarProperty Name="OfferName" ColumnName="OfferName" />
-                <ScalarProperty Name="OfferAmount" ColumnName="OfferAmount" />
-                <ScalarProperty Name="OfferDiscountAmount" ColumnName="OfferDiscountAmount" />
-                <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
-                <ScalarProperty Name="OfferBase" ColumnName="OfferBase" />
+          <EntitySetMapping Name="EcouponAllocationDetails">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponAllocationDetail">
+              <MappingFragment StoreEntitySet="EcouponAllocationDetails">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+                <ScalarProperty Name="ActivatedBy" ColumnName="ActivatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DeactivatedDate" ColumnName="DeactivatedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAutoPayDiscountFliterData" FunctionName="Cgm.EcouponModel.Store.GetAutoPayDiscountFliterData">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAutoPayDiscountFliterData_Result">
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Township" ColumnName="Township" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="SafetyCashierCount" ColumnName="SafetyCashierCount" />
-                <ScalarProperty Name="AdanceMerchantNumber" ColumnName="AdanceMerchantNumber" />
-                <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
-                <ScalarProperty Name="CashBackSetting" ColumnName="CashBackSetting" />
-                <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AutoPayDiscountPercentage" ColumnName="AutoPayDiscountPercentage" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="ActivatedDate" ColumnName="ActivatedDate" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="AllocationQuantity" ColumnName="AllocationQuantity" />
+                <ScalarProperty Name="AllocationType" ColumnName="AllocationType" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="EcouponMetadataId" ColumnName="EcouponMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EcouponNumbers">
+            <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponNumber">
+              <MappingFragment StoreEntitySet="EcouponNumbers">
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
-                <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAutoPayReport" FunctionName="Cgm.EcouponModel.Store.GetAutoPayReport">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetAutoPayReport_Result">
-                <ScalarProperty Name="No" ColumnName="No" />
-                <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
-                <ScalarProperty Name="SenderMobileNumber" ColumnName="SenderMobileNumber" />
-                <ScalarProperty Name="SenderDivision" ColumnName="SenderDivision" />
-                <ScalarProperty Name="SenderDistrict" ColumnName="SenderDistrict" />
-                <ScalarProperty Name="SenderTownship" ColumnName="SenderTownship" />
-                <ScalarProperty Name="SenderCity" ColumnName="SenderCity" />
-                <ScalarProperty Name="BeforeDiscountAmount" ColumnName="BeforeDiscountAmount" />
-                <ScalarProperty Name="AfterDiscountAmount" ColumnName="AfterDiscountAmount" />
-                <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
-                <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
-                <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
-                <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
-                <ScalarProperty Name="OSType" ColumnName="OSType" />
-                <ScalarProperty Name="OSVersion" ColumnName="OSVersion" />
-                <ScalarProperty Name="OkDollarVersion" ColumnName="OkDollarVersion" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="LocationAdress" ColumnName="LocationAdress" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetDashboardOfferTypeWise" FunctionName="Cgm.EcouponModel.Store.GetDashboardOfferTypeWise">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetDashboardOfferTypeWise_Result">
-                <ScalarProperty Name="OfferListingName" ColumnName="OfferListingName" />
-                <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferAssignCount" FunctionName="Cgm.EcouponModel.Store.GetOfferAssignCount">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferAssignCount_Result">
-                <ScalarProperty Name="OfferAssignType" ColumnName="OfferAssignType" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferCountAmountWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountAmountWise">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountAmountWise_Result">
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferCountDayWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountDayWise">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountDayWise_Result">
-                <ScalarProperty Name="TextDay" ColumnName="TextDay" />
-                <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferCountMonthWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountMonthWise">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountMonthWise_Result">
-                <ScalarProperty Name="TextMonth" ColumnName="TextMonth" />
-                <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="NumberMonth" ColumnName="NumberMonth" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferCountOfferTypeWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountOfferTypeWise">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountOfferTypeWise_Result">
-                <ScalarProperty Name="OfferListingName" ColumnName="OfferListingName" />
-                <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferCountTownshipWise" FunctionName="Cgm.EcouponModel.Store.GetOfferCountTownshipWise">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferCountTownshipWise_Result">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OfferCount" ColumnName="OfferCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferRedeemLocationDetail" FunctionName="Cgm.EcouponModel.Store.GetOfferRedeemLocationDetail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferRedeemLocationDetail_Result">
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="OfferAssignmentBranch" ColumnName="OfferAssignmentBranch" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="OfferType" ColumnName="OfferType" />
-                <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
-                <ScalarProperty Name="BuyingProduct" ColumnName="BuyingProduct" />
-                <ScalarProperty Name="BuyingQuantity" ColumnName="BuyingQuantity" />
-                <ScalarProperty Name="FixedAmount" ColumnName="FixedAmount" />
-                <ScalarProperty Name="FixedDiscountPercentage" ColumnName="FixedDiscountPercentage" />
-                <ScalarProperty Name="PromotionProduct" ColumnName="PromotionProduct" />
-                <ScalarProperty Name="PromotionQuantiy" ColumnName="PromotionQuantiy" />
-                <ScalarProperty Name="PromotionAmount" ColumnName="PromotionAmount" />
-                <ScalarProperty Name="OfferName" ColumnName="OfferName" />
-                <ScalarProperty Name="ProductQtyUOM" ColumnName="ProductQtyUOM" />
-                <ScalarProperty Name="FreeQtyUOM" ColumnName="FreeQtyUOM" />
-                <ScalarProperty Name="OkAccountType" ColumnName="OkAccountType" />
-                <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="LocationAddressMap" ColumnName="LocationAddressMap" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOfferReportDetail" FunctionName="Cgm.EcouponModel.Store.GetOfferReportDetail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOfferReportDetail_Result">
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="OfferAssignmentBranch" ColumnName="OfferAssignmentBranch" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="OfferType" ColumnName="OfferType" />
-                <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
-                <ScalarProperty Name="BuyingProduct" ColumnName="BuyingProduct" />
-                <ScalarProperty Name="BuyingQuantity" ColumnName="BuyingQuantity" />
-                <ScalarProperty Name="MinimumAmount" ColumnName="MinimumAmount" />
-                <ScalarProperty Name="MaximumAmount" ColumnName="MaximumAmount" />
-                <ScalarProperty Name="FixedAmount" ColumnName="FixedAmount" />
-                <ScalarProperty Name="FixedDiscountPercentage" ColumnName="FixedDiscountPercentage" />
-                <ScalarProperty Name="PromotionProduct" ColumnName="PromotionProduct" />
-                <ScalarProperty Name="PromotionQuantiy" ColumnName="PromotionQuantiy" />
-                <ScalarProperty Name="PromotionAmount" ColumnName="PromotionAmount" />
-                <ScalarProperty Name="OfferName" ColumnName="OfferName" />
-                <ScalarProperty Name="ProductQtyUOM" ColumnName="ProductQtyUOM" />
-                <ScalarProperty Name="FreeQtyUOM" ColumnName="FreeQtyUOM" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOkDebitCreditCashback" FunctionName="Cgm.EcouponModel.Store.GetOkDebitCreditCashback">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitCreditCashback_Result">
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Township" ColumnName="Township" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="Branch" ColumnName="Branch" />
-                <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
-                <ScalarProperty Name="AdvanceMerchantNumber" ColumnName="AdvanceMerchantNumber" />
-                <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
-                <ScalarProperty Name="CashbackSetting" ColumnName="CashbackSetting" />
-                <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
-                <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
-                <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
-                <ScalarProperty Name="CashbackOpeningAmount" ColumnName="CashbackOpeningAmount" />
-                <ScalarProperty Name="TransferMainToCashbankAmount" ColumnName="TransferMainToCashbankAmount" />
-                <ScalarProperty Name="CashbackAmount" ColumnName="CashbackAmount" />
-                <ScalarProperty Name="CashbackClosingAmount" ColumnName="CashbackClosingAmount" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOkDebitWalletNumber" FunctionName="Cgm.EcouponModel.Store.GetOkDebitWalletNumber">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitWalletNumber_Result">
-                <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Township" ColumnName="Township" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="Branch" ColumnName="Branch" />
-                <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
-                <ScalarProperty Name="AdvanceMerchantNumber" ColumnName="AdvanceMerchantNumber" />
-                <ScalarProperty Name="CashbackSetting" ColumnName="CashbackSetting" />
-                <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
-                <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
-                <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOkDebitWalletNumberDetail" FunctionName="Cgm.EcouponModel.Store.GetOkDebitWalletNumberDetail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitWalletNumberDetail_Result">
-                <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Township" ColumnName="Township" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="Branch" ColumnName="Branch" />
-                <ScalarProperty Name="SafetyCashierCount" ColumnName="SafetyCashierCount" />
-                <ScalarProperty Name="AdvanceMerchantNumber" ColumnName="AdvanceMerchantNumber" />
-                <ScalarProperty Name="CashbackSetting" ColumnName="CashbackSetting" />
-                <ScalarProperty Name="OfferAutoLoad" ColumnName="OfferAutoLoad" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
-                <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
-                <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
-                <ScalarProperty Name="CashbackOpeningAmount" ColumnName="CashbackOpeningAmount" />
-                <ScalarProperty Name="TransferMainToCashbankAmount" ColumnName="TransferMainToCashbankAmount" />
-                <ScalarProperty Name="CashbackAmount" ColumnName="CashbackAmount" />
-                <ScalarProperty Name="CashbackClosingAmount" ColumnName="CashbackClosingAmount" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOkDebitWalletNumberSubDetail" FunctionName="Cgm.EcouponModel.Store.GetOkDebitWalletNumberSubDetail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOkDebitWalletNumberSubDetail_Result">
-                <ScalarProperty Name="SrNo" ColumnName="SrNo" />
-                <ScalarProperty Name="OkDebitWalletNumber" ColumnName="OkDebitWalletNumber" />
-                <ScalarProperty Name="SenderMobileNumber" ColumnName="SenderMobileNumber" />
-                <ScalarProperty Name="SenderDivision" ColumnName="SenderDivision" />
-                <ScalarProperty Name="SenderDistrict" ColumnName="SenderDistrict" />
-                <ScalarProperty Name="SenderTownship" ColumnName="SenderTownship" />
-                <ScalarProperty Name="SenderCity" ColumnName="SenderCity" />
-                <ScalarProperty Name="BeforeDiscountAmount" ColumnName="BeforeDiscountAmount" />
-                <ScalarProperty Name="AfterDiscountAmount" ColumnName="AfterDiscountAmount" />
-                <ScalarProperty Name="SafetyCashierNumber" ColumnName="SafetyCashierNumber" />
-                <ScalarProperty Name="AutoPayDiscount" ColumnName="AutoPayDiscount" />
-                <ScalarProperty Name="AutoPayFixed" ColumnName="AutoPayFixed" />
-                <ScalarProperty Name="AutoPayRatio" ColumnName="AutoPayRatio" />
-                <ScalarProperty Name="OsType" ColumnName="OsType" />
-                <ScalarProperty Name="OsVersion" ColumnName="OsVersion" />
-                <ScalarProperty Name="OkVersion" ColumnName="OkVersion" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="LocationAddress" ColumnName="LocationAddress" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOKDollarAccountNumberDetails" FunctionName="Cgm.EcouponModel.Store.GetOKDollarAccountNumberDetails" />
-          <FunctionImportMapping FunctionImportName="GetOverAmountNoDiscount" FunctionName="Cgm.EcouponModel.Store.GetOverAmountNoDiscount">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetOverAmountNoDiscount_Result">
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="OfferAssignmentBranch" ColumnName="OfferAssignmentBranch" />
-                <ScalarProperty Name="ProductGroup" ColumnName="ProductGroup" />
-                <ScalarProperty Name="OfferType" ColumnName="OfferType" />
-                <ScalarProperty Name="OfferCode" ColumnName="OfferCode" />
-                <ScalarProperty Name="OfferName" ColumnName="OfferName" />
-                <ScalarProperty Name="PromotionAmount" ColumnName="PromotionAmount" />
-                <ScalarProperty Name="NoDiscountAmount" ColumnName="NoDiscountAmount" />
-                <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
-                <ScalarProperty Name="OkAccountType" ColumnName="OkAccountType" />
-                <ScalarProperty Name="OkAccountNumber" ColumnName="OkAccountNumber" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="LocationAddressMap" ColumnName="LocationAddressMap" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetTodayTotalAutoPayDiscountCount" FunctionName="Cgm.EcouponModel.Store.GetTodayTotalAutoPayDiscountCount">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetTodayTotalAutoPayDiscountCount_Result">
-                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
-                <ScalarProperty Name="TownshipName" ColumnName="TownshipName" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="TotalBranch" ColumnName="TotalBranch" />
-                <ScalarProperty Name="TotalTransactionCount" ColumnName="TotalTransactionCount" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetTodayTotalOkDollarOfferRedeemCount" FunctionName="Cgm.EcouponModel.Store.GetTodayTotalOkDollarOfferRedeemCount">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Cgm.EcouponModel.GetTodayTotalOkDollarOfferRedeemCount_Result">
-                <ScalarProperty Name="TotalOfferRedeemCount" ColumnName="TotalOfferRedeemCount" />
-                <ScalarProperty Name="TotalAndroidVersionOfferRedeemCount" ColumnName="TotalAndroidVersionOfferRedeemCount" />
-                <ScalarProperty Name="TotalIOSVersionOfferRedeemCount" ColumnName="TotalIOSVersionOfferRedeemCount" />
-                <ScalarProperty Name="TotalOfferBranch" ColumnName="TotalOfferBranch" />
-                <ScalarProperty Name="TotalOfferAmountDiscount" ColumnName="TotalOfferAmountDiscount" />
-                <ScalarProperty Name="TotalOfferTypeCount" ColumnName="TotalOfferTypeCount" />
-                <ScalarProperty Name="TotalOfferTransactionCount" ColumnName="TotalOfferTransactionCount" />
-                <ScalarProperty Name="TotalPercentageBaseOfferCount" ColumnName="TotalPercentageBaseOfferCount" />
-                <ScalarProperty Name="TotalAmountBaseOfferCount" ColumnName="TotalAmountBaseOfferCount" />
-                <ScalarProperty Name="TotalOkPersonalAccountOfferRedeemCount" ColumnName="TotalOkPersonalAccountOfferRedeemCount" />
-                <ScalarProperty Name="TotalOkMerchantAccountOfferRedeemCount" ColumnName="TotalOkMerchantAccountOfferRedeemCount" />
-                <ScalarProperty Name="TotalOkAdvanceMerchantAccountOfferRedeemCount" ColumnName="TotalOkAdvanceMerchantAccountOfferRedeemCount" />
-                <ScalarProperty Name="TotaOkAgentAccountOfferRedeemCount" ColumnName="TotaOkAgentAccountOfferRedeemCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+                <ScalarProperty Name="EcouponNo" ColumnName="EcouponNo" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="EcouponAllocationId" ColumnName="EcouponAllocationId" />
+                <ScalarProperty Name="EcouponMetadataId" ColumnName="EcouponMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

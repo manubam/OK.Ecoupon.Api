@@ -19,7 +19,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     ProductCategoryDetail lModel = new ProductCategoryDetail
                     {
@@ -47,7 +47,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductCategoryDetails.FirstOrDefaultAsync(x => x.Id == id);
                     if (res == null)
@@ -76,7 +76,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductCategoryDetails.FirstOrDefaultAsync(x => x.Id == id);
                     if (res == null)
@@ -110,7 +110,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductCategoryDetails
                       .Select(z => new ProductCategoryDetailsModel
@@ -143,7 +143,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     List<ProductCategoryDetailsModel> lstModels = new List<ProductCategoryDetailsModel>();
                     if (isActive == null)
@@ -194,7 +194,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductCategoryDetails.Where(x => x.ProductCategoryName == productCategoryName && x.IsActive == true).CountAsync();
                     if (res > 0) return true;
@@ -213,7 +213,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var productCategoryList = new List<ProductCategoryDetail>(); string ErrorMessage = "";
 

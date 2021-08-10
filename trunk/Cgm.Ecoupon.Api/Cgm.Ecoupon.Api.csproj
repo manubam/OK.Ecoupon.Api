@@ -181,6 +181,7 @@
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CompanyDetailsController.cs" />
     <Compile Include="Controllers\CompanyProductMappingController.cs" />
+    <Compile Include="Controllers\EcouponController.cs" />
     <Compile Include="Controllers\ProductBrandDetailsController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Models\Branch\branchMobileNumberDto.cs" />
     <Compile Include="Models\CompanyDetails\CompanyDetailsDto.cs" />
     <Compile Include="Models\CompanyProductMapping\CompanyProductMappingDto.cs" />
+    <Compile Include="Models\Ecoupon\EcouponDetails\EcouponDto.cs" />
     <Compile Include="Models\Product\ProductBrandDetails\ProductBrandDetailsDto.cs" />
     <Compile Include="Models\Product\ProductCategory\ProductCategoryDto.cs" />
     <Compile Include="Models\Product\ProductDetails\ProductDto.cs" />

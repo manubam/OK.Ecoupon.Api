@@ -24,5 +24,6 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence
         Task<bool> CompanyNumberAlreadyExist(Guid offerBackendNumberId, string mobileNumber);
 
         Task<Tuple<int, string>> UploadExcel(List<CompanyDetailsModel> objCompanyDetailsModel, string userId);
+        Task<CompanyDetailsModel> GetCompanyDetailsByName(string name);
     }
 }

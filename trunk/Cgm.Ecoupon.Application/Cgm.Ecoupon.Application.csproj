@@ -44,9 +44,11 @@
     <Compile Include="IBranchService.cs" />
     <Compile Include="ICompanyDetailsService.cs" />
     <Compile Include="ICompanyProductMappingService.cs" />
+    <Compile Include="IEcouponService.cs" />
     <Compile Include="Impl\BranchService.cs" />
     <Compile Include="Impl\CompanyDetailsService.cs" />
     <Compile Include="Impl\CompanyProductMappingService.cs" />
+    <Compile Include="Impl\EcouponService.cs" />
     <Compile Include="Impl\ProductBrandDetailsService.cs" />
     <Compile Include="Impl\ProductCategoryDetailsService.cs" />
     <Compile Include="Impl\ProductDetailsService.cs" />

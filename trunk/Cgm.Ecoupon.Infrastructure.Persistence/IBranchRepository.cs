@@ -38,5 +38,6 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence
         Task<Tuple<int, string>> UploadExcel(List<BranchModel> objBranchModel, string userId);
 
         Task<Tuple<int, string, List<BranchModel>>> GatBranchByOfferCode(Guid offerid);
+        Task<BranchModel> GetBranchByCompanyId(Guid companyId, string branchName);
     }
 }

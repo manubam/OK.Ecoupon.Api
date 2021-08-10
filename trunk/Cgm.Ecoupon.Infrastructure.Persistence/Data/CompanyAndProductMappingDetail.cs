@@ -25,6 +25,9 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string ProductGroupIds { get; set; }
+        public string ProductCategoryIds { get; set; }
+        public string ProductBrandIds { get; set; }
     
         public virtual ProductBrandDetail ProductBrandDetail { get; set; }
         public virtual ProductCategoryDetail ProductCategoryDetail { get; set; }

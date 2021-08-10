@@ -30,6 +30,9 @@ namespace Cgm.Ecoupon.Api.DependencyResolver
             container.RegisterType<IProductDetailsService, ProductDetailsService>();
             container.RegisterType<IProductDetailsRepository, ProductDetailsRepository>();
 
+            container.RegisterType<IEcouponRepository , EcouponRepository>();
+            container.RegisterType<IEcouponService, EcouponService>();
+
             container.RegisterType<ICompanyProductMappingService, CompanyProductMappingService>();
             container.RegisterType<ICompanyProductMappingRepository, CompanyProductMappingRepository>();
 

@@ -23,7 +23,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     //var alreadyExistsBackendNo = await dbContext.OfferBackendNumbers.FirstOrDefaultAsync(x => x.BackendMobileNumber == backendMobileNumber && x.IsActive == true);
 
@@ -69,7 +69,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsActive == true);
                     if (res == null)
@@ -127,7 +127,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.CompanyDetails.FirstOrDefaultAsync(x => x.Id == id && x.IsActive == true);
@@ -174,7 +174,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     List<CompanyDetailsModel> lstCompanyDetailsModels = new List<CompanyDetailsModel>();
                     if (isActive == null)
@@ -230,7 +230,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyDetails
                         .Select(z => new CompanyDetailsModel
@@ -280,7 +280,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyDetails.Where(x => x.CompanyName == companyName && x.IsActive == true).CountAsync();
                     if (res > 0) return true;
@@ -299,7 +299,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var existFlag = await dbContext.OfferBackendNumbers.FirstOrDefaultAsync(x => x.Id == offerBackendNumberId && x.IsActive == true);
 
@@ -329,7 +329,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var companyList = new List<CompanyDetail>(); string ErrorMessage = ""; CommonFunction objCommonFunction = new CommonFunction();
                     var backendNumberList = new List<OfferBackendNumber>();
@@ -471,6 +471,30 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
             }
         }
 
-
+        public async Task<CompanyDetailsModel> GetCompanyDetailsByName(string name)
+        {
+            try
+            {
+                using (var dbContext = new OfferManagementEntities1())
+                {
+                    var response = await dbContext.CompanyDetails.FirstOrDefaultAsync(x => x.CompanyName == name && x.IsActive == true);
+                    var companyDetails = new CompanyDetailsModel()
+                    {
+                        Id = response.Id,
+                        CompanyName = response.CompanyName,
+                        CompanyBName = response.CompanyBName,
+                        CompanyDescription = response.CompanyDescription,
+                        CompanyImageUrl = response.CompanyImageUrl,
+                        IsActive = response.IsActive,
+                        CreatedDate = response.CreatedDate
+                    };
+                    return companyDetails;
+                }
+            }catch(Exception ex)
+            {
+                Log.Error("GetCompanyDetailsByName :: 500 :: " + ex.Message);
+                return null;
+            }
+        }
     }
 }

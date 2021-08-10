@@ -20,7 +20,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     ProductGroupDetail lModel = new ProductGroupDetail
                     {
@@ -48,7 +48,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductGroupDetails.FirstOrDefaultAsync(x => x.Id == id);
                     if (res == null)
@@ -77,7 +77,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductGroupDetails.FirstOrDefaultAsync(x => x.Id == id);
                     if (res == null)
@@ -111,7 +111,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductGroupDetails
                       .Select(z => new ProductGroupDetailsModel
@@ -144,7 +144,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     List<ProductGroupDetailsModel> lstModels = new List<ProductGroupDetailsModel>();
                     if (isActive == null)
@@ -195,7 +195,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.ProductGroupDetails.Where(x => x.ProductGroupName == productGroupName && x.IsActive == true).CountAsync();
                     if (res > 0) return true;
@@ -214,7 +214,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var productGroupDetailList = new List<ProductGroupDetail>(); string ErrorMessage = "";
 

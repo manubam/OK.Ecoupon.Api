@@ -21,7 +21,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.Divisions
@@ -56,7 +56,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.TownShips
@@ -92,7 +92,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.TownShips
@@ -128,7 +128,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.Cities
@@ -164,7 +164,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.Districts
@@ -199,7 +199,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var resIsValidBranch =
                         await BranchAlreadyExist(companyId, divisionId, townShipId, cityId, districtId, branchBName);
@@ -253,7 +253,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.BranchDetails.Where(x => x.Id == branchId).FirstOrDefaultAsync();
                     if (res == null) return new Tuple<int, string>(300, "Invalid branchId");
@@ -337,7 +337,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.BranchDetails.Where(x => x.Id == branchId).FirstOrDefaultAsync();
                     if (res == null) return new Tuple<int, string>(300, "Invalid branchId");
@@ -378,7 +378,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     if (isActive != null)
                     {
@@ -473,7 +473,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.BranchDetails.Where(x => x.Id == branchId)
@@ -533,7 +533,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
 
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.BranchDetails.Where(x => x.IsActive == true
                                                                        && x.CompanyId == companyId &&
@@ -562,7 +562,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
 
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.BranchDetails.Where(x => x.IsActive == true
                                                                        && x.CompanyId == companyId &&
@@ -589,7 +589,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
 
                     var res = await dbContext.Customers
@@ -625,7 +625,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var branchList = new List<BranchDetail>(); string ErrorMessage = ""; int rowIndex = 0;
 
@@ -770,7 +770,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.OfferDetails.Where(x => x.Id == offerid && x.IsActive == true).FirstOrDefaultAsync();
 
@@ -798,6 +798,42 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
             {
                 Log.Error("GatBranchByOfferCode :: 500 :: " + ex.Message);
                 return new Tuple<int, string, List<BranchModel>>(500, "System Error", new List<BranchModel>());
+            }
+        }
+
+        public async Task<BranchModel> GetBranchByCompanyId(Guid companyId,string branchName)
+        {
+            try
+            {
+                using (var dbContext = new OfferManagementEntities1())
+                {
+                    var response = await dbContext.BranchDetails.FirstOrDefaultAsync(x => x.CompanyId == companyId && x.BranchName == branchName);
+                    var branchDetails = new BranchModel()
+                    {
+                        BranchId = response.Id,
+                        CompanyId = response.CompanyId,
+                        DivisionId = response.DivisionId,
+                        TownShipId = response.TownShipId,
+                        CityId = response.CityId,
+                        DistrictId = response.DistrictId,
+                        BranchName = response.BranchName,
+                        BranchBName = response.BranchBName,
+                        Description = response.Description,
+                        BDescription = response.BDescription,
+                        CompanyName = response.CompanyDetail.CompanyName,
+                        DivisionName = response.Division.Name,
+                        TownShipName = response.TownShip.Name,
+                        CityName = response.City.Name,
+                        DistrictName = response.District.Name,
+                        IsActive = response.IsActive
+                    };
+                    return branchDetails;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("GetBranchByCompanyId :: 500 :: " + ex.Message);
+                return null;
             }
         }
     }

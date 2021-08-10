@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Cgm.EcouponModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="Ok.EcouponModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="ApprovalRequestDetail">
     <Key>
       <PropertyRef Name="Id" />
@@ -45,6 +45,7 @@
     <NavigationProperty Name="OfferBlockBranchDetails" Relationship="Self.FK_OfferBlockBranchDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferBlockBranchDetails" />
     <NavigationProperty Name="OfferConfigurations" Relationship="Self.FK_OfferConfiguration_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferConfiguration" />
     <NavigationProperty Name="OfferDisplayMappingDetails" Relationship="Self.FK_OfferDisplayMappingDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferDisplayMappingDetails" />
+    <NavigationProperty Name="EcouponAllocationDetails" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" FromRole="BranchDetail" ToRole="EcouponAllocationDetail" />
   </EntityType>
   <EntityType Name="BranchMobileNumberDetail">
     <Key>
@@ -111,6 +112,9 @@
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProductGroupIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductCategoryIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductBrandIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ProductBrandDetail" Relationship="Self.FK_CompanyAndProductMappingDetails_ProductBrandDetails_Id" FromRole="CompanyAndProductMappingDetails" ToRole="ProductBrandDetails" />
     <NavigationProperty Name="ProductCategoryDetail" Relationship="Self.FK_CompanyAndProductMappingDetails_ProductCategoryDetails_Id" FromRole="CompanyAndProductMappingDetails" ToRole="ProductCategoryDetails" />
     <NavigationProperty Name="ProductDetail" Relationship="Self.FK_CompanyAndProductMappingDetails_ProductDetails_Id" FromRole="CompanyAndProductMappingDetails" ToRole="ProductDetails" />
@@ -204,6 +208,25 @@
     <NavigationProperty Name="OfferConfigurations" Relationship="Self.FK_OfferConfiguration_Division_Id" FromRole="Division" ToRole="OfferConfiguration" />
     <NavigationProperty Name="OfferDisplayLocationDetails" Relationship="Self.FK_OfferDisplayLocationDetails_Division_Id" FromRole="Division" ToRole="OfferDisplayLocationDetails" />
     <NavigationProperty Name="TownShips" Relationship="Self.FK_TownShip_Division_Id" FromRole="Division" ToRole="TownShip" />
+  </EntityType>
+  <EntityType Name="EcouponMetadata">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Quantity" Type="Int64" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EcouponAllocationDetails" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" FromRole="EcouponMetadata" ToRole="EcouponAllocationDetail" />
+    <NavigationProperty Name="EcouponNumbers" Relationship="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" FromRole="EcouponMetadata" ToRole="EcouponNumber" />
   </EntityType>
   <EntityType Name="MasterTransInfo">
     <Key>
@@ -424,6 +447,8 @@
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="MinimumPayableAmount" Type="Double" />
+    <Property Name="MaximumPayableAmount" Type="Double" />
     <NavigationProperty Name="OfferConditiionalMappingBranchDetails" Relationship="Self.FK_OfferConditiionalMappingBranchDetails_OfferConditionalMappingDetails_Id" FromRole="OfferConditionalMappingDetails" ToRole="OfferConditiionalMappingBranchDetails" />
     <NavigationProperty Name="OfferConditionalMappingCustomerDetails" Relationship="Self.FK_OfferConditionalMappingCustomerDetails_OfferConditionalMappingDetails_Id" FromRole="OfferConditionalMappingDetails" ToRole="OfferConditionalMappingCustomerDetails" />
     <NavigationProperty Name="OfferDetail" Relationship="Self.FK_OfferConditionalMappingDetails_OfferDetails_Id" FromRole="OfferConditionalMappingDetails" ToRole="OfferDetails" />
@@ -2237,7 +2262,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="OfferManagementEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="OfferManagementEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ApprovalRequestDetails" EntityType="Self.ApprovalRequestDetail" />
     <EntitySet Name="BranchDetails" EntityType="Self.BranchDetail" />
     <EntitySet Name="BranchMobileNumberDetails" EntityType="Self.BranchMobileNumberDetail" />
@@ -2249,6 +2274,7 @@
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Districts" EntityType="Self.District" />
     <EntitySet Name="Divisions" EntityType="Self.Division" />
+    <EntitySet Name="EcouponMetadatas" EntityType="Self.EcouponMetadata" />
     <EntitySet Name="MasterTransInfoes" EntityType="Self.MasterTransInfo" />
     <EntitySet Name="Menus" EntityType="Self.Menu" />
     <EntitySet Name="OfferApprovalSetups" EntityType="Self.OfferApprovalSetup" />
@@ -2655,379 +2681,87 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UserProductGroupDetails" EntitySet="UserProductGroupDetails" />
     </AssociationSet>
-    <FunctionImport Name="GetAllApprovalRequestDetail" ReturnType="Collection(Cgm.EcouponModel.GetAllApprovalRequestDetail_Result)">
-      <Parameter Name="UserId" Mode="In" Type="Guid" />
-    </FunctionImport>
-    <FunctionImport Name="GetAssignOfferDetails" ReturnType="Collection(Cgm.EcouponModel.GetAssignOfferDetails_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetAutoPayDiscountFliterData" ReturnType="Collection(Cgm.EcouponModel.GetAutoPayDiscountFliterData_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="TYPEVALUE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetAutoPayReport" ReturnType="Collection(Cgm.EcouponModel.GetAutoPayReport_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetDashboardOfferTypeWise" ReturnType="Collection(Cgm.EcouponModel.GetDashboardOfferTypeWise_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="DATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferAssignCount" ReturnType="Collection(Cgm.EcouponModel.GetOfferAssignCount_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferCountAmountWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountAmountWise_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferCountDayWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountDayWise_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="YEAR" Mode="In" Type="Int32" />
-      <Parameter Name="MONTH" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferCountMonthWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountMonthWise_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferCountOfferTypeWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountOfferTypeWise_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="DATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferCountTownshipWise" ReturnType="Collection(Cgm.EcouponModel.GetOfferCountTownshipWise_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferRedeemLocationDetail" ReturnType="Collection(Cgm.EcouponModel.GetOfferRedeemLocationDetail_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="TODATE" Mode="In" Type="DateTime" />
-      <Parameter Name="COMPANYID" Mode="In" Type="Guid" />
-      <Parameter Name="BRANCHID" Mode="In" Type="Guid" />
-      <Parameter Name="PRODUCTGROUPID" Mode="In" Type="Guid" />
-      <Parameter Name="OFFERTYPEID" Mode="In" Type="Guid" />
-      <Parameter Name="OKACCOUNTTYPE" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GetOfferReportDetail" ReturnType="Collection(Cgm.EcouponModel.GetOfferReportDetail_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="TODATE" Mode="In" Type="DateTime" />
-      <Parameter Name="COMPANYID" Mode="In" Type="Guid" />
-      <Parameter Name="BRANCHID" Mode="In" Type="Guid" />
-      <Parameter Name="PRODUCTGROUPID" Mode="In" Type="Guid" />
-      <Parameter Name="OFFERTYPEID" Mode="In" Type="Guid" />
-      <Parameter Name="OKACCOUNTTYPE" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GetOkDebitCreditCashback" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitCreditCashback_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOkDebitWalletNumber" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitWalletNumber_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOkDebitWalletNumberDetail" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitWalletNumberDetail_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GetOkDebitWalletNumberSubDetail" ReturnType="Collection(Cgm.EcouponModel.GetOkDebitWalletNumberSubDetail_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GetOKDollarAccountNumberDetails">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="GetOverAmountNoDiscount" ReturnType="Collection(Cgm.EcouponModel.GetOverAmountNoDiscount_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-      <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
-      <Parameter Name="TODATE" Mode="In" Type="DateTime" />
-      <Parameter Name="COMPANYID" Mode="In" Type="Guid" />
-      <Parameter Name="BRANCHID" Mode="In" Type="Guid" />
-      <Parameter Name="PRODUCTGROUPID" Mode="In" Type="Guid" />
-      <Parameter Name="OFFERTYPEID" Mode="In" Type="Guid" />
-      <Parameter Name="OKACCOUNTTYPE" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GetTodayTotalAutoPayDiscountCount" ReturnType="Collection(Cgm.EcouponModel.GetTodayTotalAutoPayDiscountCount_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="GetTodayTotalOkDollarOfferRedeemCount" ReturnType="Collection(Cgm.EcouponModel.GetTodayTotalOkDollarOfferRedeemCount_Result)">
-      <Parameter Name="TYPE" Mode="In" Type="String" />
-    </FunctionImport>
+    <EntitySet Name="EcouponAllocationDetails" EntityType="Ok.EcouponModel.EcouponAllocationDetail" />
+    <AssociationSet Name="FK_EcouponAllocationDetails_BranchDetails" Association="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails">
+      <End Role="BranchDetail" EntitySet="BranchDetails" />
+      <End Role="EcouponAllocationDetail" EntitySet="EcouponAllocationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EcouponAllocationDetails_EcouponMetadata" Association="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata">
+      <End Role="EcouponMetadata" EntitySet="EcouponMetadatas" />
+      <End Role="EcouponAllocationDetail" EntitySet="EcouponAllocationDetails" />
+    </AssociationSet>
+    <EntitySet Name="EcouponNumbers" EntityType="Ok.EcouponModel.EcouponNumber" />
+    <AssociationSet Name="FK_EcouponNumbers_EcouponMetadata" Association="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata">
+      <End Role="EcouponMetadata" EntitySet="EcouponMetadatas" />
+      <End Role="EcouponNumber" EntitySet="EcouponNumbers" />
+    </AssociationSet>
   </EntityContainer>
-  <ComplexType Name="GetAllApprovalRequestDetail_Result">
-    <Property Type="Guid" Name="transactionid" Nullable="false" />
-    <Property Type="Guid" Name="OfferTransactionTypeId" Nullable="false" />
-    <Property Type="String" Name="UserLoginId" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="usertypename" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="mobilenumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="companyname" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OfferTransactionName" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="RequestDate" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetAssignOfferDetails_Result">
-    <Property Type="String" Name="Division" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="District" Nullable="false" MaxLength="6" />
-    <Property Type="String" Name="Township" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="City" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="ProductGroupName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OkAccountNumber" Nullable="false" MaxLength="11" />
-    <Property Type="String" Name="OkAccountType" Nullable="false" MaxLength="8" />
-    <Property Type="String" Name="OfferTypeName" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-    <Property Type="Int32" Name="OfferAmount" Nullable="false" />
-    <Property Type="Int32" Name="OfferDiscountAmount" Nullable="false" />
-    <Property Type="Int32" Name="TotalCount" Nullable="false" />
-    <Property Type="String" Name="OfferBase" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetAutoPayDiscountFliterData_Result">
-    <Property Type="String" Name="Division" Nullable="false" />
-    <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Township" Nullable="false" />
-    <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-    <Property Type="Int32" Name="SafetyCashierCount" Nullable="false" />
-    <Property Type="String" Name="AdanceMerchantNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="OkDebitWalletNumber" Nullable="false" MaxLength="1" />
-    <Property Type="Int32" Name="CashBackSetting" Nullable="true" />
-    <Property Type="Int32" Name="OfferAutoLoad" Nullable="true" />
-    <Property Type="Boolean" Name="Status" Nullable="true" />
-    <Property Type="Double" Name="AutoPayDiscountPercentage" Nullable="true" />
-    <Property Type="Int32" Name="TotalAmount" Nullable="false" />
-    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-    <Property Type="Decimal" Name="AutoPayFixed" Nullable="false" Precision="2" Scale="1" />
-    <Property Type="Decimal" Name="AutoPayRatio" Nullable="false" Precision="2" Scale="1" />
-  </ComplexType>
-  <ComplexType Name="GetAutoPayReport_Result">
-    <Property Type="Int64" Name="No" Nullable="true" />
-    <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SenderMobileNumber" Nullable="false" MaxLength="11" />
-    <Property Type="String" Name="SenderDivision" Nullable="false" />
-    <Property Type="String" Name="SenderDistrict" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="SenderTownship" Nullable="false" />
-    <Property Type="String" Name="SenderCity" Nullable="false" MaxLength="150" />
-    <Property Type="Int32" Name="BeforeDiscountAmount" Nullable="false" />
-    <Property Type="Int32" Name="AfterDiscountAmount" Nullable="false" />
-    <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-    <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-    <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-    <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-    <Property Type="String" Name="OSType" Nullable="false" MaxLength="7" />
-    <Property Type="Decimal" Name="OSVersion" Nullable="false" Precision="3" Scale="1" />
-    <Property Type="Decimal" Name="OkDollarVersion" Nullable="false" Precision="2" Scale="1" />
-    <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="6" Scale="5" />
-    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="6" Scale="5" />
-    <Property Type="String" Name="LocationAdress" Nullable="false" MaxLength="6" />
-    <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetDashboardOfferTypeWise_Result">
-    <Property Type="String" Name="OfferListingName" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="OfferCount" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="GetOfferAssignCount_Result">
-    <Property Type="String" Name="OfferAssignType" Nullable="true" MaxLength="10" />
-    <Property Type="Int32" Name="Count" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="GetOfferCountAmountWise_Result">
-    <Property Type="String" Name="BranchName" Nullable="false" MaxLength="7" />
-    <Property Type="Int32" Name="Amount" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="GetOfferCountDayWise_Result">
-    <Property Type="String" Name="TextDay" Nullable="true" MaxLength="4000" />
-    <Property Type="Int32" Name="OfferCount" Nullable="false" />
-    <Property Type="DateTime" Name="Date" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="GetOfferCountMonthWise_Result">
-    <Property Type="String" Name="TextMonth" Nullable="false" MaxLength="4000" />
-    <Property Type="Int32" Name="OfferCount" Nullable="false" />
-    <Property Type="String" Name="Year" Nullable="true" MaxLength="4" />
-    <Property Type="String" Name="NumberMonth" Nullable="true" MaxLength="4000" />
-  </ComplexType>
-  <ComplexType Name="GetOfferCountOfferTypeWise_Result">
-    <Property Type="String" Name="OfferListingName" Nullable="false" MaxLength="150" />
-    <Property Type="Int32" Name="OfferCount" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="GetOfferCountTownshipWise_Result">
-    <Property Type="String" Name="Name" Nullable="false" />
-    <Property Type="Int32" Name="OfferCount" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="GetOfferRedeemLocationDetail_Result">
-    <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OfferAssignmentBranch" Nullable="false" MaxLength="1" />
-    <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OfferType" Nullable="false" MaxLength="300" />
-    <Property Type="String" Name="OfferCode" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="BuyingProduct" Nullable="true" MaxLength="150" />
-    <Property Type="Int32" Name="BuyingQuantity" Nullable="false" />
-    <Property Type="Decimal" Name="FixedAmount" Nullable="true" Precision="19" />
-    <Property Type="Decimal" Name="FixedDiscountPercentage" Nullable="true" Precision="19" />
-    <Property Type="String" Name="PromotionProduct" Nullable="true" MaxLength="150" />
-    <Property Type="Int32" Name="PromotionQuantiy" Nullable="false" />
-    <Property Type="Int32" Name="PromotionAmount" Nullable="false" />
-    <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="ProductQtyUOM" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="FreeQtyUOM" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="OkAccountType" Nullable="false" MaxLength="1" />
-    <Property Type="String" Name="OkAccountNumber" Nullable="false" MaxLength="1" />
-    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-    <Property Type="Decimal" Name="Lattitude" Nullable="false" Precision="1" Scale="1" />
-    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="1" Scale="1" />
-    <Property Type="String" Name="LocationAddressMap" Nullable="false" MaxLength="1" />
-  </ComplexType>
-  <ComplexType Name="GetOfferReportDetail_Result">
-    <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OfferAssignmentBranch" Nullable="false" MaxLength="1" />
-    <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OfferType" Nullable="false" MaxLength="300" />
-    <Property Type="String" Name="OfferCode" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="BuyingProduct" Nullable="true" MaxLength="150" />
-    <Property Type="Int32" Name="BuyingQuantity" Nullable="false" />
-    <Property Type="Decimal" Name="MinimumAmount" Nullable="true" Precision="19" />
-    <Property Type="Decimal" Name="MaximumAmount" Nullable="true" Precision="19" />
-    <Property Type="Decimal" Name="FixedAmount" Nullable="true" Precision="19" />
-    <Property Type="Decimal" Name="FixedDiscountPercentage" Nullable="true" Precision="19" />
-    <Property Type="String" Name="PromotionProduct" Nullable="true" MaxLength="150" />
-    <Property Type="Int32" Name="PromotionQuantiy" Nullable="false" />
-    <Property Type="Int32" Name="PromotionAmount" Nullable="false" />
-    <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="ProductQtyUOM" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="FreeQtyUOM" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetOkDebitCreditCashback_Result">
-    <Property Type="String" Name="Division" Nullable="false" />
-    <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Township" Nullable="false" />
-    <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Branch" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="AdvanceMerchantNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CashbackSetting" Nullable="false" MaxLength="3" />
-    <Property Type="String" Name="OfferAutoLoad" Nullable="false" MaxLength="3" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="3" />
-    <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-    <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-    <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-    <Property Type="Int32" Name="CashbackOpeningAmount" Nullable="false" />
-    <Property Type="Int32" Name="TransferMainToCashbankAmount" Nullable="false" />
-    <Property Type="Double" Name="CashbackAmount" Nullable="true" />
-    <Property Type="Int32" Name="CashbackClosingAmount" Nullable="false" />
-    <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetOkDebitWalletNumber_Result">
-    <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Division" Nullable="false" />
-    <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Township" Nullable="false" />
-    <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Branch" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="AdvanceMerchantNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CashbackSetting" Nullable="false" MaxLength="3" />
-    <Property Type="String" Name="OfferAutoLoad" Nullable="false" MaxLength="3" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="3" />
-    <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-    <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-    <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-    <Property Type="Int32" Name="TotalAmount" Nullable="false" />
-    <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetOkDebitWalletNumberDetail_Result">
-    <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Division" Nullable="false" />
-    <Property Type="String" Name="District" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Township" Nullable="false" />
-    <Property Type="String" Name="City" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Branch" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="SafetyCashierCount" Nullable="false" />
-    <Property Type="String" Name="AdvanceMerchantNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CashbackSetting" Nullable="false" MaxLength="3" />
-    <Property Type="String" Name="OfferAutoLoad" Nullable="false" MaxLength="3" />
-    <Property Type="String" Name="Status" Nullable="false" MaxLength="3" />
-    <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-    <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-    <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-    <Property Type="Int32" Name="CashbackOpeningAmount" Nullable="false" />
-    <Property Type="Int32" Name="TransferMainToCashbankAmount" Nullable="false" />
-    <Property Type="Double" Name="CashbackAmount" Nullable="true" />
-    <Property Type="Int32" Name="CashbackClosingAmount" Nullable="false" />
-    <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetOkDebitWalletNumberSubDetail_Result">
-    <Property Type="Int64" Name="SrNo" Nullable="true" />
-    <Property Type="String" Name="OkDebitWalletNumber" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SenderMobileNumber" Nullable="false" MaxLength="11" />
-    <Property Type="String" Name="SenderDivision" Nullable="false" />
-    <Property Type="String" Name="SenderDistrict" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="SenderTownship" Nullable="false" />
-    <Property Type="String" Name="SenderCity" Nullable="false" MaxLength="150" />
-    <Property Type="Int32" Name="BeforeDiscountAmount" Nullable="false" />
-    <Property Type="Int32" Name="AfterDiscountAmount" Nullable="false" />
-    <Property Type="String" Name="SafetyCashierNumber" Nullable="true" MaxLength="50" />
-    <Property Type="Double" Name="AutoPayDiscount" Nullable="true" />
-    <Property Type="Double" Name="AutoPayFixed" Nullable="true" />
-    <Property Type="Double" Name="AutoPayRatio" Nullable="true" />
-    <Property Type="String" Name="OsType" Nullable="false" MaxLength="7" />
-    <Property Type="Decimal" Name="OsVersion" Nullable="false" Precision="3" Scale="1" />
-    <Property Type="Decimal" Name="OkVersion" Nullable="false" Precision="2" Scale="1" />
-    <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="6" Scale="5" />
-    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="6" Scale="5" />
-    <Property Type="String" Name="LocationAddress" Nullable="false" MaxLength="6" />
-    <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="23" />
-  </ComplexType>
-  <ComplexType Name="GetOverAmountNoDiscount_Result">
-    <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OfferAssignmentBranch" Nullable="false" MaxLength="1" />
-    <Property Type="String" Name="ProductGroup" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="OfferType" Nullable="false" MaxLength="300" />
-    <Property Type="String" Name="OfferCode" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="OfferName" Nullable="false" MaxLength="150" />
-    <Property Type="Int32" Name="PromotionAmount" Nullable="false" />
-    <Property Type="Int32" Name="NoDiscountAmount" Nullable="false" />
-    <Property Type="Int32" Name="TransactionAmount" Nullable="false" />
-    <Property Type="String" Name="OkAccountType" Nullable="false" MaxLength="1" />
-    <Property Type="String" Name="OkAccountNumber" Nullable="false" MaxLength="1" />
-    <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
-    <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="1" Scale="1" />
-    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="1" Scale="1" />
-    <Property Type="String" Name="LocationAddressMap" Nullable="false" MaxLength="1" />
-  </ComplexType>
-  <ComplexType Name="GetTodayTotalAutoPayDiscountCount_Result">
-    <Property Type="String" Name="DivisionName" Nullable="false" />
-    <Property Type="String" Name="TownshipName" Nullable="false" />
-    <Property Type="String" Name="CityName" Nullable="false" MaxLength="150" />
-    <Property Type="Int32" Name="TotalBranch" Nullable="true" />
-    <Property Type="Int32" Name="TotalTransactionCount" Nullable="true" />
-    <Property Type="Int32" Name="TotalAmount" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="GetTodayTotalOkDollarOfferRedeemCount_Result">
-    <Property Type="Int32" Name="TotalOfferRedeemCount" Nullable="true" />
-    <Property Type="Int32" Name="TotalAndroidVersionOfferRedeemCount" Nullable="true" />
-    <Property Type="Int32" Name="TotalIOSVersionOfferRedeemCount" Nullable="true" />
-    <Property Type="Int32" Name="TotalOfferBranch" Nullable="true" />
-    <Property Type="Int32" Name="TotalOfferAmountDiscount" Nullable="true" />
-    <Property Type="Int32" Name="TotalOfferTypeCount" Nullable="true" />
-    <Property Type="Int32" Name="TotalOfferTransactionCount" Nullable="true" />
-    <Property Type="Int32" Name="TotalPercentageBaseOfferCount" Nullable="false" />
-    <Property Type="Int32" Name="TotalAmountBaseOfferCount" Nullable="false" />
-    <Property Type="Int32" Name="TotalOkPersonalAccountOfferRedeemCount" Nullable="false" />
-    <Property Type="Int32" Name="TotalOkMerchantAccountOfferRedeemCount" Nullable="false" />
-    <Property Type="Int32" Name="TotalOkAdvanceMerchantAccountOfferRedeemCount" Nullable="false" />
-    <Property Type="Int32" Name="TotaOkAgentAccountOfferRedeemCount" Nullable="false" />
-  </ComplexType>
+  <EntityType Name="EcouponAllocationDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
+    <Property Name="BranchId" Type="Guid" Nullable="false" />
+    <Property Name="AllocationType" Type="Boolean" Nullable="false" />
+    <Property Name="AllocationQuantity" Type="Int64" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Double" />
+    <Property Name="ActivatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeactivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BranchDetail" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" FromRole="EcouponAllocationDetail" ToRole="BranchDetail" />
+    <NavigationProperty Name="EcouponMetadata" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" FromRole="EcouponAllocationDetail" ToRole="EcouponMetadata" />
+  </EntityType>
+  <Association Name="FK_EcouponAllocationDetails_BranchDetails">
+    <End Type="Ok.EcouponModel.BranchDetail" Role="BranchDetail" Multiplicity="1" />
+    <End Type="Ok.EcouponModel.EcouponAllocationDetail" Role="EcouponAllocationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponAllocationDetail">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EcouponAllocationDetails_EcouponMetadata">
+    <End Type="Ok.EcouponModel.EcouponMetadata" Role="EcouponMetadata" Multiplicity="1" />
+    <End Type="Ok.EcouponModel.EcouponAllocationDetail" Role="EcouponAllocationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EcouponMetadata">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponAllocationDetail">
+        <PropertyRef Name="EcouponMetadataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EcouponNumber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
+    <Property Name="EcouponAllocationId" Type="Guid" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="EcouponNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="EcouponMetadata" Relationship="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" FromRole="EcouponNumber" ToRole="EcouponMetadata" />
+  </EntityType>
+  <Association Name="FK_EcouponNumbers_EcouponMetadata">
+    <End Type="Ok.EcouponModel.EcouponMetadata" Role="EcouponMetadata" Multiplicity="1" />
+    <End Type="Ok.EcouponModel.EcouponNumber" Role="EcouponNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EcouponMetadata">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponNumber">
+        <PropertyRef Name="EcouponMetadataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

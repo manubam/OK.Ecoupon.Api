@@ -25,7 +25,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     Guid[] branchIdArrayList = branchIdList.ToArray();
 
@@ -85,7 +85,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyAndProductMappingSummarries.Where(x => x.IsActive == true
                                                                       && x.CompanyId == companyId &&
@@ -123,7 +123,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     foreach (var obj in productList)
                     {
@@ -157,7 +157,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     Guid[] productId = productIdList.ToArray();
 
@@ -213,7 +213,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var resMappingDetails =
                                    await
@@ -244,7 +244,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var resMappingDetails =
                                    await
@@ -282,7 +282,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     Guid[] productGroupArrayListId = productGroupListId.ToArray();
                     Guid[] productBrandArrayListId = productBrandListId.ToArray();
@@ -319,7 +319,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         //{
         //    try
         //    {
-        //        using (var dbContext = new OfferManagementEntities())
+        //        using (var dbContext = new OfferManagementEntities1())
         //        {
         //            var response =
         //                await dbContext.CompanyAndProductMappingSummarries.Where(x => x.IsActive == true).ToListAsync();
@@ -341,7 +341,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var resMappingDetails =
                                    await
@@ -409,7 +409,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var resMappingDetails =
                         await
@@ -483,7 +483,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyAndProductMappingSummarries.Where(x => x.CompanyId == companyId && x.BranchId == branchId && x.IsActive == true).FirstOrDefaultAsync();
 
@@ -519,7 +519,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyAndProductMappingSummarries.Where(x => x.CompanyId == companyId && x.IsActive == true).FirstOrDefaultAsync();
 
@@ -555,7 +555,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyAndProductMappingSummarries.Where(x => x.CompanyId == companyId && x.IsActive == true).FirstOrDefaultAsync();
 
@@ -590,7 +590,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyAndProductMappingSummarries.Where(x => x.CompanyId == companyId && x.IsActive == true).FirstOrDefaultAsync();
 
@@ -625,7 +625,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
         {
             try
             {
-                using (var dbContext = new OfferManagementEntities())
+                using (var dbContext = new OfferManagementEntities1())
                 {
                     var res = await dbContext.CompanyAndProductMappingSummarries.Where(x => x.CompanyId == companyId && x.IsActive == true).FirstOrDefaultAsync();
 

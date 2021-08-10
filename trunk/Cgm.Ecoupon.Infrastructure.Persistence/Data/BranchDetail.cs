@@ -23,6 +23,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
             this.OfferBlockBranchDetails = new HashSet<OfferBlockBranchDetail>();
             this.OfferConfigurations = new HashSet<OfferConfiguration>();
             this.OfferDisplayMappingDetails = new HashSet<OfferDisplayMappingDetail>();
+            this.EcouponAllocationDetails = new HashSet<EcouponAllocationDetail>();
         }
     
         public System.Guid Id { get; set; }
@@ -58,5 +59,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public virtual ICollection<OfferConfiguration> OfferConfigurations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OfferDisplayMappingDetail> OfferDisplayMappingDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EcouponAllocationDetail> EcouponAllocationDetails { get; set; }
     }
 }

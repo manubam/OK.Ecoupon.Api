@@ -52,6 +52,7 @@
     <Compile Include="CompanyAndProductMapping\ProductMappingModel.cs" />
     <Compile Include="CompanyDetails\CompanyDetailsModel.cs" />
     <Compile Include="CompanyDetails\OfferbackendNumberModel.cs" />
+    <Compile Include="Ecoupons\EcouponMetadataModel.cs" />
     <Compile Include="Product\ProductbrandDetails\ProductBrandDetailModel.cs" />
     <Compile Include="Product\ProductCategoryDetails\ProductCategoryDetailsModel.cs" />
     <Compile Include="Product\ProductDetails\ProductDetailsModel.cs" />

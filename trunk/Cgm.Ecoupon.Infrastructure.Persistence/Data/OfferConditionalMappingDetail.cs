@@ -35,6 +35,8 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<double> MinimumPayableAmount { get; set; }
+        public Nullable<double> MaximumPayableAmount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OfferConditiionalMappingBranchDetail> OfferConditiionalMappingBranchDetails { get; set; }
