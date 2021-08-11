@@ -48,7 +48,9 @@ namespace Cgm.Ecoupon.Application.Impl
                     MyNumber = random.Next(0, 999999);
                 randomList.Add(MyNumber);
             }
-            var ecouponCodes = randomList.Select(x => ecouponName.Substring(0, 2) + x.ToString().PadLeft(6, '0'))
+
+            var uniqueDateHash = Math.Abs(DateTime.Now.GetHashCode());
+            var ecouponCodes = randomList.Select(x => ecouponName.Substring(0, 2).ToUpper()+"-"+uniqueDateHash + x.ToString().PadLeft(6, '0'))
                         .ToList();
             return ecouponCodes;
         }
