@@ -36,7 +36,10 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Division> Divisions { get; set; }
+        public virtual DbSet<EcouponAllocationDetail> EcouponAllocationDetails { get; set; }
         public virtual DbSet<EcouponMetadata> EcouponMetadatas { get; set; }
+        public virtual DbSet<EcouponNumber> EcouponNumbers { get; set; }
+        public virtual DbSet<EcouponRedeemInfo> EcouponRedeemInfoes { get; set; }
         public virtual DbSet<MasterTransInfo> MasterTransInfoes { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<OfferApprovalSetup> OfferApprovalSetups { get; set; }
@@ -83,7 +86,5 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public virtual DbSet<UserOfferTypeDetail> UserOfferTypeDetails { get; set; }
         public virtual DbSet<UserProductGroupDetail> UserProductGroupDetails { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
-        public virtual DbSet<EcouponAllocationDetail> EcouponAllocationDetails { get; set; }
-        public virtual DbSet<EcouponNumber> EcouponNumbers { get; set; }
     }
 }

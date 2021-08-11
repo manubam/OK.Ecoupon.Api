@@ -29,6 +29,5 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public int IsActive { get; set; }
     
         public virtual BranchDetail BranchDetail { get; set; }
-        public virtual EcouponMetadata EcouponMetadata { get; set; }
     }
 }

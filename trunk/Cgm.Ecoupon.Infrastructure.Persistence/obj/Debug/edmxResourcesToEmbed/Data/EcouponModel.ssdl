@@ -205,6 +205,21 @@
     <Property Name="EcouponNo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="EcouponRedeemInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EcouponNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EcouponNumberId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Latitude" Type="float" />
+    <Property Name="Longitude" Type="float" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="Township" Type="nvarchar" MaxLength="100" />
+    <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="District" Type="nvarchar" MaxLength="100" />
+    <Property Name="Division" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="MasterTransInfo">
     <Key>
       <PropertyRef Name="Id" />
@@ -1220,15 +1235,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_EcouponAllocationDetails_EcouponMetadata">
+  <Association Name="FK_EcouponMetadata_EcouponMetadata">
     <End Role="EcouponMetadata" Type="Self.EcouponMetadata" Multiplicity="1" />
-    <End Role="EcouponAllocationDetails" Type="Self.EcouponAllocationDetails" Multiplicity="*" />
+    <End Role="EcouponMetadata1" Type="Self.EcouponMetadata" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="EcouponMetadata">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="EcouponAllocationDetails">
-        <PropertyRef Name="EcouponMetadataId" />
+      <Dependent Role="EcouponMetadata1">
+        <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1241,6 +1256,18 @@
       </Principal>
       <Dependent Role="EcouponNumbers">
         <PropertyRef Name="EcouponMetadataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EcouponRedeemInfo_EcouponNumbers">
+    <End Role="EcouponNumbers" Type="Self.EcouponNumbers" Multiplicity="1" />
+    <End Role="EcouponRedeemInfo" Type="Self.EcouponRedeemInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EcouponNumbers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponRedeemInfo">
+        <PropertyRef Name="EcouponNumberId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2159,6 +2186,7 @@
     <EntitySet Name="EcouponAllocationDetails" EntityType="Self.EcouponAllocationDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EcouponMetadata" EntityType="Self.EcouponMetadata" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EcouponNumbers" EntityType="Self.EcouponNumbers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EcouponRedeemInfo" EntityType="Self.EcouponRedeemInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MasterTransInfo" EntityType="Self.MasterTransInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OfferApprovalSetup" EntityType="Self.OfferApprovalSetup" Schema="dbo" store:Type="Tables" />
@@ -2269,13 +2297,17 @@
       <End Role="BranchDetails" EntitySet="BranchDetails" />
       <End Role="EcouponAllocationDetails" EntitySet="EcouponAllocationDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_EcouponAllocationDetails_EcouponMetadata" Association="Self.FK_EcouponAllocationDetails_EcouponMetadata">
+    <AssociationSet Name="FK_EcouponMetadata_EcouponMetadata" Association="Self.FK_EcouponMetadata_EcouponMetadata">
       <End Role="EcouponMetadata" EntitySet="EcouponMetadata" />
-      <End Role="EcouponAllocationDetails" EntitySet="EcouponAllocationDetails" />
+      <End Role="EcouponMetadata1" EntitySet="EcouponMetadata" />
     </AssociationSet>
     <AssociationSet Name="FK_EcouponNumbers_EcouponMetadata" Association="Self.FK_EcouponNumbers_EcouponMetadata">
       <End Role="EcouponMetadata" EntitySet="EcouponMetadata" />
       <End Role="EcouponNumbers" EntitySet="EcouponNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EcouponRedeemInfo_EcouponNumbers" Association="Self.FK_EcouponRedeemInfo_EcouponNumbers">
+      <End Role="EcouponNumbers" EntitySet="EcouponNumbers" />
+      <End Role="EcouponRedeemInfo" EntitySet="EcouponRedeemInfo" />
     </AssociationSet>
     <AssociationSet Name="FK_OfferApprovalSetup_CompanyDetails_Id" Association="Self.FK_OfferApprovalSetup_CompanyDetails_Id">
       <End Role="CompanyDetails" EntitySet="CompanyDetails" />

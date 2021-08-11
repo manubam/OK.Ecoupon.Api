@@ -17,7 +17,6 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EcouponMetadata()
         {
-            this.EcouponAllocationDetails = new HashSet<EcouponAllocationDetail>();
             this.EcouponNumbers = new HashSet<EcouponNumber>();
         }
     
@@ -34,8 +33,8 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EcouponAllocationDetail> EcouponAllocationDetails { get; set; }
+        public virtual EcouponMetadata EcouponMetadata1 { get; set; }
+        public virtual EcouponMetadata EcouponMetadata2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EcouponNumber> EcouponNumbers { get; set; }
     }

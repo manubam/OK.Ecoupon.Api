@@ -59,4 +59,17 @@ namespace Cgm.Ecoupon.Api.Models.Ecoupon.EcouponDetails
         public string UserId { get; set; }
         public bool Activate { get; set; }
     }
+
+
+    public class RedeemEcouponDto
+    {
+        public string EcouponNumber { get; set; }
+        public string AccountNumber { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Division { get; set; }
+        public string District { get; set; }
+        public string City { get; set; }
+        public string Township { get; set; }
+    }
 }

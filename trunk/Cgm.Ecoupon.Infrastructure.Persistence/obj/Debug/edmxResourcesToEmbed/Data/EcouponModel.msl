@@ -171,6 +171,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EcouponAllocationDetails">
+      <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponAllocationDetail">
+        <MappingFragment StoreEntitySet="EcouponAllocationDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EcouponMetadataId" ColumnName="EcouponMetadataId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="AllocationType" ColumnName="AllocationType" />
+          <ScalarProperty Name="AllocationQuantity" ColumnName="AllocationQuantity" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="ActivatedDate" ColumnName="ActivatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DeactivatedDate" ColumnName="DeactivatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ActivatedBy" ColumnName="ActivatedBy" />
+          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="EcouponMetadatas">
       <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponMetadata">
         <MappingFragment StoreEntitySet="EcouponMetadata">
@@ -186,6 +205,34 @@
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EcouponNumbers">
+      <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponNumber">
+        <MappingFragment StoreEntitySet="EcouponNumbers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EcouponMetadataId" ColumnName="EcouponMetadataId" />
+          <ScalarProperty Name="EcouponAllocationId" ColumnName="EcouponAllocationId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="EcouponNo" ColumnName="EcouponNo" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EcouponRedeemInfoes">
+      <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponRedeemInfo">
+        <MappingFragment StoreEntitySet="EcouponRedeemInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EcouponNo" ColumnName="EcouponNo" />
+          <ScalarProperty Name="EcouponNumberId" ColumnName="EcouponNumberId" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1055,37 +1102,6 @@
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EcouponAllocationDetails">
-      <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponAllocationDetail">
-        <MappingFragment StoreEntitySet="EcouponAllocationDetails">
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="DeactivatedBy" ColumnName="DeactivatedBy" />
-          <ScalarProperty Name="ActivatedBy" ColumnName="ActivatedBy" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="DeactivatedDate" ColumnName="DeactivatedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="ActivatedDate" ColumnName="ActivatedDate" />
-          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
-          <ScalarProperty Name="AllocationQuantity" ColumnName="AllocationQuantity" />
-          <ScalarProperty Name="AllocationType" ColumnName="AllocationType" />
-          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
-          <ScalarProperty Name="EcouponMetadataId" ColumnName="EcouponMetadataId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EcouponNumbers">
-      <EntityTypeMapping TypeName="Ok.EcouponModel.EcouponNumber">
-        <MappingFragment StoreEntitySet="EcouponNumbers">
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="EcouponNo" ColumnName="EcouponNo" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="EcouponAllocationId" ColumnName="EcouponAllocationId" />
-          <ScalarProperty Name="EcouponMetadataId" ColumnName="EcouponMetadataId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

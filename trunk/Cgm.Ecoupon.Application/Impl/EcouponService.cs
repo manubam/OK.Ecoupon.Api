@@ -1,4 +1,5 @@
-﻿using Cgm.Ecoupon.Infrastructure.Persistence;
+﻿using Cgm.Ecoupon.Domain.Ecoupons;
+using Cgm.Ecoupon.Infrastructure.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ namespace Cgm.Ecoupon.Application.Impl
                     MyNumber = random.Next(0, 999999);
                 randomList.Add(MyNumber);
             }
-            var ecouponCodes = randomList.Select(x => ecouponName.Substring(0,2) + batchNo.Substring(0,2)+x)
+            var ecouponCodes = randomList.Select(x => ecouponName.Substring(0, 2) + x.ToString().PadLeft(6, '0'))
                         .ToList();
             return ecouponCodes;
         }
@@ -60,7 +61,7 @@ namespace Cgm.Ecoupon.Application.Impl
                 return false;
             }
             //true is for company branch and false for location based
-            var EcouponAllocationId = Guid.NewGuid();
+            
             if (allocationType)
             {
                 var company = await _companyDetailsRepository.GetCompanyDetailsByName(companyName);
@@ -69,16 +70,24 @@ namespace Cgm.Ecoupon.Application.Impl
                     var branch = await _branchRepository.GetBranchByCompanyId(company.Id, branchName);
                     if (branch != null)
                     {
+                        var EcouponAllocationId = Guid.NewGuid();
                         var response = await _ecouponRepository.AllocateEcoupons(EcouponAllocationId,ecouponData.Id, branch.BranchId, allocationType, allocatedQuantity, userId);
                         return response;
                     }
                 }
-                
-                // get the branch id
             }else
             {
-                return false;
-                // get the location related details
+                var branchList = await _branchRepository.GetBranchByLocation(division, district, city, township);
+                foreach (var item in branchList)
+                {
+                    var EcouponAllocationId = Guid.NewGuid();
+                    var response = await _ecouponRepository.AllocateEcoupons(EcouponAllocationId, ecouponData.Id, item, allocationType, allocatedQuantity, userId);
+                    if(response == false)
+                    {
+                        return response;
+                    }
+                }
+                return true;
             }
             return false;
         }
@@ -104,20 +113,32 @@ namespace Cgm.Ecoupon.Application.Impl
             var response = await _ecouponRepository.ActivateCoupons(AllocationIds,couponDiscount, activate, userId);
             return response;
         }
-
         private async Task<List<Guid>> GetAllocationIdsByBatchNo(string batchNo)
         {
             return await _ecouponRepository.GetAllocationIdsByBatchNo(batchNo);
         }
 
-        private Task<List<Guid>> GetAllocationIdsByLocation(string division, string district, string city, string township)
+        private async Task<List<Guid>> GetAllocationIdsByLocation(string division, string district, string city, string township)
         {
-            throw new NotImplementedException();
+            var branchId = await _branchRepository.GetBranchByLocation(division, district,city,township);
+            return await _ecouponRepository.GetAllocationIdsByBranch(branchId);
         }
 
         private async Task<List<Guid>> GetAllocationIdsByBranch(string companyName, string branchName)
         {
-            throw new NotImplementedException();
+            var branchId = await _branchRepository.GetBranchByCompanyName(companyName, branchName);
+            return await _ecouponRepository.GetAllocationIdsByBranch(branchId);
+        }
+
+        public async Task<bool> RedeemEcoupons(string accountNumber, string ecouponNumber, double latitude, double longitude, string division, string district, string city, string township)
+        {
+            bool validateEcoupon = await _ecouponRepository.validateEcoupon(ecouponNumber, accountNumber,latitude, longitude,division,district,township,city);
+            return validateEcoupon;
+        }
+
+        public async Task<Tuple<int, string, List<EcouponNumberModel>>> GetRedeemedEcoupons(string ecouponName, string batchNo, int offset, int limit)
+        {
+            return await _ecouponRepository.GetRedeemedEcoupons(ecouponName, batchNo,offset, limit);
         }
     }
 }

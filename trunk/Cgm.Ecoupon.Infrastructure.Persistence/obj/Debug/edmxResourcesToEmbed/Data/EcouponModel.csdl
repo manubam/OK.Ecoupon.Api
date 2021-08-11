@@ -41,11 +41,11 @@
     <NavigationProperty Name="TownShip" Relationship="Self.FK_BranchDetails_TownShip_Id" FromRole="BranchDetails" ToRole="TownShip" />
     <NavigationProperty Name="BranchMobileNumberDetails" Relationship="Self.FK_BranchMobileNumberDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="BranchMobileNumberDetails" />
     <NavigationProperty Name="CompanyAndProductMappingSummarries" Relationship="Self.FK_CompanyAndProductMappingSummarry_BranchDetails_Id" FromRole="BranchDetails" ToRole="CompanyAndProductMappingSummarry" />
+    <NavigationProperty Name="EcouponAllocationDetails" Relationship="Self.FK_EcouponAllocationDetails_BranchDetails" FromRole="BranchDetails" ToRole="EcouponAllocationDetails" />
     <NavigationProperty Name="OfferAutoPayDiscountDetails" Relationship="Self.FK_OfferAutoPayDiscountDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferAutoPayDiscountDetails" />
     <NavigationProperty Name="OfferBlockBranchDetails" Relationship="Self.FK_OfferBlockBranchDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferBlockBranchDetails" />
     <NavigationProperty Name="OfferConfigurations" Relationship="Self.FK_OfferConfiguration_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferConfiguration" />
     <NavigationProperty Name="OfferDisplayMappingDetails" Relationship="Self.FK_OfferDisplayMappingDetails_BranchDetails_Id" FromRole="BranchDetails" ToRole="OfferDisplayMappingDetails" />
-    <NavigationProperty Name="EcouponAllocationDetails" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" FromRole="BranchDetail" ToRole="EcouponAllocationDetail" />
   </EntityType>
   <EntityType Name="BranchMobileNumberDetail">
     <Key>
@@ -209,6 +209,25 @@
     <NavigationProperty Name="OfferDisplayLocationDetails" Relationship="Self.FK_OfferDisplayLocationDetails_Division_Id" FromRole="Division" ToRole="OfferDisplayLocationDetails" />
     <NavigationProperty Name="TownShips" Relationship="Self.FK_TownShip_Division_Id" FromRole="Division" ToRole="TownShip" />
   </EntityType>
+  <EntityType Name="EcouponAllocationDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
+    <Property Name="BranchId" Type="Guid" Nullable="false" />
+    <Property Name="AllocationType" Type="Boolean" Nullable="false" />
+    <Property Name="AllocationQuantity" Type="Int64" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Double" />
+    <Property Name="ActivatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeactivatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ActivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeactivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BranchDetail" Relationship="Self.FK_EcouponAllocationDetails_BranchDetails" FromRole="EcouponAllocationDetails" ToRole="BranchDetails" />
+  </EntityType>
   <EntityType Name="EcouponMetadata">
     <Key>
       <PropertyRef Name="Id" />
@@ -225,8 +244,38 @@
     <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="EcouponAllocationDetails" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" FromRole="EcouponMetadata" ToRole="EcouponAllocationDetail" />
+    <NavigationProperty Name="EcouponMetadata1" Relationship="Ok.EcouponModel.FK_EcouponMetadata_EcouponMetadata" FromRole="EcouponMetadata" ToRole="EcouponMetadata1" />
+    <NavigationProperty Name="EcouponMetadata2" Relationship="Ok.EcouponModel.FK_EcouponMetadata_EcouponMetadata" FromRole="EcouponMetadata1" ToRole="EcouponMetadata" />
     <NavigationProperty Name="EcouponNumbers" Relationship="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" FromRole="EcouponMetadata" ToRole="EcouponNumber" />
+  </EntityType>
+  <EntityType Name="EcouponNumber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
+    <Property Name="EcouponAllocationId" Type="Guid" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="EcouponNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="EcouponRedeemInfoes" Relationship="Self.FK_EcouponRedeemInfo_EcouponNumbers" FromRole="EcouponNumbers" ToRole="EcouponRedeemInfo" />
+    <NavigationProperty Name="EcouponMetadata" Relationship="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" FromRole="EcouponNumber" ToRole="EcouponMetadata" />
+  </EntityType>
+  <EntityType Name="EcouponRedeemInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="EcouponNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EcouponNumberId" Type="Guid" Nullable="false" />
+    <Property Name="Latitude" Type="Double" />
+    <Property Name="Longitude" Type="Double" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Township" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="District" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Division" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EcouponNumber" Relationship="Self.FK_EcouponRedeemInfo_EcouponNumbers" FromRole="EcouponRedeemInfo" ToRole="EcouponNumbers" />
   </EntityType>
   <EntityType Name="MasterTransInfo">
     <Key>
@@ -1278,6 +1327,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_EcouponAllocationDetails_BranchDetails">
+    <End Role="BranchDetails" Type="Self.BranchDetail" Multiplicity="1" />
+    <End Role="EcouponAllocationDetails" Type="Self.EcouponAllocationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponAllocationDetails">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_OfferAutoPayDiscountDetails_BranchDetails_Id">
     <End Role="BranchDetails" Type="Self.BranchDetail" Multiplicity="0..1" />
     <End Role="OfferAutoPayDiscountDetails" Type="Self.OfferAutoPayDiscountDetail" Multiplicity="*" />
@@ -1683,6 +1744,18 @@
       </Principal>
       <Dependent Role="TownShip">
         <PropertyRef Name="DivisionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EcouponRedeemInfo_EcouponNumbers">
+    <End Role="EcouponNumbers" Type="Self.EcouponNumber" Multiplicity="1" />
+    <End Role="EcouponRedeemInfo" Type="Self.EcouponRedeemInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EcouponNumbers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EcouponRedeemInfo">
+        <PropertyRef Name="EcouponNumberId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2274,7 +2347,10 @@
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Districts" EntityType="Self.District" />
     <EntitySet Name="Divisions" EntityType="Self.Division" />
+    <EntitySet Name="EcouponAllocationDetails" EntityType="Self.EcouponAllocationDetail" />
     <EntitySet Name="EcouponMetadatas" EntityType="Self.EcouponMetadata" />
+    <EntitySet Name="EcouponNumbers" EntityType="Self.EcouponNumber" />
+    <EntitySet Name="EcouponRedeemInfoes" EntityType="Self.EcouponRedeemInfo" />
     <EntitySet Name="MasterTransInfoes" EntityType="Self.MasterTransInfo" />
     <EntitySet Name="Menus" EntityType="Self.Menu" />
     <EntitySet Name="OfferApprovalSetups" EntityType="Self.OfferApprovalSetup" />
@@ -2352,6 +2428,10 @@
     <AssociationSet Name="FK_CompanyAndProductMappingSummarry_BranchDetails_Id" Association="Self.FK_CompanyAndProductMappingSummarry_BranchDetails_Id">
       <End Role="BranchDetails" EntitySet="BranchDetails" />
       <End Role="CompanyAndProductMappingSummarry" EntitySet="CompanyAndProductMappingSummarries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EcouponAllocationDetails_BranchDetails" Association="Self.FK_EcouponAllocationDetails_BranchDetails">
+      <End Role="BranchDetails" EntitySet="BranchDetails" />
+      <End Role="EcouponAllocationDetails" EntitySet="EcouponAllocationDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_OfferAutoPayDiscountDetails_BranchDetails_Id" Association="Self.FK_OfferAutoPayDiscountDetails_BranchDetails_Id">
       <End Role="BranchDetails" EntitySet="BranchDetails" />
@@ -2488,6 +2568,10 @@
     <AssociationSet Name="FK_TownShip_Division_Id" Association="Self.FK_TownShip_Division_Id">
       <End Role="Division" EntitySet="Divisions" />
       <End Role="TownShip" EntitySet="TownShips" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EcouponRedeemInfo_EcouponNumbers" Association="Self.FK_EcouponRedeemInfo_EcouponNumbers">
+      <End Role="EcouponNumbers" EntitySet="EcouponNumbers" />
+      <End Role="EcouponRedeemInfo" EntitySet="EcouponRedeemInfoes" />
     </AssociationSet>
     <AssociationSet Name="FK_UserAccessRights_Menu_Id" Association="Self.FK_UserAccessRights_Menu_Id">
       <End Role="Menu" EntitySet="Menus" />
@@ -2681,77 +2765,27 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UserProductGroupDetails" EntitySet="UserProductGroupDetails" />
     </AssociationSet>
-    <EntitySet Name="EcouponAllocationDetails" EntityType="Ok.EcouponModel.EcouponAllocationDetail" />
-    <AssociationSet Name="FK_EcouponAllocationDetails_BranchDetails" Association="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails">
-      <End Role="BranchDetail" EntitySet="BranchDetails" />
-      <End Role="EcouponAllocationDetail" EntitySet="EcouponAllocationDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_EcouponAllocationDetails_EcouponMetadata" Association="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata">
+    <AssociationSet Name="FK_EcouponMetadata_EcouponMetadata" Association="Ok.EcouponModel.FK_EcouponMetadata_EcouponMetadata">
       <End Role="EcouponMetadata" EntitySet="EcouponMetadatas" />
-      <End Role="EcouponAllocationDetail" EntitySet="EcouponAllocationDetails" />
+      <End Role="EcouponMetadata1" EntitySet="EcouponMetadatas" />
     </AssociationSet>
-    <EntitySet Name="EcouponNumbers" EntityType="Ok.EcouponModel.EcouponNumber" />
     <AssociationSet Name="FK_EcouponNumbers_EcouponMetadata" Association="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata">
       <End Role="EcouponMetadata" EntitySet="EcouponMetadatas" />
       <End Role="EcouponNumber" EntitySet="EcouponNumbers" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="EcouponAllocationDetail">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Guid" Nullable="false" />
-    <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
-    <Property Name="BranchId" Type="Guid" Nullable="false" />
-    <Property Name="AllocationType" Type="Boolean" Nullable="false" />
-    <Property Name="AllocationQuantity" Type="Int64" Nullable="false" />
-    <Property Name="DiscountPercentage" Type="Double" />
-    <Property Name="ActivatedDate" Type="DateTime" Precision="3" />
-    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-    <Property Name="DeactivatedDate" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ActivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DeactivatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="BranchDetail" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" FromRole="EcouponAllocationDetail" ToRole="BranchDetail" />
-    <NavigationProperty Name="EcouponMetadata" Relationship="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" FromRole="EcouponAllocationDetail" ToRole="EcouponMetadata" />
-  </EntityType>
-  <Association Name="FK_EcouponAllocationDetails_BranchDetails">
-    <End Type="Ok.EcouponModel.BranchDetail" Role="BranchDetail" Multiplicity="1" />
-    <End Type="Ok.EcouponModel.EcouponAllocationDetail" Role="EcouponAllocationDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BranchDetail">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="EcouponAllocationDetail">
-        <PropertyRef Name="BranchId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_EcouponAllocationDetails_EcouponMetadata">
+  <Association Name="FK_EcouponMetadata_EcouponMetadata">
     <End Type="Ok.EcouponModel.EcouponMetadata" Role="EcouponMetadata" Multiplicity="1" />
-    <End Type="Ok.EcouponModel.EcouponAllocationDetail" Role="EcouponAllocationDetail" Multiplicity="*" />
+    <End Type="Ok.EcouponModel.EcouponMetadata" Role="EcouponMetadata1" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="EcouponMetadata">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="EcouponAllocationDetail">
-        <PropertyRef Name="EcouponMetadataId" />
+      <Dependent Role="EcouponMetadata1">
+        <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="EcouponNumber">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Guid" Nullable="false" />
-    <Property Name="EcouponMetadataId" Type="Guid" Nullable="false" />
-    <Property Name="EcouponAllocationId" Type="Guid" />
-    <Property Name="status" Type="Int32" Nullable="false" />
-    <Property Name="EcouponNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="EcouponMetadata" Relationship="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" FromRole="EcouponNumber" ToRole="EcouponMetadata" />
-  </EntityType>
   <Association Name="FK_EcouponNumbers_EcouponMetadata">
     <End Type="Ok.EcouponModel.EcouponMetadata" Role="EcouponMetadata" Multiplicity="1" />
     <End Type="Ok.EcouponModel.EcouponNumber" Role="EcouponNumber" Multiplicity="*" />

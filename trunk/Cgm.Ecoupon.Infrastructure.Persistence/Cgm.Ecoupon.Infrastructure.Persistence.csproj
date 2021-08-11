@@ -112,6 +112,9 @@
     <Compile Include="Data\EcouponNumber.cs">
       <DependentUpon>EcouponModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\EcouponRedeemInfo.cs">
+      <DependentUpon>EcouponModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\MasterTransInfo.cs">
       <DependentUpon>EcouponModel.tt</DependentUpon>
     </Compile>
@@ -287,6 +290,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Data\EcouponModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EcouponModel.edmx</DependentUpon>
@@ -297,9 +303,6 @@
       <DependentUpon>EcouponModel.edmx</DependentUpon>
       <LastGenOutput>EcouponModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

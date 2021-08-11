@@ -39,5 +39,7 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence
 
         Task<Tuple<int, string, List<BranchModel>>> GatBranchByOfferCode(Guid offerid);
         Task<BranchModel> GetBranchByCompanyId(Guid companyId, string branchName);
+        Task<List<Guid>> GetBranchByCompanyName(string companyName, string branchName);
+        Task<List<Guid>> GetBranchByLocation(string division, string district, string city, string township);
     }
 }

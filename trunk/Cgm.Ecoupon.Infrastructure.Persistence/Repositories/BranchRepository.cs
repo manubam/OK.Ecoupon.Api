@@ -836,5 +836,42 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
                 return null;
             }
         }
+
+
+        public async Task<List<Guid>> GetBranchByCompanyName(string companyName, string branchName)
+        {
+            try
+            {
+                using (var dbContext = new OfferManagementEntities1())
+                {
+                    var response = await dbContext.BranchDetails.Include(x => x.CompanyDetail).Where(x => x.CompanyDetail.CompanyName == companyName && x.BranchName == branchName && x.IsActive).Select(x=>x.Id).ToListAsync();
+                    return response;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("GetBranchByCompanyName :: 500 :: " + ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<Guid>> GetBranchByLocation(string division, string district, string city, string township)
+        {
+            try
+            {
+                using (var dbContext = new OfferManagementEntities1())
+                {
+                    var response = await dbContext.BranchDetails.Include(x=>x.District).Include(x=>x.Division).Include(x=>x.TownShip).Include(x=>x.City).Where(x => x.IsActive && x.Division.Name == division 
+                                        && x.District.Name == district && x.TownShip.Name == township && x.City.Name == city).Select(x=>x.Id).ToListAsync();
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("GetEcouponDetailsByName :: 500 :: " + ex.Message);
+                return null;
+            }
+        }
     }
 }

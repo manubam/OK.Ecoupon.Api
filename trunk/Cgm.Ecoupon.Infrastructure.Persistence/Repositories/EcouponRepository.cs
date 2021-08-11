@@ -151,6 +151,10 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
 
                     //0 - created, 1- allocated ,2 -activated , 3 - redeemed ,-1 - deactivated
                     var EcouponNumbers = await dbContext.EcouponNumbers.Where(x => x.EcouponMetadataId == ecouponMetadataId && x.status == 0).OrderBy(r => Guid.NewGuid()).Take((int)allocatedQuantity).ToListAsync();//.Select(c=> { c.EcouponAllocationId = AllocationId;c.status = 1; return c; });
+                    if(EcouponNumbers.Count < allocatedQuantity)
+                    {
+                        return false;
+                    }
                     foreach(var item in EcouponNumbers)
                     {
                         item.status = 1;
@@ -175,6 +179,23 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
                 {
                     var ecouponMetadatas = await dbContext.EcouponMetadatas.Where(x => x.IsActive && x.BatchNo == batchNo).Select(x=>x.Id).ToListAsync();
                     var response = await dbContext.EcouponAllocationDetails.Where(x => ecouponMetadatas.Contains(x.EcouponMetadataId) && x.IsActive==1).Select(x=>x.Id).ToListAsync();
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("GetEcouponDetailsByName :: 500 :: " + ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<Guid>> GetAllocationIdsByBranch(List<Guid> branchId)
+        {
+            try
+            {
+                using (var dbContext = new OfferManagementEntities1())
+                {
+                    var response = await dbContext.EcouponAllocationDetails.Where(x => x.IsActive == 1 && branchId.Contains(x.BranchId)).Select(x => x.Id).ToListAsync();
                     return response;
                 }
             }
@@ -215,6 +236,77 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Repositories
             }
         }
 
+        public async Task<Tuple<int, string,List<EcouponNumberModel>>> GetRedeemedEcoupons(string ecouponName, string batchNo, int offset, int limit)
+        {
+            try
+            {
+                var ecouponList = new List<EcouponNumberModel>();
+                using (var dbContext = new OfferManagementEntities1())
+                {
+                    var response = await dbContext.EcouponNumbers.Include(x => x.EcouponMetadata).Where(x => x.EcouponMetadata.Name == ecouponName && x.EcouponMetadata.BatchNo == batchNo).OrderBy(x => x.CreatedDate).Skip(offset).Take(limit).ToListAsync();
+                    foreach(var item in response)
+                    {
+                        var ecouponRedeemedNumber = new EcouponNumberModel()
+                        {
+                            Id = item.Id,
+                            EcouponMetadataId = item.EcouponMetadataId,
+                            EcouponAllocationId = item.EcouponAllocationId,
+                            status = item.status,
+                            EcouponNo = item.EcouponNo,
+                            CreatedDate = item.CreatedDate
+                        };
+                        ecouponList.Add(ecouponRedeemedNumber);
+                    }
+                    return new Tuple<int, string, List<EcouponNumberModel>>(200, "Success", ecouponList);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("GetRedeemedEcoupons :: 500 :: " + ex.Message);
+                return new Tuple<int, string, List<EcouponNumberModel>>(500, "System Error Contact Admin",null);
+            }
+        }
 
+        public async Task<bool> validateEcoupon(string ecouponNumber, string accountNumber, double latitude, double longitude, string division, string district, string township, string city)
+        {
+            try
+            {
+                using (var dbContext = new OfferManagementEntities1())
+                {
+                    var response = await dbContext.EcouponNumbers.Include(x => x.EcouponMetadata).FirstOrDefaultAsync(x => x.EcouponNo == ecouponNumber && x.status == 2 
+                                                                   && x.EcouponAllocationId != null && x.EcouponMetadata.IsActive == true && 
+                                                                   DateTime.Now > x.EcouponMetadata.StartDate && DateTime.Now < x.EcouponMetadata.EndDate);
+                    if (response != null)
+                    {
+
+                        response.status = 3; 
+
+                        var lModel = new EcouponRedeemInfo()
+                        {
+                            Id = Guid.NewGuid(),
+                            EcouponNo = ecouponNumber,
+                            EcouponNumberId = response.Id,
+                            Latitude = latitude,
+                            Longitude = longitude,
+                            City = city,
+                            Township = township,
+                            Division = division,
+                            District = district,
+                            AccountNumber = accountNumber
+                        };
+                        dbContext.EcouponRedeemInfoes.Add(lModel);
+                        await dbContext.SaveChangesAsync();
+                        return true;
+                    } 
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("RedeemEcoupon :: 500 :: " + ex.Message);
+                return false;
+            }
+        }
     }
 }

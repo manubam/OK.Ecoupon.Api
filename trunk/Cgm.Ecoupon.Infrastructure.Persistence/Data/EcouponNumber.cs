@@ -14,6 +14,12 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
     
     public partial class EcouponNumber
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EcouponNumber()
+        {
+            this.EcouponRedeemInfoes = new HashSet<EcouponRedeemInfo>();
+        }
+    
         public System.Guid Id { get; set; }
         public System.Guid EcouponMetadataId { get; set; }
         public Nullable<System.Guid> EcouponAllocationId { get; set; }
@@ -21,6 +27,8 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public string EcouponNo { get; set; }
         public System.DateTime CreatedDate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EcouponRedeemInfo> EcouponRedeemInfoes { get; set; }
         public virtual EcouponMetadata EcouponMetadata { get; set; }
     }
 }

@@ -3,10 +3,6 @@ using Cgm.Ecoupon.Api.Response;
 using Cgm.Ecoupon.Application;
 using log4net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -167,7 +163,7 @@ namespace Cgm.Ecoupon.Api.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error("AllocateEcoupon :: 500 :: " + ex.Message);
+                Log.Error("ActivateEcoupon :: 500 :: " + ex.Message);
                 var response = new CommonResponseModel<object>()
                 {
                     Code = 500,
@@ -176,5 +172,87 @@ namespace Cgm.Ecoupon.Api.Controllers
                 return Ok(response);
             }
         }
+
+        [HttpPost]
+        [Route(Constants.Routes.Paths.RedeemEcoupons)]
+        public async Task<IHttpActionResult> RedeemEcoupons([FromBody] RedeemEcouponDto lModel)
+        {
+            try
+            {
+                //throw new NotImplementedException();
+                if (lModel == null)
+                {
+                    var response = new CommonResponseModel<object>()
+                    {
+                        Code = 300,
+                        Message = "Invalid Input"
+                    };
+                    return Ok(response);
+                }
+                var res =
+                    await
+                        _ecouponService.RedeemEcoupons(lModel.AccountNumber,lModel.EcouponNumber,lModel.Latitude,lModel.Longitude,lModel.Division,lModel.District
+                        ,lModel.City,lModel.Township);
+                if (res)
+                {
+                    var response = new CommonResponseModel<object>()
+                    {
+                        Code = 200,
+                        Message = "Success"
+                    };
+                    return Ok(response);
+                }
+                else
+                {
+                    var response = new CommonResponseModel<object>()
+                    {
+                        Code = 300,
+                        Message = "Data not saved, please contact admin"
+                    };
+                    return Ok(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("RedeemEcoupon :: 500 :: " + ex.Message);
+                var response = new CommonResponseModel<object>()
+                {
+                    Code = 500,
+                    Message = "system error, please contact admin",
+                };
+                return Ok(response);
+            }
+        }
+
+        [HttpGet]
+        [Route(Constants.Routes.Paths.GetRedeemedEcoupons)]
+        public async Task<IHttpActionResult> GetRedeemedEcoupons(string ecouponName, string batchNo, int offset, int limit)
+        {
+            try
+            {
+                var res =
+                    await
+                        _ecouponService.GetRedeemedEcoupons(ecouponName, batchNo,offset,limit);
+
+                return Ok(new CommonResponseModel<object>()
+                {
+                    Code = res.Item1,
+                    Message = res.Item2,
+                    Data = res.Item3
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("GetRedeemedCoupons :: 500 :: " + ex.Message);
+                var response = new CommonResponseModel<object>()
+                {
+                    Code = 500,
+                    Message = "system error, please contact admin",
+                };
+                return Ok(response);
+            }
+        }
+
     }
 }

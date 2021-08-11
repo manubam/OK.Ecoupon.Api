@@ -19,11 +19,11 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         {
             this.BranchMobileNumberDetails = new HashSet<BranchMobileNumberDetail>();
             this.CompanyAndProductMappingSummarries = new HashSet<CompanyAndProductMappingSummarry>();
+            this.EcouponAllocationDetails = new HashSet<EcouponAllocationDetail>();
             this.OfferAutoPayDiscountDetails = new HashSet<OfferAutoPayDiscountDetail>();
             this.OfferBlockBranchDetails = new HashSet<OfferBlockBranchDetail>();
             this.OfferConfigurations = new HashSet<OfferConfiguration>();
             this.OfferDisplayMappingDetails = new HashSet<OfferDisplayMappingDetail>();
-            this.EcouponAllocationDetails = new HashSet<EcouponAllocationDetail>();
         }
     
         public System.Guid Id { get; set; }
@@ -52,6 +52,8 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompanyAndProductMappingSummarry> CompanyAndProductMappingSummarries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EcouponAllocationDetail> EcouponAllocationDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OfferAutoPayDiscountDetail> OfferAutoPayDiscountDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OfferBlockBranchDetail> OfferBlockBranchDetails { get; set; }
@@ -59,7 +61,5 @@ namespace Cgm.Ecoupon.Infrastructure.Persistence.Data
         public virtual ICollection<OfferConfiguration> OfferConfigurations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OfferDisplayMappingDetail> OfferDisplayMappingDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EcouponAllocationDetail> EcouponAllocationDetails { get; set; }
     }
 }

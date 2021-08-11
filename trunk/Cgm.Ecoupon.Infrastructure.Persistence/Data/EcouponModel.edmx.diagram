@@ -4,65 +4,68 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2a8f8387a1614e8b91ad12a434986f61" Name="Diagram1">
-        <EntityTypeShape EntityType="Ok.EcouponModel.ApprovalRequestDetail" Width="1.5" PointX="6" PointY="65" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.BranchDetail" Width="1.5" PointX="3" PointY="51.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.BranchMobileNumberDetail" Width="1.5" PointX="5.25" PointY="42.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.ChildTransInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.City" Width="1.5" PointX="0.75" PointY="46.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyAndProductMappingDetail" Width="1.5" PointX="9" PointY="77.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyAndProductMappingSummarry" Width="1.5" PointX="8.25" PointY="59.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="51.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.Customer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.District" Width="1.5" PointX="0.75" PointY="58.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.Division" Width="1.5" PointX="1.5" PointY="34" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponMetadata" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.MasterTransInfo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.Menu" Width="1.5" PointX="9" PointY="70.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferApprovalSetup" Width="1.5" PointX="6" PointY="52.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferAutoPayDiscountDetail" Width="1.5" PointX="16.25" PointY="60.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBackendNumber" Width="1.5" PointX="3" PointY="63.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockBranchDetail" Width="1.5" PointX="14.25" PointY="48.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockCustomerDetail" Width="1.5" PointX="8.25" PointY="45.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockDetail" Width="1.5" PointX="6" PointY="46.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditiionalMappingBranchDetail" Width="1.5" PointX="13.5" PointY="43.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingCustomerDetail" Width="1.5" PointX="13.5" PointY="39.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingDetail" Width="1.5" PointX="11.25" PointY="43.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingLocationDetail" Width="1.5" PointX="16.5" PointY="43.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConfiguration" Width="1.5" PointX="8.25" PointY="64.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConfigurationMobileNumberDetail" Width="1.5" PointX="7.5" PointY="40.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDetail" Width="1.5" PointX="9" PointY="49.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDetailsHistory" Width="1.5" PointX="11.25" PointY="48.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayAppVersionDetail" Width="1.5" PointX="13.5" PointY="56.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayAppVersionDetailsHistory" Width="1.5" PointX="15.75" PointY="56.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayDetail" Width="1.5" PointX="11.25" PointY="57.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayDetailsHistory" Width="1.5" PointX="13.5" PointY="60.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayLocationDetail" Width="1.5" PointX="18.5" PointY="58.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayLocationDetailsHistory" Width="1.5" PointX="20.75" PointY="58.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayMappingDetail" Width="1.5" PointX="16.5" PointY="49" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayMappingDetailsHistory" Width="1.5" PointX="18.75" PointY="43.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayTelcoDetail" Width="1.5" PointX="18.5" PointY="54.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferListingType" Width="1.5" PointX="6.75" PointY="36.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferOsDetail" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeConfiguration" Width="1.5" PointX="19.25" PointY="47.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeConfigurationHistory" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeType" Width="1.5" PointX="17" PointY="39" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTermsAndCondition" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTermsAndConditionHistory" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTransactionType" Width="1.5" PointX="3.75" PointY="46.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.OfferType" Width="1.5" PointX="6.75" PointY="32.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.ProductBrandDetail" Width="1.5" PointX="6.75" PointY="71.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.ProductCategoryDetail" Width="1.5" PointX="6.75" PointY="75.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.ProductDetail" Width="1.5" PointX="6.75" PointY="79.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.ProductGroupDetail" Width="1.5" PointX="4.5" PointY="79.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.TelcoInfo" Width="1.5" PointX="16.25" PointY="72.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.TownShip" Width="1.5" PointX="1.5" PointY="39.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.UOMMaster" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.User" Width="1.5" PointX="6" PointY="57" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.UserAccessRight" Width="1.5" PointX="11.25" PointY="65" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.UserOfferTypeDetail" Width="1.5" PointX="14.25" PointY="68.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.UserProductGroupDetail" Width="1.5" PointX="17.25" PointY="68.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.UserType" Width="1.5" PointX="3.75" PointY="58.875" IsExpanded="true" />
+      <Diagram DiagramId="432715e4ba3a481dab641808c973d8b2" Name="Diagram1">
+        <EntityTypeShape EntityType="Ok.EcouponModel.ApprovalRequestDetail" Width="1.5" PointX="6" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.BranchDetail" Width="1.5" PointX="3" PointY="53.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.BranchMobileNumberDetail" Width="1.5" PointX="5.25" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ChildTransInfo" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.City" Width="1.5" PointX="0.75" PointY="48.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyAndProductMappingDetail" Width="1.5" PointX="9" PointY="79.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyAndProductMappingSummarry" Width="1.5" PointX="8.25" PointY="62.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.Customer" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.District" Width="1.5" PointX="0.75" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.Division" Width="1.5" PointX="1.5" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponAllocationDetail" Width="1.5" PointX="5.25" PointY="66.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponMetadata" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponNumber" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponRedeemInfo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.MasterTransInfo" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.Menu" Width="1.5" PointX="9" PointY="73.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferApprovalSetup" Width="1.5" PointX="6" PointY="55" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferAutoPayDiscountDetail" Width="1.5" PointX="16.25" PointY="63.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBackendNumber" Width="1.5" PointX="3" PointY="67.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockBranchDetail" Width="1.5" PointX="14.25" PointY="50.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockCustomerDetail" Width="1.5" PointX="8.25" PointY="48" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferBlockDetail" Width="1.5" PointX="6" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditiionalMappingBranchDetail" Width="1.5" PointX="13.5" PointY="46" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingCustomerDetail" Width="1.5" PointX="13.5" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingDetail" Width="1.5" PointX="11.25" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConditionalMappingLocationDetail" Width="1.5" PointX="16.5" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConfiguration" Width="1.5" PointX="8.25" PointY="66.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferConfigurationMobileNumberDetail" Width="1.5" PointX="7.5" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDetail" Width="1.5" PointX="9" PointY="52.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDetailsHistory" Width="1.5" PointX="11.25" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayAppVersionDetail" Width="1.5" PointX="13.5" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayAppVersionDetailsHistory" Width="1.5" PointX="15.75" PointY="58.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayDetail" Width="1.5" PointX="11.25" PointY="60.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayDetailsHistory" Width="1.5" PointX="13.5" PointY="62.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayLocationDetail" Width="1.5" PointX="18.5" PointY="60.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayLocationDetailsHistory" Width="1.5" PointX="20.75" PointY="61.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayMappingDetail" Width="1.5" PointX="16.5" PointY="51.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayMappingDetailsHistory" Width="1.5" PointX="18.75" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferDisplayTelcoDetail" Width="1.5" PointX="18.5" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferListingType" Width="1.5" PointX="6.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferOsDetail" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeConfiguration" Width="1.5" PointX="19.25" PointY="50.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeConfigurationHistory" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferShemeType" Width="1.5" PointX="17" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTermsAndCondition" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTermsAndConditionHistory" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferTransactionType" Width="1.5" PointX="3.75" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.OfferType" Width="1.5" PointX="6.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductBrandDetail" Width="1.5" PointX="6.75" PointY="73.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductCategoryDetail" Width="1.5" PointX="6.75" PointY="78" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductDetail" Width="1.5" PointX="6.75" PointY="81.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.ProductGroupDetail" Width="1.5" PointX="4.5" PointY="82.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.TelcoInfo" Width="1.5" PointX="16.25" PointY="75.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.TownShip" Width="1.5" PointX="1.5" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UOMMaster" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.User" Width="1.5" PointX="6" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserAccessRight" Width="1.5" PointX="11.25" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserOfferTypeDetail" Width="1.5" PointX="14.25" PointY="71.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserProductGroupDetail" Width="1.5" PointX="17.25" PointY="71.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ok.EcouponModel.UserType" Width="1.5" PointX="3.75" PointY="61.375" IsExpanded="true" />
         <AssociationConnector Association="Ok.EcouponModel.FK_ApprovalRequestDetail_OfferTransactionType" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_City_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_CompanyDetails_Id" ManuallyRouted="false" />
@@ -71,6 +74,7 @@
         <AssociationConnector Association="Ok.EcouponModel.FK_BranchDetails_TownShip_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_BranchMobileNumberDetails_BranchDetails_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_CompanyAndProductMappingSummarry_BranchDetails_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_OfferAutoPayDiscountDetails_BranchDetails_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_OfferBlockBranchDetails_BranchDetails_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_BranchDetails_Id" ManuallyRouted="false" />
@@ -105,6 +109,7 @@
         <AssociationConnector Association="Ok.EcouponModel.FK_OfferConfiguration_Division_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_OfferDisplayLocationDetails_Division_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_TownShip_Division_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponRedeemInfo_EcouponNumbers" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_UserAccessRights_Menu_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_OfferApprovalSetup_OfferTransactionType_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_OfferApprovalSetup_User_Id" ManuallyRouted="false" />
@@ -153,10 +158,7 @@
         <AssociationConnector Association="Ok.EcouponModel.FK_UserAccessRights_User_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_UserOfferTypeDetails_User_Id" ManuallyRouted="false" />
         <AssociationConnector Association="Ok.EcouponModel.FK_UserProductGroupDetails_User_Id" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponAllocationDetail" Width="1.5" PointX="5.25" PointY="27.625" />
-        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponAllocationDetails_BranchDetails" />
-        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponAllocationDetails_EcouponMetadata" />
-        <EntityTypeShape EntityType="Ok.EcouponModel.EcouponNumber" Width="1.5" PointX="5" PointY="12.375" />
+        <AssociationConnector Association="Ok.EcouponModel.FK_EcouponMetadata_EcouponMetadata" />
         <AssociationConnector Association="Ok.EcouponModel.FK_EcouponNumbers_EcouponMetadata" />
       </Diagram>
     </edmx:Diagrams>
